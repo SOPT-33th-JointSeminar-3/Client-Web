@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 const colors = {
   navy: '#00256C',
   blue: '#0064DE',
@@ -17,28 +19,152 @@ const colors = {
   grey_5: '#ECEDF2',
 };
 
-const fontWeights = {
-  extraBold: '800',
-  bold: '700',
-  semiBold: '600',
-  medium: '500',
-  regular: '400',
+const fonts = {
+  body_regular_12: css`
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_regular_14: css`
+    font-family: 'Pretendard';
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_regular_16: css`
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_medium_10: css`
+    font-family: 'Pretendard';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_medium_12: css`
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_semibold_12: css`
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_semibold_14: css`
+    font-family: 'Pretendard';
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_semibold_16: css`
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_bold_12: css`
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_bold_14: css`
+    font-family: 'Pretendard';
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_bold_16: css`
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  body_extrabold_12: css`
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 148.02%;
+    letter-spacing: 0.048rem;
+  `,
+  body_extrabold_14: css`
+    font-family: 'Pretendard';
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 148.02%;
+    letter-spacing: 0.056rem;
+  `,
+  body_extrabold_16: css`
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 140%;
+    letter-spacing: 0.02rem;
+  `,
+  title_bold_18: css`
+    font-family: 'Pretendard';
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+  `,
+  title_bold_20: css`
+    font-family: 'Pretendard';
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+  `,
+  title_bold_24: css`
+    font-family: 'Pretendard';
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+  `,
+  title_bold_30: css`
+    font-family: 'Pretendard';
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+  `,
 };
 
-const fontSizes = {
-  body_10: '1rem',
-  body_12: '1.2rem',
-  body_14: '1.4rem',
-  body_16: '1.6rem',
-  title_18: '1.8rem',
-  title_20: '2rem',
-  title_24: '2.4rem',
-  title_30: '3rem',
-};
 const theme = {
   colors,
-  fontWeights,
-  fontSizes,
+  fonts,
 };
 
 export default theme;
