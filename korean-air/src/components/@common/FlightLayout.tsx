@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import backgroundImage from "../../assets/image/background_payment2.png";
-import { IcPaymentPlane } from "../../assets";
+import { IcDownPayment, IcPaymentPlane } from "../../assets";
 
 const FlightLayout = () => {
   return (
@@ -15,12 +15,13 @@ const FlightLayout = () => {
             <KoreanTitle>서울</KoreanTitle>
           </CommonLayout>
           <CommonLayout>
+            <IcPaymentPlane />
+          </CommonLayout>
+          <CommonLayout>
             <EnglishTitle>CJU</EnglishTitle>
             <KoreanTitle>제주</KoreanTitle>
           </CommonLayout>
-          <CommonLayout>
-            <IcPaymentPlane />
-          </CommonLayout>
+          <IcDownIcon />
         </Layout>
       </Airport>
     </Content>
@@ -77,4 +78,10 @@ const BackgroundPayment = styled.div`
   position: absolute;
   width: 100%;
   height: 6.2rem; //TODO 피그마 보고 했는데 수정 필요?
+`;
+
+const IcDownIcon = styled.div`
+  background: url(${IcDownPayment});
+  width: 2.4rem;
+  height: 2.4rem;
 `;
