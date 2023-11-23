@@ -1,7 +1,12 @@
 import React from "react";
+import { IcSwap } from "../assets";
 
 const MainPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <IcSwap />
+    </div>
+  );
 };
 
 export default MainPage;
