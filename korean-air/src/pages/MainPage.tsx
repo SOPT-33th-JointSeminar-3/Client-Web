@@ -1,7 +1,8 @@
-import React from "react";
+import styled from "styled-components";
+import { Booking } from "../components/mainPage/Booking";
 
 const MainPage = () => {
-  return <div></div>;
+  return <Booking />;
 };
 
 export default MainPage;
