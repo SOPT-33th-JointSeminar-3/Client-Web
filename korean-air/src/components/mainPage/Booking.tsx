@@ -155,7 +155,7 @@ const Button = styled.button`
 const SearchBtn = styled(Button)`
   margin: 2rem 1.2rem;
   background-color: ${({ theme }) => theme.colors.navy};
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
 `;
 const BtnBox = styled.div`
   display: flex;
