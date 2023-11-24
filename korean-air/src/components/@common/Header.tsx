@@ -27,4 +27,8 @@ const Wrapper = styled.section`
     height: 1.4rem;
     margin: 1.5rem 0rem;
   }
+
+  & svg {
+    cursor: pointer;
+  }
 `;
