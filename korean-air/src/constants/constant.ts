@@ -5,4 +5,5 @@ const NOTICE_TITLE = [
   "사전 좌석 배정 서비스 신청 온라인 전환",
 ];
 const NOTICE_DATE = ["2023.11.02", "2023.11.01", "2023.11.01", "2023.10.31"];
+
 export { NOTICE_TITLE, NOTICE_DATE };
