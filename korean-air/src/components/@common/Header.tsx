@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { IcMenuHeader, IcSearchHeader } from "../../assets";
 
 const Header = () => {
   return (
     <Wrapper>
       <img src="/src/assets/image/img_logo.png" alt="대한항공 로고" />
+      <div>
+        <IcSearchHeader />
+        <IcMenuHeader />
+      </div>
     </Wrapper>
   );
 };
@@ -11,8 +16,15 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.section`
-  width: 100%;
-  padding: 1.5rem 1rem 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
 
-  border: 2px solid red;
+  width: 100%;
+  padding: 0rem 1rem 0rem 2rem;
+
+  & > img {
+    width: 11.8rem;
+    height: 1.4rem;
+    margin: 1.5rem 0rem;
+  }
 `;
