@@ -49,11 +49,12 @@ const Airport = styled.div`
 
 const Layout = styled.section`
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
   /* flex-direction: column; */
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  gap: 2rem;
 `;
 
 const CommonLayout = styled.div`
