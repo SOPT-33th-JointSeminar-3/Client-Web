@@ -45,11 +45,11 @@ export const Booking = () => {
             </Select>
           </SelectBox>
         </CardBody>
-        <SearchBtn> 항공편 검색</SearchBtn>
+        <SearchBtn type="button"> 항공편 검색</SearchBtn>
       </CardBox>
       <BtnBox>
-        <FlightBtn>예약 조회 및 체크인</FlightBtn>
-        <FlightBtn>항공편 현황</FlightBtn>
+        <FlightBtn type="button">예약 조회 및 체크인</FlightBtn>
+        <FlightBtn type="button">항공편 현황</FlightBtn>
       </BtnBox>
     </BookingBox>
   );
@@ -68,7 +68,7 @@ const CardBox = styled.section`
   border-radius: 1rem;
   box-shadow: 0 0.3rem 1.18rem 0.3rem rgba(187, 187, 187, 0.25);
 `;
-const CardBody = styled.section`
+const CardBody = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -91,7 +91,7 @@ const MileageBook = styled(Title)`
   background-color: ${({ theme }) => theme.colors.grey_5};
   color: ${({ theme }) => theme.colors.grey_3};
 `;
-const SelectCityBox = styled.div`
+const SelectCityBox = styled.article`
   width: 100%;
 `;
 const WayBox = styled.div`
@@ -118,7 +118,6 @@ const CityBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 5.4rem;
-  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
   color: ${({ theme }) => theme.colors.grey_3};
 `;
 const City = styled.div`
@@ -132,7 +131,7 @@ const City = styled.div`
     ${({ theme }) => theme.fonts.title_bold_30}
   }
 `;
-const SelectBox = styled.div`
+const SelectBox = styled.article`
   width: 100%;
 `;
 const Select = styled.div`
@@ -145,6 +144,9 @@ const Select = styled.div`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
   color: ${({ theme }) => theme.colors.grey_3};
   ${({ theme }) => theme.fonts.body_regular_16}
+  &:nth-child(1) {
+    border-top: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
+  }
 `;
 const Button = styled.button`
   padding: 1.2rem;
@@ -157,7 +159,7 @@ const SearchBtn = styled(Button)`
   background-color: ${({ theme }) => theme.colors.navy};
   color: ${({ theme }) => theme.colors.white};
 `;
-const BtnBox = styled.div`
+const BtnBox = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
