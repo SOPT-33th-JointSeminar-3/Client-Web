@@ -25,12 +25,8 @@ export default IconLayout;
 
 const Layout = styled.div`
   display: flex;
-  /* justify-content: space-around; */
   width: 100%;
-  /* padding: rem; */
-  height: 30rem;
   float: left;
-  background-color: #00ffd5;
 `;
 
 const InsideLayout = styled.section`
@@ -39,7 +35,7 @@ const InsideLayout = styled.section`
   align-items: center;
   width: 100%;
   height: 20rem;
-  background-color: pink;
+  /* background-color: pink; */
 `;
 
 const IconDiv = styled.div`
