@@ -9,11 +9,11 @@ const IconLayout = () => {
     <Layout>
       <InsideLayout>
         <IconDiv>
-          <IcSaveIcon />
+          <IcPaymentSave />
           <IconName>저장</IconName>
         </IconDiv>
         <IconDiv>
-          <IcShareIcon />
+          <IcPaymentShare />
           <IconName>공유</IconName>
         </IconDiv>
       </InsideLayout>
@@ -34,8 +34,7 @@ const InsideLayout = styled.section`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 20rem;
-  /* background-color: pink; */
+  height: 18rem;
 `;
 
 const IconDiv = styled.div`
@@ -48,18 +47,6 @@ const IconDiv = styled.div`
   margin-left: 2rem;
 `;
 
-const IcSaveIcon = styled.div`
-  background: url(${IcPaymentSave});
-  width: 1.6rem;
-  height: 1.6rem;
-`;
-
 const IconName = styled.p`
-  font: ${theme.fonts.body_regular_14};
-`;
-
-const IcShareIcon = styled.div`
-  background: url(${IcPaymentShare});
-  width: 1.6rem;
-  height: 1.6rem;
+  ${theme.fonts.body_regular_14};
 `;

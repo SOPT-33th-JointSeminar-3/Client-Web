@@ -35,14 +35,12 @@ const Journey = () => {
 export default Journey;
 
 const Layout = styled.section`
-  height: 34.9rem;
   padding: 2rem;
   flex-shrink: 0;
-  /* background-color: skyblue; */
 `;
 // body extrabold 20이 없어 ㅠㅠ TODO
 const JouneyTitle = styled.p`
-  font: ${theme.fonts.body_extrabold_16};
+  ${theme.fonts.body_extrabold_16};
   color: ${theme.colors.navy};
 `;
 
@@ -54,19 +52,18 @@ const DepartInfo = styled.div`
   border: 0.1rem solid var(--grey_4, #c7c9d9);
   padding: 0.6rem;
   margin: 1rem;
-  background: white;
 `;
 
 const Title = styled.h1`
   color: ${theme.colors.black};
-  font: ${theme.fonts.body_bold_16};
+  ${theme.fonts.body_bold_16};
   margin-left: 2rem;
   margin-top: 2rem;
 `;
 
 const Date = styled.p`
   color: ${theme.colors.grey_3};
-  font: ${theme.fonts.body_medium_12};
+  ${theme.fonts.body_medium_12};
   margin-left: 2rem;
   margin-top: 1rem;
 `;
@@ -89,13 +86,13 @@ const DepartureLayout = styled.div`
 
 const EnglishTitle = styled.p`
   color: ${theme.colors.black};
-  font: ${theme.fonts.body_bold_14};
+  ${theme.fonts.body_bold_14};
   margin-left: 2rem;
 `;
 
 const EnglishSubTitle = styled.p`
   color: ${theme.colors.black};
-  font: ${theme.fonts.body_regular_12};
+  ${theme.fonts.body_regular_12};
 `;
 
 const IcShotarrowIcon = styled.div`
@@ -106,7 +103,7 @@ const IcShotarrowIcon = styled.div`
 
 const FlightTime = styled.p`
   color: ${theme.colors.navy};
-  font: ${theme.fonts.body_medium_12};
+  ${theme.fonts.body_medium_12};
   margin-left: 2rem;
 `;
 
@@ -120,7 +117,7 @@ const TicketLayout = styled.div`
 
 const PlaneInfo = styled.div`
   color: ${theme.colors.navy};
-  font: ${theme.fonts.body_bold_12};
+  ${theme.fonts.body_bold_12};
 `;
 
 const JinairLogo = styled.div`
@@ -131,5 +128,5 @@ const JinairLogo = styled.div`
 
 const JinairTitle = styled.div`
   color: ${theme.colors.navy};
-  font: ${theme.fonts.body_medium_12};
+  ${theme.fonts.body_medium_12};
 `;
