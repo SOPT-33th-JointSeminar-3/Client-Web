@@ -42,10 +42,6 @@ export {
   IcInstagram,
   IcFacebook,
   IcTwitter,
-  IcCheckFinish, 
-  IcCloseSmall
-  IcSwap, 
-  IcMenuHeader, 
   IcCheckFinish,
   IcCloseSmall,
   IcSwap,
