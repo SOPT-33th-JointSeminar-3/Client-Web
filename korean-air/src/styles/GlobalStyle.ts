@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     font-size: 10px;
     font-family: "Pretendard";  
-    cursor : pointer;
   }
 `;
 
