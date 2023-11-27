@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { IcPaymentShotarrow, LogoJinair } from "../../assets";
+import { IcPaymentShotarrow, IcRightPayment, LogoJinair } from "../../assets";
+import { PASSENGER_INFO } from "../../constants/constant";
 
 const Journey = () => {
   return (
@@ -14,10 +15,11 @@ const Journey = () => {
           <DepartureLayout>
             <EnglishTitle>GMP</EnglishTitle>
             <EnglishSubTitle>서울/김포</EnglishSubTitle>
-            <IcShotarrowIcon />
+            <IcPaymentShotarrow />
             <EnglishTitle>CJU</EnglishTitle>
             <EnglishSubTitle>제주</EnglishSubTitle>
           </DepartureLayout>
+          <IcRightPayment />
         </DetailInfoLayout>
         <FlightTime>06:05</FlightTime>
         <FlightTime>07:15</FlightTime>
@@ -27,6 +29,23 @@ const Journey = () => {
           <JinairTitle>진에어 운항</JinairTitle>
           <JinairTitle>일반석(S)</JinairTitle>
         </TicketLayout>
+      </DepartInfo>
+
+      <DepartInfo>
+        <Title>오는 편</Title>
+        <Date>2023년 12월 9일 (수)</Date>
+        <DetailInfoLayout>
+          <DepartureLayout>
+            <EnglishTitle>CJU</EnglishTitle>
+            <EnglishSubTitle>제주</EnglishSubTitle>
+            <IcPaymentShotarrow />
+            <EnglishTitle>GMP</EnglishTitle>
+            <EnglishSubTitle>서울/김포</EnglishSubTitle>
+          </DepartureLayout>
+          <IcRightPayment />
+        </DetailInfoLayout>
+        <FlightTime>06:05</FlightTime>
+        <FlightTime>07:15</FlightTime>
       </DepartInfo>
     </Layout>
   );
@@ -69,8 +88,9 @@ const Date = styled.p`
 `;
 
 const DetailInfoLayout = styled.div`
+  width: 100%;
   display: inline-flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 `;
