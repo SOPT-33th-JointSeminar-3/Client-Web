@@ -25,6 +25,8 @@ import IcPaymentShare from "./icon/ic_payment__share.svg?react";
 import IcPaymentSave from "./icon/ic_payment_save.svg?react";
 import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
+import IcRightPayment from "./icon/ic_right_payment.svg?react";
+import Ellipse from "./icon/Ellipse.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -53,4 +55,6 @@ export {
   IcPaymentSave,
   IcPaymentShotarrow,
   LogoJinair,
+  IcRightPayment,
+  Ellipse,
 };
