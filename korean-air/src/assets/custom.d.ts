@@ -1,3 +1,5 @@
+declare module ".jpg";
+declare module ".png";
 declare module "*.svg?react" {
   import React = require("react");
   export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
