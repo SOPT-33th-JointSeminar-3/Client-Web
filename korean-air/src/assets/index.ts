@@ -46,6 +46,10 @@ export {
   IcCloseSmall
   IcSwap, 
   IcMenuHeader, 
+  IcCheckFinish,
+  IcCloseSmall,
+  IcSwap,
+  IcMenuHeader,
   IcSearchHeader,
   IcPaymentPlane,
   IcDownPayment,
