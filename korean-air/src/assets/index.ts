@@ -10,10 +10,10 @@ import IcPaymentSave from "./icon/ic_payment_save.svg?react";
 import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
 export {
-  IcCheckFinish, 
-  IcCloseSmall
-  IcSwap, 
-  IcMenuHeader, 
+  IcCheckFinish,
+  IcCloseSmall,
+  IcSwap,
+  IcMenuHeader,
   IcSearchHeader,
   IcPaymentPlane,
   IcDownPayment,
