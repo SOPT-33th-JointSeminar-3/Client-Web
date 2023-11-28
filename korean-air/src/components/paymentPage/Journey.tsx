@@ -57,18 +57,17 @@ const Layout = styled.section`
   padding: 2rem;
   flex-shrink: 0;
 `;
-// body extrabold 20이 없어 ㅠㅠ TODO
+
 const JouneyTitle = styled.p`
-  ${theme.fonts.body_extrabold_16};
+  ${theme.fonts.body_extrabold_20};
   color: ${theme.colors.navy};
 `;
 
-//TODO var 물어보기 (theme)
 const DepartInfo = styled.div`
   height: 16.6rem;
   flex-shrink: 0;
   border-radius: 10px;
-  border: 0.1rem solid var(--grey_4, #c7c9d9);
+  border: 0.1rem solid ${theme.colors.grey_4};
   padding: 0.6rem;
   margin: 1rem;
 `;
@@ -113,12 +112,6 @@ const EnglishTitle = styled.p`
 const EnglishSubTitle = styled.p`
   color: ${theme.colors.black};
   ${theme.fonts.body_regular_12};
-`;
-
-const IcShotarrowIcon = styled.div`
-  background: url(${IcPaymentShotarrow});
-  width: 2.9rem;
-  height: 0.9rem;
 `;
 
 const FlightTime = styled.p`
