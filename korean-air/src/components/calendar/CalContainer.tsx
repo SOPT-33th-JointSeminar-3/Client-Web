@@ -3,11 +3,23 @@ import styled from "styled-components";
 const CalContainer = () => {
   const START = 5; // 금요일부터 1일이 시작되는 달
   const LENGTH = 31; // 총 31일인 달
-  const LIST = new Array(42).fill("");
-  LIST[5 + START - 1] = "5.8만";
-  LIST[7 + START - 1] = "8만";
-  LIST[11 + START - 1] = "7.7만";
-  LIST[15 + START - 1] = "6.4만";
+  const LIST = new Array(42).fill();
+
+  const DATA = [
+    { date: 5, price: 5.8 },
+    { date: 7, price: 8 },
+    { date: 11, price: 7.7 },
+    { date: 15, price: 6.4 },
+    { date: 20, price: 6 },
+    { date: 21, price: 7.3 },
+    { date: 23, price: 10.2 },
+    { date: 29, price: 9 },
+  ];
+
+  DATA.map((data) => (LIST[data.date + START - 1] = data.price));
+  DATA.sort((a, b) => a.price - b.price);
+  const SECOND_MIN = DATA[1].price; // 최저가 두개 중 큰 값
+  const SECOND_MAX = DATA[DATA.length - 2].price; // 최고가 두개 중 작은 값
 
   return (
     <Wrapper>
@@ -24,7 +36,13 @@ const CalContainer = () => {
                   ? ""
                   : idx - START + 1}
               </span>
-              <span>{val}</span>
+              <Price
+                $isColored={
+                  val <= SECOND_MIN ? "min" : val >= SECOND_MAX ? "max" : ""
+                }
+              >
+                {val && `${val}만`}
+              </Price>
             </Item>
           ))}
         </Grid>
@@ -75,9 +93,13 @@ const Item = styled.li`
   & > span:first-child {
     ${({ theme }) => theme.fonts.body_regular_16};
   }
-
-  & > span:nth-child(2) {
-    ${({ theme }) => theme.fonts.body_regular_12};
-    color: ${({ theme }) => theme.colors.blue};
-  }
+`;
+const Price = styled.span<{ $isColored: string }>`
+  ${({ theme }) => theme.fonts.body_regular_12};
+  color: ${({ theme, $isColored }) =>
+    $isColored === "min"
+      ? theme.colors.blue
+      : $isColored === "max"
+        ? theme.colors.red
+        : theme.colors.grey_2};
 `;
