@@ -40,5 +40,5 @@ const PromotionCardBox = styled.div`
   display: flex;
   gap: 2.2rem;
   ${({ $scroll }) =>
-    $scroll ? "transform: translateX(0);" : "transform: translateX(-33.7rem);"};
+    $scroll ? "transform: translateX(0);" : "transform: translateX(-29.7rem);"};
 `;
