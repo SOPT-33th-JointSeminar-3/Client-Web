@@ -3,7 +3,8 @@ import styled from "styled-components";
 const CalContainer = () => {
   const START = 5; // 금요일부터 1일이 시작되는 달
   const LENGTH = 31; // 총 31일인 달
-  const LIST = new Array(42).fill();
+  const HOLIDAY = [25]; // 휴일(빨간날)인 날
+  const LIST = new Array(42).fill(0);
 
   const DATA = [
     { date: 5, price: 5.8 },
@@ -31,17 +32,17 @@ const CalContainer = () => {
         <Grid>
           {LIST.map((val, idx) => (
             <Item key={idx}>
-              <span>
+              <Date $isHoliday={HOLIDAY.includes(idx - START + 1)}>
                 {idx - START < 0 || idx - START + 1 > LENGTH
                   ? ""
                   : idx - START + 1}
-              </span>
+              </Date>
               <Price
                 $isColored={
                   val <= SECOND_MIN ? "min" : val >= SECOND_MAX ? "max" : ""
                 }
               >
-                {val && `${val}만`}
+                {val !== 0 && `${val}만`}
               </Price>
             </Item>
           ))}
@@ -89,10 +90,10 @@ const Item = styled.li`
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-
-  & > span:first-child {
-    ${({ theme }) => theme.fonts.body_regular_16};
-  }
+`;
+const Date = styled.span<{ $isHoliday: boolean }>`
+  ${({ theme }) => theme.fonts.body_regular_16};
+  color: ${({ theme, $isHoliday }) => $isHoliday && theme.colors.red};
 `;
 const Price = styled.span<{ $isColored: string }>`
   ${({ theme }) => theme.fonts.body_regular_12};
