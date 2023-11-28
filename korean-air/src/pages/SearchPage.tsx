@@ -14,7 +14,7 @@ const SearchPage = () => {
   return (
     <SearchBox>
       <SearchHeader state={state}></SearchHeader>
-      <SearchBar setSearchInput={setSearchInput} />
+      <SearchBar setSearchInput={setSearchInput} searchInput={searchInput} />
       <SearchBody>
         {/*임의로 검색창에 입력값이 있으면 결과창 뜨게 함 */}
         {searchInput !== "" && <Result />}

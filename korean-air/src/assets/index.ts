@@ -29,6 +29,7 @@ import IcSearchSearcharea from "./icon/ic_search_searcharea.svg?react";
 import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
 import IcDownSearch from "./icon/ic_down_search.svg?react";
 import IcPin from "./icon/ic_pin.svg?react";
+import IcCloseVerySmall from "./icon/ic_close_verysmall.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -61,4 +62,5 @@ export {
   IcCloseSmallRecent,
   IcDownSearch,
   IcPin,
+  IcCloseVerySmall,
 };
