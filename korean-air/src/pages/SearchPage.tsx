@@ -9,14 +9,14 @@ import Result from "../components/searchPage/Result";
 const SearchPage = () => {
   const { state } = useLocation();
 
-  const [serchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   return (
     <SearchBox>
       <SearchHeader state={state}></SearchHeader>
       <SearchBar setSearchInput={setSearchInput} />
       <SearchBody>
-        {serchInput !== "" && <Result />}
+        {searchInput !== "" && <Result />}
         <History />
         <Category />
       </SearchBody>
