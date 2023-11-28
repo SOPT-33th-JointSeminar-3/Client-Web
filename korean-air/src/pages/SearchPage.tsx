@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import SearchHeader from "../components/searchPage/SearchHeader";
 import SearchBar from "../components/searchPage/SearchBar";
+import History from "../components/searchPage/History";
 const SearchPage = () => {
   const { state } = useLocation();
 
@@ -9,6 +10,7 @@ const SearchPage = () => {
     <SearchBox>
       <SearchHeader state={state}></SearchHeader>
       <SearchBar />
+      <History />
     </SearchBox>
   );
 };

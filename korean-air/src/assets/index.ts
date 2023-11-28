@@ -26,6 +26,7 @@ import IcPaymentSave from "./icon/ic_payment_save.svg?react";
 import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
 import IcSearchSearcharea from "./icon/ic_search_searcharea.svg?react";
+import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -55,4 +56,5 @@ export {
   IcPaymentShotarrow,
   LogoJinair,
   IcSearchSearcharea,
+  IcCloseSmallRecent,
 };
