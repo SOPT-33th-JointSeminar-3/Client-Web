@@ -25,14 +25,14 @@ export const Booking = () => {
             </WayBox>
             <CityBox>
               <City>
-                <p onClick={(e) => handleClick(e)} id="departure">
+                <p onClick={handleClick} id="departure">
                   출발
                 </p>
                 <p>From</p>
               </City>
               <IcSwap />
               <City>
-                <p onClick={(e) => handleClick(e)} id="arrival">
+                <p onClick={handleClick} id="arrival">
                   도착
                 </p>
                 <p>To</p>
