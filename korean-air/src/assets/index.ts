@@ -27,6 +27,10 @@ import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
 import IcRightPayment from "./icon/ic_right_payment.svg?react";
 import Ellipse from "./icon/Ellipse.svg?react";
+import IcRightNameInfo from "./icon/ic_right_nameinfo.svg?react";
+import IcUpPayment from "./icon/ic_up_payment.svg?react";
+import ChevronDown from "./icon/chevron-down.svg?react";
+
 export {
   IcCalendar,
   IcHelp,
@@ -57,4 +61,6 @@ export {
   LogoJinair,
   IcRightPayment,
   Ellipse,
+  IcRightNameInfo,
+  IcUpPayment,
 };
