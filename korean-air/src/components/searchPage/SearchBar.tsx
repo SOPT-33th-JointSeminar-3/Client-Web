@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { IcSearchSearcharea } from "../../assets";
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const handleChangeInput = (e) => {
+    props.setSearchInput(e.target.value);
+  };
   return (
     <SearchBarBox>
       <IcSearchSearcharea />
-      <p>도시, 공항을 검색하세요.</p>
+      <Input
+        placeholder="도시, 공항을 검색하세요."
+        onChange={handleChangeInput}
+      ></Input>
     </SearchBarBox>
   );
 };
@@ -17,8 +23,9 @@ const SearchBarBox = styled.section`
   padding: 0.4rem 0 1rem 0;
   gap: 1.2rem;
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.navy};
-  & p {
-    color: ${({ theme }) => theme.colors.grey_3};
-    ${({ theme }) => theme.fonts.body_regular_16};
-  }
+`;
+const Input = styled.input`
+  ${({ theme }) => theme.fonts.body_regular_16};
+  border: none;
+  outline: none;
 `;
