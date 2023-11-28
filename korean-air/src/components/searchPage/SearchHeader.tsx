@@ -1,14 +1,19 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { IcCloseSmall } from "../../assets";
 interface State {
   state: string;
 }
 const SearchHeader = (props: State) => {
+  const navigate = useNavigate();
+  const handleCloseBtnClick = () => {
+    navigate("/");
+  };
   const title = props.state === "departure" ? "출발지 검색" : "도착지 검색";
   return (
     <ShHeader>
       <p>{title}</p>
-      <IcCloseSmall />
+      <IcCloseSmall onClick={handleCloseBtnClick} />
     </ShHeader>
   );
 };
