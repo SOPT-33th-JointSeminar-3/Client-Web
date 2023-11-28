@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
+import { useNavigate } from "react-router-dom";
 export const Booking = () => {
+  const navigate = useNavigate();
+  const handleClick = (e) => {
+    navigate("/search", { state: e.target.id });
+  };
   return (
     <BookingBox>
       <CardBox>
@@ -20,12 +25,16 @@ export const Booking = () => {
             </WayBox>
             <CityBox>
               <City>
-                <p>출발</p>
+                <p onClick={(e) => handleClick(e)} id="departure">
+                  출발
+                </p>
                 <p>From</p>
               </City>
               <IcSwap />
               <City>
-                <p>도착</p>
+                <p onClick={(e) => handleClick(e)} id="arrival">
+                  도착
+                </p>
                 <p>To</p>
               </City>
             </CityBox>
