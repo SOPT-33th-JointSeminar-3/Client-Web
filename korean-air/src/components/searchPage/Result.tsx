@@ -24,7 +24,7 @@ const Result = () => {
 
 export default Result;
 
-const ResultBox = styled.div`
+const ResultBox = styled.ul`
   position: absolute;
   top: 0;
   z-index: 1;
@@ -34,7 +34,7 @@ const ResultBox = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0.3rem 1.18rem 0.3rem rgba(187, 187, 187, 0.25);
 `;
-const ResultContent = styled.div`
+const ResultContent = styled.li`
   display: flex;
   align-items: center;
   padding: 1.5rem 0 1.5rem 1.2rem;
