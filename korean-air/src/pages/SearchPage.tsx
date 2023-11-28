@@ -1,12 +1,14 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import SearchHeader from "../components/searchPage/SearchHeader";
+import SearchBar from "../components/searchPage/SearchBar";
 const SearchPage = () => {
   const { state } = useLocation();
 
   return (
     <SearchBox>
       <SearchHeader state={state}></SearchHeader>
+      <SearchBar />
     </SearchBox>
   );
 };
