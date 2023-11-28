@@ -25,6 +25,7 @@ const Wrapper = styled.footer`
 
   padding: 1.6rem;
   width: 100%;
+  max-width: 43rem;
   height: 11.4rem;
 
   box-shadow: 0 -2rem 2rem 0 rgba(107, 117, 136, 0.1);
