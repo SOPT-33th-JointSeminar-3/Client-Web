@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { IcCloseSmall } from "../../assets";
-const SearchHeader = (props) => {
+interface State {
+  state: string;
+}
+const SearchHeader = (props: State) => {
   const title = props.state === "departure" ? "출발지 검색" : "도착지 검색";
   return (
     <ShHeader>

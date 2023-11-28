@@ -6,9 +6,9 @@ import History from "../components/searchPage/History";
 import Category from "../components/searchPage/Category";
 import { useState } from "react";
 import Result from "../components/searchPage/Result";
+
 const SearchPage = () => {
   const { state } = useLocation();
-
   const [searchInput, setSearchInput] = useState("");
 
   return (

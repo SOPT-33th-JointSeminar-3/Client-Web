@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 export const Booking = () => {
   const navigate = useNavigate();
-  const handleClick = (e) => {
-    navigate("/search", { state: e.target.id });
+  const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
+    navigate("/search", { state: e.currentTarget.id });
   };
   return (
     <BookingBox>

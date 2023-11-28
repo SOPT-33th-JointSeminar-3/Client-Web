@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { IcSearchSearcharea } from "../../assets";
-const SearchBar = (props) => {
-  const handleChangeInput = (e) => {
+import React from "react";
+interface SearchBarProps {
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>;
+}
+const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.setSearchInput(e.target.value);
   };
   return (
