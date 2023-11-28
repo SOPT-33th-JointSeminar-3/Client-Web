@@ -16,7 +16,7 @@ const History = () => {
 
 export default History;
 
-const HistoryCard = styled.div`
+const HistoryCard = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;

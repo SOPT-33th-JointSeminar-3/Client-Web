@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SearchHeader from "../components/searchPage/SearchHeader";
 import SearchBar from "../components/searchPage/SearchBar";
 import History from "../components/searchPage/History";
+import Category from "../components/searchPage/Category";
 const SearchPage = () => {
   const { state } = useLocation();
 
@@ -11,6 +12,7 @@ const SearchPage = () => {
       <SearchHeader state={state}></SearchHeader>
       <SearchBar />
       <History />
+      <Category />
     </SearchBox>
   );
 };
