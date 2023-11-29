@@ -4,9 +4,13 @@ const CalFooter = ({ selectedDate }: { selectedDate: string[] }) => {
   return (
     <Wrapper>
       <Range>
-        <span>{selectedDate[0]}</span>
+        <Departure $isSelected={selectedDate[0] !== "가는 날"}>
+          {selectedDate[0]}
+        </Departure>
         <span>~</span>
-        <span>{selectedDate[1]}</span>
+        <Arrival $isSelected={selectedDate[1] !== "오는 날"}>
+          {selectedDate[1]}
+        </Arrival>
       </Range>
       <Button>선택</Button>
     </Wrapper>
@@ -33,20 +37,33 @@ const Wrapper = styled.footer`
 `;
 const Range = styled.div`
   display: flex;
-  gap: 6.4rem;
+  gap: 2rem;
   justify-content: center;
 
   margin-top: 0.3rem;
 
-  & > span {
-    ${({ theme }) => theme.fonts.body_regular_16};
-    color: ${({ theme }) => theme.colors.gray};
+  & > span:nth-child(2n + 1) {
+    width: 13.5rem;
+    text-align: center;
   }
   & > span:nth-child(2) {
+    ${({ theme }) => theme.fonts.body_bold_16};
     color: ${({ theme }) => theme.colors.black};
-    font-weight: 700;
   }
 `;
+const Departure = styled.span<{ $isSelected: boolean }>`
+  ${({ theme, $isSelected }) =>
+    $isSelected ? theme.fonts.body_bold_16 : theme.fonts.body_regular_16};
+  color: ${({ theme, $isSelected }) =>
+    $isSelected ? theme.colors.black : theme.colors.gray};
+`;
+const Arrival = styled.span<{ $isSelected: boolean }>`
+  ${({ theme, $isSelected }) =>
+    $isSelected ? theme.fonts.body_bold_16 : theme.fonts.body_regular_16};
+  color: ${({ theme, $isSelected }) =>
+    $isSelected ? theme.colors.black : theme.colors.gray};
+`;
+
 const Button = styled.button`
   display: flex;
   justify-content: center;

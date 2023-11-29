@@ -4,9 +4,11 @@ import { useState } from "react";
 
 const CalContainer = ({
   info,
+  selectedDate,
   setSelectedDate,
 }: {
   info: calInfo;
+  selectedDate: string[];
   setSelectedDate: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
   const [isClicked, setClicked] = useState<boolean[]>(
@@ -22,6 +24,10 @@ const CalContainer = ({
     setClicked(tempArr);
 
     // 2. selectedDate 업데이트
+    setSelectedDate([
+      `${year}년 ${month}월 ${idx - start + 1}일`,
+      ...selectedDate,
+    ]);
   }
 
   data.map((el) => (LIST[el.date + start - 1] = el.price));
