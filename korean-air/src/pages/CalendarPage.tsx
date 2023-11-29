@@ -16,7 +16,13 @@ const CalendarPage = () => {
       <CalHeader />
       <CalWrapper>
         {CALENDAR_INFO.map((cal, idx) => {
-          return <CalContainer key={idx} info={cal} />;
+          return (
+            <CalContainer
+              key={idx}
+              info={cal}
+              setSelectedDate={setSelectedDate}
+            />
+          );
         })}
       </CalWrapper>
       <CalFooter selectedDate={selectedDate} />

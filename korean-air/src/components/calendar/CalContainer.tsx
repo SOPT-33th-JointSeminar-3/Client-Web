@@ -2,12 +2,27 @@ import styled from "styled-components";
 import { calInfo } from "../../constants/constant";
 import { useState } from "react";
 
-const CalContainer = ({ info }: { info: calInfo }) => {
+const CalContainer = ({
+  info,
+  setSelectedDate,
+}: {
+  info: calInfo;
+  setSelectedDate: React.Dispatch<React.SetStateAction<string[]>>;
+}) => {
   const [isClicked, setClicked] = useState<boolean[]>(
     new Array(42).fill(false),
   );
   const LIST = new Array(42).fill(0);
   const { year, month, start, length, holiday, data } = info;
+
+  function handleDate(idx: number) {
+    // 1. isClicked 배열 업데이트
+    const tempArr = [...isClicked];
+    tempArr[idx] = !tempArr[idx];
+    setClicked(tempArr);
+
+    // 2. selectedDate 업데이트
+  }
 
   data.map((el) => (LIST[el.date + start - 1] = el.price));
   data.sort((a, b) => a.price - b.price);
@@ -25,11 +40,7 @@ const CalContainer = ({ info }: { info: calInfo }) => {
               <Date
                 $isHoliday={holiday.includes(idx - start + 1)}
                 $isClicked={isClicked[idx]}
-                onClick={() => {
-                  const tempArr = [...isClicked];
-                  tempArr[idx] = !tempArr[idx];
-                  setClicked(tempArr);
-                }}
+                onClick={() => handleDate(idx)}
               >
                 {idx - start < 0 || idx - start + 1 > length
                   ? ""
@@ -129,8 +140,11 @@ const SelectedDate = styled.div<{ $isClicked: boolean }>`
   display: ${({ $isClicked }) => ($isClicked ? "block" : "none")};
 
   position: absolute;
+
   width: 3rem;
   height: 3rem;
+  margin-bottom: 0.2rem;
+
   border-radius: 1.5rem;
   background-color: ${({ theme }) => theme.colors.navy};
 
