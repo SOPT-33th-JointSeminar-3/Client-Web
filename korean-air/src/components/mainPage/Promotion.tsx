@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PromotionCard } from "./PromotionCard";
 import { IcPagingLeft, IcPagingRight } from "../../assets";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export const Promotion = () => {
   const [scrollLeft, setScrollLeft] = useState(true);
@@ -36,7 +36,7 @@ const PromotionBox = styled.section`
   }
 `;
 
-const PromotionCardBox = styled.div`
+const PromotionCardBox = styled.div<{ $scroll: boolean }>`
   display: flex;
   gap: 2.2rem;
   ${({ $scroll }) =>
