@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const CalFooter = () => {
+const CalFooter = ({ selectedDate }: { selectedDate: string[] }) => {
   return (
     <Wrapper>
       <Range>
-        <span>가는 날</span>
+        <span>{selectedDate[0]}</span>
         <span>~</span>
-        <span>오는 날</span>
+        <span>{selectedDate[1]}</span>
       </Range>
       <Button>선택</Button>
     </Wrapper>

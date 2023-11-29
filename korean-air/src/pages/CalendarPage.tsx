@@ -3,12 +3,14 @@ import CalFooter from "../components/calendar/CalFooter";
 import CalHeader from "../components/calendar/CalHeader";
 import styled from "styled-components";
 import { CALENDAR_INFO } from "../constants/constant";
+import { useState } from "react";
 
 const CalendarPage = () => {
-  // start : 금요일부터 1일이 시작되는 달
-  // length : 총 31일인 달
-  // holiday : 휴일(빨간날)인 날
-  // data : 항공편 정보가 있는 날
+  const [selectedDate, setSelectedDate] = useState<string[]>([
+    "가는 날",
+    "오는 날",
+  ]);
+
   return (
     <>
       <CalHeader />
@@ -17,7 +19,7 @@ const CalendarPage = () => {
           return <CalContainer key={idx} info={cal} />;
         })}
       </CalWrapper>
-      <CalFooter />
+      <CalFooter selectedDate={selectedDate} />
     </>
   );
 };
