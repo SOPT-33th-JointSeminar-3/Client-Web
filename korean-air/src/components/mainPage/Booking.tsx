@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { arriveState, departureState } from "../../recoil/atom";
 export const Booking = () => {
   const navigate = useNavigate();
+  const departure = useRecoilValue(departureState);
+  const arrive = useRecoilValue(arriveState);
   const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigate("/search", { state: e.currentTarget.id });
   };
@@ -27,14 +31,14 @@ export const Booking = () => {
             <CityBox>
               <City>
                 <p onClick={handleClick} id="departure">
-                  출발
+                  {departure}
                 </p>
                 <p>From</p>
               </City>
               <IcSwap />
               <City>
                 <p onClick={handleClick} id="arrival">
-                  도착
+                  {arrive}
                 </p>
                 <p>To</p>
               </City>

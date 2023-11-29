@@ -1,11 +1,11 @@
 import { atom } from "recoil";
 
-export const departureState = atom({
+export const departureState = atom<string>({
   key: "departureState",
-  default: "",
+  default: "출발",
 });
 
-export const arriveState = atom({
+export const arriveState = atom<string>({
   key: "arriveState",
-  default: "",
+  default: "도착",
 });
