@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { calInfo } from "../../pages/CalendarPage";
+import { calInfo } from "../../constants/constant";
 
 const CalContainer = ({ info }: { info: calInfo }) => {
   const LIST = new Array(42).fill(0);
@@ -23,12 +23,26 @@ const CalContainer = ({ info }: { info: calInfo }) => {
                   ? ""
                   : idx - start + 1}
               </Date>
-              {data.length >= 4 ? (
+              {data.length === 1 ? (
+                <Price $isColored="">{val !== 0 && `${val}만`}</Price>
+              ) : data.length >= 4 ? (
                 <Price
                   $isColored={
                     val <= data[1].price
                       ? "min"
                       : val >= data[data.length - 2].price
+                        ? "max"
+                        : ""
+                  }
+                >
+                  {val !== 0 && `${val}만`}
+                </Price>
+              ) : data.length !== 0 ? (
+                <Price
+                  $isColored={
+                    val === data[0].price
+                      ? "min"
+                      : val === data[data.length - 1].price
                         ? "max"
                         : ""
                   }

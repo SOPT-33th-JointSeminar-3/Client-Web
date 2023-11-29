@@ -42,7 +42,7 @@ const CALENDAR_INFO: calInfo[] = [
     start: 1,
     length: 31,
     holiday: [1],
-    data: [],
+    data: [{ date: 5, price: 5.8 }],
   },
   {
     year: 2024,
@@ -50,7 +50,11 @@ const CALENDAR_INFO: calInfo[] = [
     start: 4,
     length: 29,
     holiday: [9, 10],
-    data: [],
+    data: [
+      { date: 5, price: 5.8 },
+      { date: 7, price: 8 },
+      { date: 11, price: 7.7 },
+    ],
   },
   {
     year: 2024,
