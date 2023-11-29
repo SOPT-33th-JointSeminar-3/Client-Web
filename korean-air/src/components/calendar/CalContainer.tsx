@@ -1,7 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { calInfo } from "../../constants/constant";
+import { useState } from "react";
 
 const CalContainer = ({ info }: { info: calInfo }) => {
+  const [isClicked, setClicked] = useState<boolean[]>(
+    new Array(42).fill(false),
+  );
   const LIST = new Array(42).fill(0);
   const { year, month, start, length, holiday, data } = info;
 
@@ -18,10 +22,14 @@ const CalContainer = ({ info }: { info: calInfo }) => {
         <Grid>
           {LIST.map((val, idx) => (
             <Item key={idx}>
-              <Date $isHoliday={holiday.includes(idx - start + 1)}>
+              <Date
+                $isHoliday={holiday.includes(idx - start + 1)}
+                $isClicked={isClicked[idx]}
+              >
                 {idx - start < 0 || idx - start + 1 > length
                   ? ""
                   : idx - start + 1}
+                <SelectedDate $isClicked={isClicked[idx]} />
               </Date>
               {data.length === 1 ? (
                 <Price $isColored="">{val !== 0 && `${val}만`}</Price>
@@ -99,9 +107,27 @@ const Item = styled.li`
   align-items: center;
   gap: 0.3rem;
 `;
-const Date = styled.span<{ $isHoliday: boolean }>`
+const Date = styled.span<{ $isHoliday: boolean; $isClicked: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
   ${({ theme }) => theme.fonts.body_regular_16};
-  color: ${({ theme, $isHoliday }) => $isHoliday && theme.colors.red};
+  color: ${({ theme, $isHoliday, $isClicked }) =>
+    $isClicked ? theme.colors.white : $isHoliday && theme.colors.red};
+`;
+const SelectedDate = styled.div<{ $isClicked: boolean }>`
+  display: ${({ $isClicked }) => ($isClicked ? "block" : "none")};
+
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background-color: ${({ theme }) => theme.colors.navy};
+
+  z-index: -1;
 `;
 const Price = styled.span<{ $isColored: string }>`
   ${({ theme }) => theme.fonts.body_regular_12};
