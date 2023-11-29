@@ -28,6 +28,7 @@ const Wrapper = styled.footer`
   max-width: 43rem;
   height: 11.4rem;
 
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 -2rem 2rem 0 rgba(107, 117, 136, 0.1);
 `;
 const Range = styled.div`
