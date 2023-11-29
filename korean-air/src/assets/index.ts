@@ -25,6 +25,9 @@ import IcPaymentShare from "./icon/ic_payment__share.svg?react";
 import IcPaymentSave from "./icon/ic_payment_save.svg?react";
 import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
+import IcRadioFull from "./icon/ic_radio_full.svg?react";
+import IcRadioEmpty from "./icon/ic_radio_empty.svg?react";
+
 export {
   IcCalendar,
   IcHelp,
@@ -53,4 +56,6 @@ export {
   IcPaymentSave,
   IcPaymentShotarrow,
   LogoJinair,
+  IcRadioFull,
+  IcRadioEmpty,
 };
