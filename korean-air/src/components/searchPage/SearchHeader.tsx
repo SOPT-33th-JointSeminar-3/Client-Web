@@ -13,7 +13,9 @@ const SearchHeader = (props: State) => {
   return (
     <ShHeader>
       <p>{title}</p>
-      <IcCloseSmall onClick={handleCloseBtnClick} />
+      <IconBox onClick={handleCloseBtnClick}>
+        <IcCloseSmall />
+      </IconBox>
     </ShHeader>
   );
 };
@@ -28,4 +30,7 @@ const ShHeader = styled.header`
   & p {
     ${({ theme }) => theme.fonts.title_bold_20};
   }
+`;
+const IconBox = styled.div`
+  height: 4.4rem;
 `;
