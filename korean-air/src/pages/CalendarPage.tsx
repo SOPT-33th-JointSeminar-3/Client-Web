@@ -30,5 +30,5 @@ const CalWrapper = styled.section`
   flex-direction: column;
   gap: 3rem;
 
-  padding-bottom: 16rem;
+  padding-bottom: 13rem;
 `;
