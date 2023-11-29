@@ -2,7 +2,7 @@ import CalContainer from "../components/calendar/CalContainer";
 import CalFooter from "../components/calendar/CalFooter";
 import CalHeader from "../components/calendar/CalHeader";
 import styled from "styled-components";
-import { CAL } from "../constants/constant";
+import { CALENDAR_INFO } from "../constants/constant";
 
 export interface calInfo {
   year: number;
@@ -25,7 +25,7 @@ const CalendarPage = () => {
     <>
       <CalHeader />
       <CalWrapper>
-        {CAL.map((cal, idx) => {
+        {CALENDAR_INFO.map((cal, idx) => {
           return <CalContainer key={idx} info={cal} />;
         })}
       </CalWrapper>
