@@ -30,7 +30,9 @@ import Ellipse from "./icon/Ellipse.svg?react";
 import IcRightNameInfo from "./icon/ic_right_nameinfo.svg?react";
 import IcUpPayment from "./icon/ic_up_payment.svg?react";
 import ChevronDown from "./icon/chevron-down.svg?react";
-
+import IcCheckPayment from "./icon/ic_check_payment.svg?react";
+import PaymentCheck from "./icon/payment_checkbox.svg?react";
+import ArrowUp from "./icon/arrow-up.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -64,4 +66,7 @@ export {
   IcRightNameInfo,
   IcUpPayment,
   ChevronDown,
+  IcCheckPayment,
+  PaymentCheck,
+  ArrowUp,
 };
