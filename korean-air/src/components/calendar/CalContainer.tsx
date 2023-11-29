@@ -24,10 +24,19 @@ const CalContainer = ({
     setClicked(tempArr);
 
     // 2. selectedDate 업데이트
-    setSelectedDate([
-      `${year}년 ${month}월 ${idx - start + 1}일`,
-      ...selectedDate,
-    ]);
+    // 만약 둘다 값 지정 안되어있으면 -> [0] 입력
+    // 하나 입력되어있으면 -> [1] 입력
+    // 둘다 입력되어있으면 -> 초기화하고 다시
+    if (selectedDate[0] === "가는 날") {
+      setSelectedDate([`${year}년 ${month}월 ${idx - start + 1}일`, "오는 날"]);
+    } else if (selectedDate[1] === "오는 날") {
+      setSelectedDate([
+        selectedDate[0],
+        `${year}년 ${month}월 ${idx - start + 1}일`,
+      ]);
+    } else {
+      setSelectedDate([`${year}년 ${month}월 ${idx - start + 1}일`, "오는 날"]);
+    }
   }
 
   data.map((el) => (LIST[el.date + start - 1] = el.price));
