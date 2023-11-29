@@ -73,15 +73,15 @@ const CALENDAR_INFO: calInfo[] = [
     month: 5,
     start: 3,
     length: 31,
-    holiday: [6, 15],
+    holiday: [15],
     data: [],
   },
   {
     year: 2024,
     month: 6,
-    start: 1,
+    start: 6,
     length: 30,
-    holiday: [1],
+    holiday: [6],
     data: [],
   },
   {
@@ -89,7 +89,7 @@ const CALENDAR_INFO: calInfo[] = [
     month: 7,
     start: 1,
     length: 31,
-    holiday: [1],
+    holiday: [],
     data: [],
   },
   {
@@ -97,7 +97,7 @@ const CALENDAR_INFO: calInfo[] = [
     month: 8,
     start: 4,
     length: 31,
-    holiday: [1],
+    holiday: [15],
     data: [],
   },
   {
@@ -121,15 +121,7 @@ const CALENDAR_INFO: calInfo[] = [
     month: 11,
     start: 5,
     length: 30,
-    holiday: [1],
-    data: [],
-  },
-  {
-    year: 2024,
-    month: 12,
-    start: 1,
-    length: 31,
-    holiday: [1],
+    holiday: [],
     data: [],
   },
 ];
