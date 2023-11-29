@@ -56,6 +56,7 @@ const Card = styled.div`
   flex-direction: column;
   gap: 4.2rem;
   padding: 1.6rem;
+  margin-right: 1.6rem;
   border: none;
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.colors.navy};
