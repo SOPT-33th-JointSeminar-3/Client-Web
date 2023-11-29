@@ -1,22 +1,26 @@
 import styled from "styled-components";
-import { NOTICE_DATE, NOTICE_TITLE } from "../../constants/constant";
-import { useEffect } from "react";
+import { useState } from "react";
 import getHomePosts from "../../api/getHomePosts";
+
+interface PostItem {
+  id: number;
+  title: string;
+  date: string;
+}
 export const Notice = () => {
-  useEffect(() => {
-    const data = getHomePosts();
-    console.log(data);
-  }, []);
+  const [response, setResponse] = useState([]);
+  getHomePosts(setResponse);
+  console.log(response);
   return (
     <NoticeBox>
       <Header>
         <Title>알려드립니다</Title>
         <More>See More</More>
       </Header>
-      {NOTICE_TITLE.map((title, index) => (
-        <NoticeContent key={title}>
-          <NoticeTitle>{title}</NoticeTitle>
-          <NoticeDate>{NOTICE_DATE[index]}</NoticeDate>
+      {response.map((item: PostItem) => (
+        <NoticeContent key={item.id}>
+          <NoticeTitle>{item.title}</NoticeTitle>
+          <NoticeDate>{item.date}</NoticeDate>
         </NoticeContent>
       ))}
     </NoticeBox>
