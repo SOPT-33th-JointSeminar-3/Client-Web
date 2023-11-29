@@ -20,6 +20,7 @@ const CalendarPage = () => {
             <CalContainer
               key={idx}
               info={cal}
+              selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
             />
           );
