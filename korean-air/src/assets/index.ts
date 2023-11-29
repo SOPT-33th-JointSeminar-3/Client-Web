@@ -63,4 +63,5 @@ export {
   Ellipse,
   IcRightNameInfo,
   IcUpPayment,
+  ChevronDown,
 };
