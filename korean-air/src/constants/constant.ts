@@ -1,4 +1,14 @@
-import { calInfo } from "../pages/CalendarPage";
+export interface calInfo {
+  year: number;
+  month: number;
+  start: number;
+  length: number;
+  holiday: number[];
+  data: {
+    date: number;
+    price: number;
+  }[];
+}
 
 const NOTICE_TITLE = [
   "국내선 유류할증료 (2023년 12월)",
