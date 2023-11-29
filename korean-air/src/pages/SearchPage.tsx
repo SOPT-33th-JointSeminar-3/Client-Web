@@ -6,8 +6,6 @@ import History from "../components/searchPage/History";
 import Category from "../components/searchPage/Category";
 import { useState } from "react";
 import Result from "../components/searchPage/Result";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { arriveState, departureState } from "../recoil/atom";
 
 const SearchPage = () => {
   const { state } = useLocation();
