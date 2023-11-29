@@ -25,6 +25,11 @@ const CalContainer = ({ info }: { info: calInfo }) => {
               <Date
                 $isHoliday={holiday.includes(idx - start + 1)}
                 $isClicked={isClicked[idx]}
+                onClick={() => {
+                  const tempArr = [...isClicked];
+                  tempArr[idx] = !tempArr[idx];
+                  setClicked(tempArr);
+                }}
               >
                 {idx - start < 0 || idx - start + 1 > length
                   ? ""
@@ -113,6 +118,8 @@ const Date = styled.span<{ $isHoliday: boolean; $isClicked: boolean }>`
   align-items: center;
 
   position: relative;
+
+  cursor: pointer;
 
   ${({ theme }) => theme.fonts.body_regular_16};
   color: ${({ theme, $isHoliday, $isClicked }) =>
