@@ -1,49 +1,43 @@
 import styled from "styled-components";
+import { calInfo } from "../../pages/CalendarPage";
 
-const CalContainer = () => {
-  const START = 5; // 금요일부터 1일이 시작되는 달
-  const LENGTH = 31; // 총 31일인 달
-  const HOLIDAY = [25]; // 휴일(빨간날)인 날
+const CalContainer = ({ info }: { info: calInfo }) => {
   const LIST = new Array(42).fill(0);
+  const { year, month, start, length, holiday, data } = info;
 
-  const DATA = [
-    { date: 5, price: 5.8 },
-    { date: 7, price: 8 },
-    { date: 11, price: 7.7 },
-    { date: 15, price: 6.4 },
-    { date: 20, price: 6 },
-    { date: 21, price: 7.3 },
-    { date: 23, price: 10.2 },
-    { date: 29, price: 9 },
-  ];
-
-  DATA.map((data) => (LIST[data.date + START - 1] = data.price));
-  DATA.sort((a, b) => a.price - b.price);
-  const SECOND_MIN = DATA[1].price; // 최저가 두개 중 큰 값
-  const SECOND_MAX = DATA[DATA.length - 2].price; // 최고가 두개 중 작은 값
+  data.map((el) => (LIST[el.date + start - 1] = el.price));
+  data.sort((a, b) => a.price - b.price);
 
   return (
     <Wrapper>
       <Calendar>
         <Header>
-          <Year>2023</Year>
-          <Month>12월</Month>
+          <Year>{year}</Year>
+          <Month>{month}월</Month>
         </Header>
         <Grid>
           {LIST.map((val, idx) => (
             <Item key={idx}>
-              <Date $isHoliday={HOLIDAY.includes(idx - START + 1)}>
-                {idx - START < 0 || idx - START + 1 > LENGTH
+              <Date $isHoliday={holiday.includes(idx - start + 1)}>
+                {idx - start < 0 || idx - start + 1 > length
                   ? ""
-                  : idx - START + 1}
+                  : idx - start + 1}
               </Date>
-              <Price
-                $isColored={
-                  val <= SECOND_MIN ? "min" : val >= SECOND_MAX ? "max" : ""
-                }
-              >
-                {val !== 0 && `${val}만`}
-              </Price>
+              {data.length >= 4 ? (
+                <Price
+                  $isColored={
+                    val <= data[1].price
+                      ? "min"
+                      : val >= data[data.length - 2].price
+                        ? "max"
+                        : ""
+                  }
+                >
+                  {val !== 0 && `${val}만`}
+                </Price>
+              ) : (
+                <Price $isColored=""></Price>
+              )}
             </Item>
           ))}
         </Grid>
@@ -103,4 +97,5 @@ const Price = styled.span<{ $isColored: string }>`
       : $isColored === "max"
         ? theme.colors.red
         : theme.colors.grey_2};
+  height: 1.8rem;
 `;
