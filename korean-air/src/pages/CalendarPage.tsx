@@ -4,18 +4,6 @@ import CalHeader from "../components/calendar/CalHeader";
 import styled from "styled-components";
 import { CALENDAR_INFO } from "../constants/constant";
 
-export interface calInfo {
-  year: number;
-  month: number;
-  start: number;
-  length: number;
-  holiday: number[];
-  data: {
-    date: number;
-    price: number;
-  }[];
-}
-
 const CalendarPage = () => {
   // start : 금요일부터 1일이 시작되는 달
   // length : 총 31일인 달
