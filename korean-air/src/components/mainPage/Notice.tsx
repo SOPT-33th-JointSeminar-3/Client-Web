@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { NOTICE_DATE, NOTICE_TITLE } from "../../constants/constant";
+import { useEffect } from "react";
+import getHomePosts from "../../api/getHomePosts";
 export const Notice = () => {
+  useEffect(() => {
+    const data = getHomePosts();
+    console.log(data);
+  }, []);
   return (
     <NoticeBox>
       <Header>
