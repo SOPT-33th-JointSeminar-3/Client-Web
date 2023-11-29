@@ -12,7 +12,13 @@ const CalFooter = ({ selectedDate }: { selectedDate: string[] }) => {
           {selectedDate[1]}
         </Arrival>
       </Range>
-      <Button>선택</Button>
+      <Button
+        $isAllSelected={
+          selectedDate[0] !== "가는 날" && selectedDate[1] !== "오는 날"
+        }
+      >
+        선택
+      </Button>
     </Wrapper>
   );
 };
@@ -64,7 +70,7 @@ const Arrival = styled.span<{ $isSelected: boolean }>`
     $isSelected ? theme.colors.black : theme.colors.gray};
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ $isAllSelected: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +80,8 @@ const Button = styled.button`
 
   border: none;
   border-radius: 1rem;
-  background-color: ${({ theme }) => theme.colors.gray};
+  background-color: ${({ theme, $isAllSelected }) =>
+    $isAllSelected ? theme.colors.navy : theme.colors.gray};
 
   ${({ theme }) => theme.fonts.body_bold_14};
   color: ${({ theme }) => theme.colors.white};
