@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
+import {
+  IcCalendar,
+  IcClass,
+  IcPerson,
+  IcSwap,
+  IcHelp,
+  IcSwapBlue,
+} from "../../assets";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useRecoilValue } from "recoil";
@@ -43,7 +50,11 @@ export const Booking = () => {
                 <p>{departure}</p>
                 <p>From</p>
               </DepartureCity>
-              <IcSwap />
+              {departure === "출발" && arrive === "도착" ? (
+                <IcSwap />
+              ) : (
+                <IcSwapBlue />
+              )}
               <City>
                 <ArriveCity
                   onClick={handleClick}
@@ -145,7 +156,6 @@ const CityBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 5.4rem;
-  color: ${({ theme }) => theme.colors.grey_3};
 `;
 const City = styled.div`
   display: flex;
