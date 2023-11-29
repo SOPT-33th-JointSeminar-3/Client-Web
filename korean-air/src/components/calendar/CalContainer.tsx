@@ -11,16 +11,14 @@ const CalContainer = ({
   selectedDate: string[];
   setSelectedDate: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
-  const [isClicked, setClicked] = useState<boolean[]>(
-    new Array(42).fill(false),
-  );
+  const [isClicked, setClicked] = useState<number[]>([]);
   const LIST = new Array(42).fill(0);
   const { year, month, start, length, holiday, data } = info;
 
   function handleDate(idx: number) {
     // 1. isClicked 배열 업데이트
-    const tempArr = [...isClicked];
-    tempArr[idx] = !tempArr[idx];
+    const tempArr = isClicked.length === 2 ? [] : [...isClicked];
+    tempArr.push(idx);
     setClicked(tempArr);
 
     // 2. selectedDate 업데이트
@@ -54,13 +52,13 @@ const CalContainer = ({
             <Item key={idx}>
               <Date
                 $isHoliday={holiday.includes(idx - start + 1)}
-                $isClicked={isClicked[idx]}
+                $isClicked={isClicked.includes(idx)}
                 onClick={() => handleDate(idx)}
               >
                 {idx - start < 0 || idx - start + 1 > length
                   ? ""
                   : idx - start + 1}
-                <SelectedDate $isClicked={isClicked[idx]} />
+                <SelectedDate $isClicked={isClicked.includes(idx)} />
               </Date>
               {data.length === 1 ? (
                 <Price $isColored="">{val !== 0 && `${val}만`}</Price>
