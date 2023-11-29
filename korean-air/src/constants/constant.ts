@@ -1,3 +1,5 @@
+import { calInfo } from "../pages/CalendarPage";
+
 const NOTICE_TITLE = [
   "국내선 유류할증료 (2023년 12월)",
   "Rentalcars.com 제휴 서비스 일시 중단",
@@ -6,7 +8,7 @@ const NOTICE_TITLE = [
 ];
 const NOTICE_DATE = ["2023.11.02", "2023.11.01", "2023.11.01", "2023.10.31"];
 
-const CAL: calInfo[] = [
+const CALENDAR_INFO: calInfo[] = [
   {
     year: 2023,
     month: 12,
@@ -122,4 +124,4 @@ const CAL: calInfo[] = [
   },
 ];
 
-export { NOTICE_TITLE, NOTICE_DATE, CAL };
+export { NOTICE_TITLE, NOTICE_DATE, CALENDAR_INFO };
