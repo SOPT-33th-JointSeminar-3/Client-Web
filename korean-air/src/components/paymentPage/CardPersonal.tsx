@@ -274,6 +274,7 @@ const PhoneLayout = styled.div`
   align-items: center;
   width: 100%;
   height: 5.8rem;
+  margin-top: 1rem;
   padding: 2rem;
   flex-shrink: 0;
   border-radius: 1rem;
