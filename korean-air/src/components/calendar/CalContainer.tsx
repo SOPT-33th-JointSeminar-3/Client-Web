@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { calInfo } from "../../constants/constant";
 import { useState } from "react";
 
@@ -59,6 +59,18 @@ const CalContainer = ({
                   ? ""
                   : idx - start + 1}
                 <SelectedDate $isClicked={isClicked.includes(idx)} />
+                {isClicked.length === 2 && (
+                  <SelectedRange
+                    $isSelected={
+                      idx === isClicked[0]
+                        ? "dep"
+                        : idx === isClicked[1]
+                          ? "arv"
+                          : ""
+                    }
+                    $isIncluded={idx > isClicked[0] && idx < isClicked[1]}
+                  />
+                )}
               </Date>
               {data.length === 1 ? (
                 <Price $isColored="">{val !== 0 && `${val}만`}</Price>
@@ -162,6 +174,28 @@ const SelectedDate = styled.div<{ $isClicked: boolean }>`
   background-color: ${({ theme }) => theme.colors.navy};
 
   z-index: -1;
+`;
+const SelectedRange = styled.div<{ $isIncluded: boolean; $isSelected: string }>`
+  position: absolute;
+
+  width: ${({ $isSelected }) => ($isSelected ? "2.5rem" : "5rem")};
+  height: 3rem;
+  margin-bottom: 0.2rem;
+  ${({ $isSelected }) =>
+    $isSelected === "dep"
+      ? css`
+          margin-left: 2.5rem;
+        `
+      : $isSelected === "arv"
+        ? css`
+            margin-right: 2.5rem;
+          `
+        : ``};
+
+  background-color: ${({ theme, $isIncluded, $isSelected }) =>
+    $isSelected || $isIncluded ? theme.colors.blue_2 : theme.colors.white};
+
+  z-index: -2;
 `;
 const Price = styled.span<{ $isColored: string }>`
   ${({ theme }) => theme.fonts.body_regular_12};
