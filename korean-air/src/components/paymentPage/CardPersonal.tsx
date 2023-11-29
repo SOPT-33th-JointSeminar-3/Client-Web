@@ -139,7 +139,6 @@ const Layout = styled.section`
 
 const InsideLayout = styled.div`
   width: 100%;
-  /* height: 120.4rem; */
   background-color: ${theme.colors.white};
   border-radius: 1rem;
 
@@ -201,7 +200,6 @@ const GenderInsideLayoutBlue = styled.div`
 const GrayTitle = styled.p`
   color: ${theme.colors.grey_3};
   ${theme.fonts.body_medium_12};
-  /* margin-bottom: 4rem; */
 `;
 
 const CommonLayout = styled.div`
@@ -277,7 +275,6 @@ const PhoneLayout = styled.div`
   width: 100%;
   height: 5.8rem;
   padding: 2rem;
-  /* margin-top: 3rem; */
   flex-shrink: 0;
   border-radius: 1rem;
   border: 0.1rem solid ${theme.colors.grey_4};

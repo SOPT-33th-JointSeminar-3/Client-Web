@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import { Ellipse, IcRightNameInfo } from "../../assets";
-import CardPersonal from "./CardPersonal";
 
 const UserInfo = () => {
   return (
@@ -25,9 +24,6 @@ const UserInfo = () => {
         <Description>성명 입력 안내</Description>
         <IcRightNameInfo />
       </NameInput>
-      {/* <CustomerLayout>
-          <BgBlue></BgBlue>
-        </CustomerLayout> */}
     </Wrapper>
   );
 };
@@ -85,16 +81,4 @@ const NameInput = styled.div`
   gap: 0.5rem;
   border-radius: 0.6rem;
   border: 0.1rem solid var(--grey_2, #6b7588);
-`;
-
-const CustomerLayout = styled.section`
-  height: 120.4rem;
-  border-radius: 10px;
-  border: 0.1rem solid ${theme.colors.grey_4};
-`;
-
-const BgBlue = styled.div`
-  width: 100%;
-  height: 5.8rem;
-  background-color: ${theme.colors.navy};
 `;

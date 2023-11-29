@@ -47,7 +47,6 @@ const PaymentDetail = styled.p`
 
 const FinalPayBtn = styled.button`
   display: flex;
-  /* width: 343px; */
   padding: 1.4rem 13.9rem;
   justify-content: center;
   align-items: center;

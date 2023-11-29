@@ -80,9 +80,3 @@ const BackgroundPayment = styled.div`
   width: 100%;
   height: 6.2rem;
 `;
-
-const IcDownIcon = styled.div`
-  background: url(${IcDownPayment});
-  width: 2.4rem;
-  height: 2.4rem;
-`;

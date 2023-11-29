@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import { IcPaymentShotarrow, IcRightPayment, LogoJinair } from "../../assets";
-import { PASSENGER_INFO } from "../../constants/constant";
 
 const Journey = () => {
   return (
