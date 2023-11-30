@@ -5,6 +5,18 @@ import styled from "styled-components";
 import { CALENDAR_INFO } from "../constants/constant";
 import { useState } from "react";
 
+export interface calInfo {
+  year: number;
+  month: number;
+  start: number;
+  length: number;
+  holiday: number[];
+  data: {
+    date: number;
+    price: number;
+  }[];
+}
+
 const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState<string[]>([
     "가는 날",
