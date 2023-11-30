@@ -16,9 +16,11 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                국적
-                <Ellipse />
-                <CommonBlack>대한민국</CommonBlack>
+                <div>
+                  <p>국적</p>
+                  <Ellipse />
+                </div>
+                <input />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -26,9 +28,11 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                승객 성
-                <Ellipse />
-                <CommonBlack>정</CommonBlack>
+                <div>
+                  <p>승객 성</p>
+                  <Ellipse />
+                </div>
+                <input />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -36,9 +40,11 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                승객 이름
-                <Ellipse />
-                <CommonBlack>가윤</CommonBlack>
+                <div>
+                  <p>승객 이름</p>
+                  <Ellipse />
+                </div>
+                <input />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -57,9 +63,11 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                생년월일(YYYY.MM.DD)
-                <Ellipse />
-                <CommonBlack>2002.09.14.</CommonBlack>
+                <div>
+                  <p>생년월일(YYYY.MM.DD)</p>
+                  <Ellipse />
+                </div>
+                <input />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -67,8 +75,10 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                적립 항공사
-                <Ellipse />
+                <div>
+                  <p>적립 항공사</p>
+                  <Ellipse />
+                </div>
                 <CommonBlack>대한한공</CommonBlack>
               </GrayTitle>
               <ChevronDown />
@@ -77,8 +87,10 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                가는 여정의 개인 할인
-                <Ellipse />
+                <div>
+                  <p>가는 여정의 개인 할인</p>
+                  <Ellipse />
+                </div>
                 <CommonBlack>선택</CommonBlack>
               </GrayTitle>
               <ChevronDown />
@@ -87,8 +99,10 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                오는 여정의 개인 할인
-                <Ellipse />
+                <div>
+                  <p>오는 여정의 개인 할인</p>
+                  <Ellipse />
+                </div>
                 <CommonBlack>선택</CommonBlack>
               </GrayTitle>
               <ChevronDown />
@@ -187,8 +201,22 @@ const GenderInsideLayoutBlue = styled.div`
 `;
 
 const GrayTitle = styled.p`
+  display: flex;
+  flex-direction: column;
   color: ${theme.colors.grey_3};
   ${theme.fonts.body_medium_12};
+  margin-bottom: 2rem;
+  & input {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    ${theme.fonts.body_extrabold_16};
+  }
+  & div {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
 `;
 
 const CommonLayout = styled.div`
