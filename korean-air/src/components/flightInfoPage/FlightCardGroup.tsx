@@ -1,61 +1,72 @@
 import { useState } from "react";
 import FlightCard from "./FlightCard";
-import LowestContainer from "./LowestContainer";
-import { FlightBtnFilter } from "../../assets";
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { FlightInfoItem } from "../../types/types";
 
-const FlightCardGroup = () => {
-  const [click, setClick] = useState<boolean>(false);
+interface CardGroupProps {
+  data: FlightInfoItem[];
+}
 
-  function handleBtnClick() {
-    console.log("클릭!!");
-    setClick(!click);
-    console.log(!click);
-  }
+// TODO 왜 여기서
+// interface CardGroupProps {
+//   data: FlightInfoData;
+// }
+// 이렇게 하면 배열이 아니라고 오류가 뜨지? 두 가지 다 배열 아닌가?
+// 챌린징 요소에 적어 놓음.
 
+const FlightCardGroup: React.FC<CardGroupProps> = ({ data }) => {
   return (
     <>
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <LowestContainer
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <LowestContainer
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FilterIcon>
-        <FlightBtnFilter />
-      </FilterIcon>
-      ;
+      {data.map((flightData, idx) => {
+        if (idx === 0) {
+          return;
+        } else {
+          return <FlightCard key={flightData.id} flightData={flightData} />;
+        }
+      })}
     </>
+    // <>
+    //   <FlightCard
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <FlightCard
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <FlightCard
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <LowestContainer
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <FlightCard
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <LowestContainer
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <FlightCard
+    //     click={click}
+    //     setClick={setClick}
+    //     handleBtnClick={handleBtnClick}
+    //   />
+    //   <FilterIcon>
+    //     <FlightBtnFilter />
+    //   </FilterIcon>
+    //   ;
+    // </>
   );
 };
 
