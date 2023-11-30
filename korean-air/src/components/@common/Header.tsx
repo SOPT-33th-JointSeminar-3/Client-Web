@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { IcMenuHeader, IcSearchHeader } from "../../assets";
-
+import headerImage from "../../assets/image/img_logo.png";
 const Header = () => {
   return (
     <Wrapper>
-      <img src="/src/assets/image/img_logo.png" alt="대한항공 로고" />
+      <img src={headerImage} alt="대한항공 로고" />
       <div>
         <IcSearchHeader />
         <IcMenuHeader />
