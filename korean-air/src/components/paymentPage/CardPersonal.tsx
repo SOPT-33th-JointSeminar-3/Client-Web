@@ -7,8 +7,14 @@ import {
   IcCheckPayment,
   PaymentCheck,
 } from "../../assets";
+import { useState } from "react";
 
 const CardPersonal = () => {
+  const [gender, setGender] = useState("");
+  const handleGenderChange = (selectedGender: string) => {
+    setGender(selectedGender);
+    console.log(gender);
+  };
   return (
     <Layout>
       <InsideLayout>
@@ -51,11 +57,34 @@ const CardPersonal = () => {
           </GrayDiv>
           <CommonLayout>
             <GenderDiv>
-              <GenderInsideLayout>남자</GenderInsideLayout>
-              <GenderInsideLayout>
+              <GenderInsideLayout
+                type="radio"
+                id="m"
+                name="gender"
+                checked={gender === "남자"}
+                onChange={() => handleGenderChange("남자")}
+              />
+              <GenderLabel
+                htmlFor="m"
+                onClick={() => handleGenderChange("남자")}
+              >
+                남자
+                {gender === "남자" && <IcCheckPayment />}
+              </GenderLabel>
+              <GenderInsideLayout
+                type="radio"
+                id="w"
+                name="gender"
+                checked={gender === "여자"}
+                onChange={() => handleGenderChange("여자")}
+              />
+              <GenderLabel
+                htmlFor="w"
+                onClick={() => handleGenderChange("여자")}
+              >
                 여자
-                <IcCheckPayment />
-              </GenderInsideLayout>
+                {gender === "여자" && <IcCheckPayment />}
+              </GenderLabel>
             </GenderDiv>
           </CommonLayout>
           <GrayDiv>
@@ -178,14 +207,23 @@ const GrayDiv = styled.div`
   }
 `;
 
-const GenderInsideLayout = styled.div`
+const GenderInsideLayout = styled.input`
+  display: none;
+`;
+const GenderLabel = styled.label`
   display: flex;
   justify-content: space-between;
   padding: 2rem;
   align-items: center;
-  width: 45%;
+  width: 14.6rem;
   height: 100%;
   border: 0.1rem solid ${theme.colors.grey_2};
+  cursor: pointer;
+
+  &:hover {
+    border: 0.1rem solid ${theme.colors.blue};
+    color: ${({ theme }) => theme.colors.blue};
+  }
 `;
 
 const GrayTitle = styled.div`
@@ -210,6 +248,7 @@ const GrayTitle = styled.div`
 const CommonLayout = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 7.5rem;
   flex-shrink: 0;
   margin: 1rem;
@@ -220,6 +259,8 @@ const GenderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin: 2rem;
+  gap: 1rem;
   height: 4.4rem;
 `;
 
