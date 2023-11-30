@@ -46,6 +46,7 @@ const LeftBtn = styled(PagingBtn)`
   z-index: 1;
   display: flex;
   justify-content: flex-start;
+  cursor: pointer;
 `;
 
 const RightBtn = styled(PagingBtn)`
@@ -53,4 +54,5 @@ const RightBtn = styled(PagingBtn)`
   z-index: 1;
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 `;

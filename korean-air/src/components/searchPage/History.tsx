@@ -46,6 +46,7 @@ const HistoryCard = styled.div`
   padding: 0.3rem 0 0.3rem 1.2rem;
   border-radius: 1rem;
   border: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
+  cursor: pointer;
 `;
 const Text = styled.div`
   display: flex;

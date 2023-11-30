@@ -175,6 +175,9 @@ const CityBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 5.4rem;
+  & svg {
+    cursor: pointer;
+  }
 `;
 const City = styled.div`
   display: flex;
@@ -222,6 +225,7 @@ const Select = styled.div`
   &:nth-child(1) {
     border-top: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
   }
+  cursor: pointer;
 `;
 const Button = styled.button`
   padding: 1.2rem;
@@ -233,6 +237,7 @@ const SearchBtn = styled(Button)`
   margin: 2rem 1.2rem;
   background-color: ${({ theme }) => theme.colors.navy};
   color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
 `;
 const BtnBox = styled.section`
   display: flex;
@@ -248,9 +253,11 @@ const DepartureCity = styled(City)<Text>`
   color: ${({ $departure, theme }) =>
     $departure === "출발" ? theme.colors.grey_3 : theme.colors.navy};
   margin-bottom: 0;
+  cursor: pointer;
 `;
 const ArriveCity = styled(City)<Text>`
   color: ${({ $arrive, theme }) =>
     $arrive === "도착" ? theme.colors.grey_3 : theme.colors.navy};
   margin-bottom: 0;
+  cursor: pointer;
 `;
