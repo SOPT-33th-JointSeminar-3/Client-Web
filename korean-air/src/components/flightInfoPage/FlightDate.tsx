@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { IcLeftFlight, IcRightFlight } from "../../assets";
 import theme from "../../styles/theme";

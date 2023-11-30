@@ -122,4 +122,4 @@ const CALENDAR_INFO: calInfo[] = [
   },
 ];
 
-export { NOTICE_TITLE, NOTICE_DATE, CALENDAR_INFO };
+export { CALENDAR_INFO };

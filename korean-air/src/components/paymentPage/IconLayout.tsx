@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import FlightLayout from "../@common/FlightLayout";
 import { IcPaymentSave, IcPaymentShare } from "../../assets";
 import theme from "../../styles/theme";
 

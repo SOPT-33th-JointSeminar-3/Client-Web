@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-export const getFlightInfo = async (startNation: string, endNation: string) => {
+export const getFlightInfo = async () => {
   try {
     const response = await axiosInstance.get(
       `api/flights?startNation=서울&endNation=제주`,

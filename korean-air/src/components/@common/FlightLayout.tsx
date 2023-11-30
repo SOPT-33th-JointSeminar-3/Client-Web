@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import backgroundImage from "../../assets/image/background_payment.png";

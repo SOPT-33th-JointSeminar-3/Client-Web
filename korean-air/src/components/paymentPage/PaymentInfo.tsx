@@ -1,4 +1,3 @@
-import React from "react";
 import FlightLayout from "../@common/FlightLayout";
 import IconLayout from "./IconLayout";
 

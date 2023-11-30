@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import {
@@ -16,11 +16,7 @@ export interface FlightCardProp {
   handleBtnClick: () => void;
 }
 
-const FlightCard: React.FC<FlightCardProp> = ({
-  click,
-  setClick,
-  handleBtnClick,
-}) => {
+const FlightCard: React.FC<FlightCardProp> = ({ click, handleBtnClick }) => {
   return (
     <>
       <Wrapper>
@@ -171,12 +167,6 @@ const Time = styled.p`
 const JinairInfo = styled.p`
   color: ${theme.colors.grey_2};
   ${theme.fonts.body_medium_12};
-`;
-
-const JinairLayout = styled.section`
-  width: 100%;
-  height: 2.5rem;
-  background-color: green;
 `;
 
 const BtnLayout = styled.section`

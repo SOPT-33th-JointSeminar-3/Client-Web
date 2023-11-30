@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import {
@@ -11,11 +11,7 @@ import {
 } from "../../assets";
 import { FlightCardProp } from "./FlightCard";
 
-const LowestContainer: React.FC<FlightCardProp> = ({
-  click,
-  setClick,
-  handleBtnClick,
-}) => {
+const LowestContainer: React.FC<FlightCardProp> = ({ handleBtnClick }) => {
   return (
     <>
       <Wrapper>
@@ -181,12 +177,6 @@ const JinairInfo = styled.p`
   color: ${theme.colors.grey_2};
   ${theme.fonts.body_medium_12};
 `;
-
-const JinairLayout = styled.section`
-  width: 100%;
-  height: 2.5rem;
-`;
-
 const BtnLayout = styled.section`
   display: flex;
   width: 8.3rem;

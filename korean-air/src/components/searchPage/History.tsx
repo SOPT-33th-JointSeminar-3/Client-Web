@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { IcCloseSmallRecent } from "../../assets";
 import { useSetRecoilState } from "recoil";
 import { arriveState, departureState } from "../../recoil/atom";
-import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const History = () => {
@@ -10,19 +9,16 @@ const History = () => {
   const setArrive = useSetRecoilState<string>(arriveState);
   const setDeparture = useSetRecoilState<string>(departureState);
 
-  const departure = useRef<HTMLParagraphElement>(null);
-  const arrive = useRef<HTMLParagraphElement>(null);
   const handleClick = () => {
-    if (!arrive.current) return;
-    setArrive(arrive.current.textContent);
-    setDeparture(departure.current?.textContent);
+    setArrive("ICN");
+    setDeparture("CJU");
     navigate("/");
   };
   return (
     <HistoryCard onClick={handleClick}>
       <Text>
-        <p ref={departure}>ICN</p>
-        서울/인천 - <p ref={arrive}>CJU</p>
+        <p>ICN</p>
+        서울/인천 - <p>CJU</p>
         제주
       </Text>
       <IcCloseSmallRecent />

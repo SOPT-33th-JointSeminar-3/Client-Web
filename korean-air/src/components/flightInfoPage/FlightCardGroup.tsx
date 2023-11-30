@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FlightCard from "./FlightCard";
 import LowestContainer from "./LowestContainer";
 import { FlightBtnFilter } from "../../assets";

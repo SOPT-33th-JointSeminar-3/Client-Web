@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PromotionCard } from "./PromotionCard";
 import { IcPagingLeft, IcPagingRight } from "../../assets";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const Promotion = () => {
   const [scrollLeft, setScrollLeft] = useState(true);
