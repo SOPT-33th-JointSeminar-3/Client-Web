@@ -38,11 +38,9 @@ export const Booking = ({ state }: { state: string[] }) => {
 
   const handleSelectPerson = () => {
     setPerson(true);
-    console.log(person);
   };
   const handleSelectGrade = () => {
     setGrade(true);
-    console.log(grade);
   };
   return (
     <BookingBox>
