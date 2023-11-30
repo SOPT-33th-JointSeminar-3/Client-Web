@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CalFooter = ({ selectedDate }: { selectedDate: string[] }) => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <Range>
@@ -16,6 +19,11 @@ const CalFooter = ({ selectedDate }: { selectedDate: string[] }) => {
         $isAllSelected={
           selectedDate[0] !== "가는 날" && selectedDate[1] !== "오는 날"
         }
+        onClick={() => {
+          navigate("/", {
+            state: selectedDate,
+          });
+        }}
       >
         선택
       </Button>
