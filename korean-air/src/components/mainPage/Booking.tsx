@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
+import { useNavigate } from "react-router-dom";
 export const Booking = () => {
+  const navigate = useNavigate();
   return (
     <BookingBox>
       <CardBox>
@@ -31,7 +33,11 @@ export const Booking = () => {
             </CityBox>
           </SelectCityBox>
           <SelectBox>
-            <Select>
+            <Select
+              onClick={() => {
+                navigate("/calendar");
+              }}
+            >
               <IcCalendar />
               날짜를 선택하세요.
             </Select>
