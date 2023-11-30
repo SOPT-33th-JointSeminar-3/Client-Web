@@ -94,7 +94,9 @@ export const Booking = ({ state }: { state: string[] }) => {
             </Select>
           </SelectBox>
         </CardBody>
-        <SearchBtn type="button"> 항공편 검색</SearchBtn>
+        <SearchBtn type="button" onClick={() => navigate("/flight")}>
+          항공편 검색
+        </SearchBtn>
       </CardBox>
       <BtnBox>
         <FlightBtn type="button">예약 조회 및 체크인</FlightBtn>
