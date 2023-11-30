@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   IcCalendar,
   IcClass,
@@ -15,11 +15,13 @@ import {
   fromState,
   toState,
 } from "../../recoil/atom";
+import { useState } from "react";
 
 interface Text {
   $departure: string;
   $arrive: string;
 }
+
 export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
   const departure = useRecoilValue<string>(departureState);
@@ -28,8 +30,19 @@ export const Booking = ({ state }: { state: string[] }) => {
   const from = useRecoilValue<string>(fromState);
   const to = useRecoilValue<string>(toState);
 
+  const [person, setPerson] = useState(false);
+  const [grade, setGrade] = useState(false);
   const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigate("/search", { state: e.currentTarget.id });
+  };
+
+  const handleSelectPerson = () => {
+    setPerson(true);
+    console.log(person);
+  };
+  const handleSelectGrade = () => {
+    setGrade(true);
+    console.log(grade);
   };
   return (
     <BookingBox>
@@ -92,13 +105,17 @@ export const Booking = ({ state }: { state: string[] }) => {
                     .replace(/년|월/g, ".")
                     .replace(/일/g, "")}`}
             </SelectRange>
-            <Select>
+            <Select onClick={handleSelectPerson}>
               <IcPerson />
-              탑승 인원을 선택하세요.
+              <SelectPerson $person={person}>
+                {person ? "성인 1명" : "탑승 인원을 선택하세요"}
+              </SelectPerson>
             </Select>
-            <Select>
+            <Select onClick={handleSelectGrade}>
               <IcClass />
-              좌석 등급을 선택하세요.
+              <SelectGrade $grade={grade}>
+                {grade ? "일반석" : "좌석 등급을 선택하세요"}
+              </SelectGrade>
             </Select>
           </SelectBox>
         </CardBody>
@@ -260,4 +277,28 @@ const ArriveCity = styled(City)<Text>`
     $arrive === "도착" ? theme.colors.grey_3 : theme.colors.navy};
   margin-bottom: 0;
   cursor: pointer;
+`;
+const SelectPerson = styled.p<{ $person: boolean }>`
+  ${({ $person }) =>
+    $person
+      ? css`
+          color: ${({ theme }) => theme.colors.navy};
+          ${({ theme }) => theme.fonts.body_bold_16}
+        `
+      : css`
+          color: ${({ theme }) => theme.colors.grey_3};
+          ${({ theme }) => theme.fonts.body_regular_16}
+        `};
+`;
+const SelectGrade = styled.p<{ $grade: boolean }>`
+  ${({ $grade }) =>
+    $grade
+      ? css`
+          color: ${({ theme }) => theme.colors.navy};
+          ${({ theme }) => theme.fonts.body_bold_16}
+        `
+      : css`
+          color: ${({ theme }) => theme.colors.grey_3};
+          ${({ theme }) => theme.fonts.body_regular_16}
+        `};
 `;
