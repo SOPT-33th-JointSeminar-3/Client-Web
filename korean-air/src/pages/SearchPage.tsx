@@ -9,7 +9,7 @@ import Result from "../components/searchPage/Result";
 
 const SearchPage = () => {
   const { state } = useLocation();
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState<string>("");
 
   return (
     <SearchBox>
@@ -17,7 +17,9 @@ const SearchPage = () => {
       <SearchBar setSearchInput={setSearchInput} searchInput={searchInput} />
       <SearchBody>
         {/*임의로 검색창에 입력값이 있으면 결과창 뜨게 함 */}
-        {searchInput !== "" && <Result />}
+        {searchInput !== "" && (
+          <Result searchInput={searchInput} setSearchInput={setSearchInput} />
+        )}
         <History />
         <Category />
       </SearchBody>

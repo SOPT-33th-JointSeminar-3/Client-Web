@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IcCloseVerySmall, IcSearchSearcharea } from "../../assets";
 import React from "react";
-interface SearchBarProps {
+export interface SearchBarProps {
   searchInput: string;
   setSearchInput: React.Dispatch<React.SetStateAction<string>>;
 }

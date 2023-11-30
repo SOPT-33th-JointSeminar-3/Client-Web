@@ -1,23 +1,36 @@
 import styled from "styled-components";
 import { IcPin } from "../../assets";
+import { SearchBarProps } from "./SearchBar";
+import getSearchAirport from "../../api/getSearchAirport";
+import { useState } from "react";
 
-const Result = () => {
+export interface SearchItem {
+  id: number;
+  nationName: string;
+  itatCode: string;
+  city: string;
+}
+
+const Result: React.FC<SearchBarProps> = (props) => {
+  const [searchResponse, setSearchResponse] = useState<SearchItem[]>([]);
+  getSearchAirport(props.searchInput, setSearchResponse);
+  console.log(searchResponse);
+  const handleClick = () => {
+    props.setSearchInput("");
+  };
   return (
     <ResultBox>
-      <ResultContent>
-        <Airport>
-          <IcPin />
-          <p>ICN</p>
-        </Airport>
-        <Text>서울/인천, 대한민국</Text>
-      </ResultContent>
-      <ResultContent>
-        <Airport>
-          <IcPin />
-          <p>ICN</p>
-        </Airport>
-        <Text>서울/인천, 대한민국</Text>
-      </ResultContent>
+      {searchResponse.map((item: SearchItem) => (
+        <ResultContent key={item.nationName} onClick={handleClick}>
+          <Airport>
+            <IcPin />
+            <p>{item.itatCode}</p>
+          </Airport>
+          <Text>
+            <p>{item.city}</p>,<p>{item.nationName}</p>
+          </Text>
+        </ResultContent>
+      ))}
     </ResultBox>
   );
 };
@@ -54,5 +67,9 @@ const Airport = styled.div`
   }
 `;
 const Text = styled.span`
+  display: flex;
+  & p:last-child {
+    margin-left: 0.5rem;
+  }
   ${({ theme }) => theme.fonts.body_regular_14}
 `;
