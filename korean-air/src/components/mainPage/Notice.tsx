@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { useState } from "react";
 import getHomePosts from "../../api/getHomePosts";
 
-interface PostItem {
+export interface PostItem {
   id: number;
   title: string;
   date: string;
 }
 export const Notice = () => {
-  const [response, setResponse] = useState([]);
+  const [response, setResponse] = useState<PostItem[]>([]);
   getHomePosts(setResponse);
   console.log(response);
   return (
