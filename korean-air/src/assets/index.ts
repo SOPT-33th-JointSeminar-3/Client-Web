@@ -30,6 +30,7 @@ import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
 import IcDownSearch from "./icon/ic_down_search.svg?react";
 import IcPin from "./icon/ic_pin.svg?react";
 import IcCloseVerySmall from "./icon/ic_close_verysmall.svg?react";
+import IcSwapBlue from "./icon/ic_swap_blue.svg?react";
 import IcRightFlight from "./icon/ic_right_flight.svg?react";
 import IcLeftFlight from "./icon/ic_left_flight.svg?react";
 import IcConditionArrow from "./icon/ic_conditionarrow.svg?react";
@@ -71,6 +72,7 @@ export {
   IcDownSearch,
   IcPin,
   IcCloseVerySmall,
+  IcSwapBlue,
   IcRightFlight,
   IcLeftFlight,
   IcConditionArrow,
