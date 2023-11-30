@@ -1,4 +1,8 @@
-## ✈️ 대한항공
+
+<h2 align-items="center"> ✈️ 대한항공 REDESIGN ver. </h2>
+
+![thumbnail](https://github.com/SOPT-33th-JointSeminar-3/Client-Web/assets/81505421/d5755850-ac09-4ed4-85d8-5a07e43e65ae)
+
 
 <br/>
 
@@ -58,6 +62,8 @@
 | 🐼 **장정안** | FlightPage   | Flight 항공편 검색 `GET`   |
 |               | PaymentPage  | Payment 예약하기 `POST`    |
 
+<br />
+
 #### ▶️ Setting
 
 |               | Category | Role              |
@@ -81,13 +87,13 @@
 ## 🎋 브랜치 전략
 
 - **Issue** 먼저 생성하고 **해당 이슈 번호** 브랜치 생성
-- 브랜치명
-  - **main**: 최종 Merge를 하는 곳 (배포 브랜치)
-  - **develop** : 개발할때 Merge하는 곳
-  - **feature**: 기능을 개발하면서 각자 페이지별로 사용할 브랜치
-  - **test**: 개인 연습 브랜치
-- 브랜치 전략
-
+▶️ **브랜치명**
+  - `main`: 최종 Merge를 하는 곳 (배포 브랜치)
+  - `develop` : 개발할때 Merge하는 곳
+  - `feature` : 기능을 개발하면서 각자 페이지별로 사용할 브랜치
+  - `test` : 개인 연습 브랜치
+ 
+▶️ **브랜치 전략**
   - `feature/페이지명`
     - feature/SelectPage _(파스칼)_
   - `페이지명/#이슈번호-기능설명`
@@ -101,6 +107,8 @@
 
 - 🚨 반드시 **직속 상위 브랜치**로 머지
 - ↩️ PR은 1명 이상이 확인하면 merge (모두가 코드리뷰할 필요 없으나 반드시 한명은 확인해야 함)
+
+<br />
 
 ### 📚 커밋 컨밴션
 
@@ -124,26 +132,31 @@
 ├── 📁 node_modules
 ├── 📁 public
 └── 📁 src
-	├── 📁 @components
-	├── 📁 @pages
-	├── 📁 api
-  ├── 📁 constants
-  ├── 📁 hooks
-	└──  📁 assets
-		├── 📁 icon
-		└── 📁 image
-	└── 📁 style
-		├── globalStyle.js
-		└──  theme.js
-	├── App.jsx
-	├── main.jsx
-	└──  Router.jsx
+    ├── 📁 api
+    └── 📁 assets
+         ├── 📁 fonts
+         ├── 📁 icon
+         ├── 📁 image
+         ├── custom.d.ts
+         └── index.ts
+    ├── 📁 components
+    ├── 📁 constants
+    ├── 📁 hooks
+    ├── 📁 pages
+    ├── 📁 api
+    └── 📁 recoil
+        └── atom.ts
+    └── 📁 style
+        ├── GlobalStyle.ts
+        └── theme.ts
+    ├── App.tsx
+    ├── main.tsx
+    └── Router.tsx
 ├── .eslintrc.cjs
 ├── .gitignore
 ├── index.html
 ├── package.json
-├── README.md
-├── vite.config.js
+├── vite.config.ts
 └── yarn.lock
 
 ```
@@ -174,21 +187,16 @@
   > 각 페이지별 폴더 생성 후, 내부에 연관 컴포넌트 파일 생성하기
 
 📁 **src > pages**
-
 > 페이지의 최상단 컴포넌트. 각 컴포넌트를 하나의 페이지에서 호출하는 곳
 
 📁 **src > api**
-
 > 서버 합동 세미나에서 사용
->
 > api 함수 모아놓는곳
 
 📁 **src > hooks**
-
 > custom hooks 정의하는 경우 이곳에서 정의 후 사용
 
 📁 **src > constants**
-
 > 상수 데이터 파일 분리하여 사용하는 경우 이곳에서 정의 후 사용
 
 <br/>
