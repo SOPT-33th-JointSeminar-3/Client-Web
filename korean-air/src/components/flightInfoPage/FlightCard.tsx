@@ -9,29 +9,30 @@ import {
   IcShortInfoFlight,
   LogoJinair,
 } from "../../assets";
+import { FlightInfoItem } from "../../types/types";
 
 export interface FlightCardProp {
-  click: boolean;
-  setClick: React.Dispatch<React.SetStateAction<boolean>>;
-  handleBtnClick: () => void;
+  flightData: FlightInfoItem;
 }
 
-const FlightCard: React.FC<FlightCardProp> = ({ click, handleBtnClick }) => {
+const FlightCard: React.FC<FlightCardProp> = ({ flightData }) => {
+  const flightTime = flightData.durationTime.replace(":", "시간 "); //공백 일부러 준거임
+
   return (
     <>
       <Wrapper>
         <article>
           <div>
             <TimeLayout>
-              <FlightTime>06:05</FlightTime>
+              <FlightTime>{flightData.startTime}</FlightTime>
               <Area>SEL</Area>
             </TimeLayout>
             <ExpectedTimeLayout>
-              <Time>1시간 10분</Time>
+              <Time>{flightTime}분</Time>
               <IcConditionArrow />
             </ExpectedTimeLayout>
             <TimeLayout>
-              <FlightTime>07:15</FlightTime>
+              <FlightTime>{flightData.endTime}</FlightTime>
               <Area>CJU</Area>
             </TimeLayout>
             <ChevronRight />
@@ -42,42 +43,19 @@ const FlightCard: React.FC<FlightCardProp> = ({ click, handleBtnClick }) => {
             </JinairInfo>
           </section>
           <div>
-            <BtnGroup>
-              <BtnLayout
-                className={`${click ? "click" : ""}`}
-                onClick={handleBtnClick}
-              >
-                <CommonTitle className={`${click ? "click" : ""}`}>
-                  특가운임
-                </CommonTitle>
-                <CommonPrice className={`${click ? "click" : ""}`}>
-                  48,300원
-                </CommonPrice>
-                <CommonSeat className={`${click ? "click" : ""}`}>
-                  7석
-                </CommonSeat>
-              </BtnLayout>
-
-              <BtnLayout>
-                <CommonTitle>할인운임</CommonTitle>
-                <CommonPrice>58,300원</CommonPrice>
-                <CommonSeat>7석</CommonSeat>
-              </BtnLayout>
-
-              <BtnLayout>
-                <CommonTitle>정상운임</CommonTitle>
-                <CommonPrice>78,300원</CommonPrice>
-                <CommonSeat>7석</CommonSeat>
-              </BtnLayout>
-
-              <NotSelectBtnLayout>
-                <NotSelectedTitle>프레스티지</NotSelectedTitle>
-                <NotSelectedSub>미운영</NotSelectedSub>
-              </NotSelectBtnLayout>
-            </BtnGroup>
+            {flightData.seats.map((seatData) => (
+              <BtnGroup key={seatData.flightId}>
+                <BtnLayout>
+                  <CommonTitle>{seatData.seatClass}</CommonTitle>
+                  <CommonPrice>{seatData.price.toLocaleString()}</CommonPrice>
+                  <CommonSeat>7석</CommonSeat>
+                </BtnLayout>
+              </BtnGroup>
+            ))}
           </div>
           <div>
-            <ClickSection className={`${!click ? "click" : ""}`}>
+            {/* 특가운임 || 할인운임 || 정산운임 클릭 시 출력되는 곳 */}
+            <ClickSection>
               <div>
                 <section>
                   <IcChangeFlight />
@@ -110,7 +88,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 29.1rem;
   margin-top: 2rem;
   border-radius: 10px;
   background: ${theme.colors.white};
@@ -123,7 +100,6 @@ const Wrapper = styled.section`
     width: 100%;
     flex-shrink: 0;
     justify-content: space-between;
-    /* background-color: pink; */
     border-radius: 1rem;
   }
 
@@ -136,8 +112,9 @@ const Wrapper = styled.section`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 7.4rem;
+    padding: 2rem;
     flex-shrink: 0;
+    overflow: scroll;
   }
 `;
 
@@ -266,7 +243,6 @@ const ClickSection = styled.div`
   align-items: center;
   width: 100%;
   height: 13.9rem;
-  margin-top: 4rem;
   flex-shrink: 0;
   border-radius: 1rem;
   background: ${theme.colors.skyBlue};
