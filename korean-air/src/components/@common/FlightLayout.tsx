@@ -39,7 +39,7 @@ const Airport = styled.div`
   display: flex;
   width: 90%;
   height: 6.6rem;
-  position: absolute;
+  position: relative;
   justify-content: center;
   align-items: center;
   background: #fff;
@@ -79,10 +79,4 @@ const BackgroundPayment = styled.div`
   position: absolute;
   width: 100%;
   height: 6.2rem;
-`;
-
-const IcDownIcon = styled.div`
-  background: url(${IcDownPayment});
-  width: 2.4rem;
-  height: 2.4rem;
 `;

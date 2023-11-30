@@ -27,7 +27,28 @@ import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
 import IcRadioFull from "./icon/ic_radio_full.svg?react";
 import IcRadioEmpty from "./icon/ic_radio_empty.svg?react";
-
+import IcRightPayment from "./icon/ic_right_payment.svg?react";
+import Ellipse from "./icon/Ellipse.svg?react";
+import IcRightNameInfo from "./icon/ic_right_nameinfo.svg?react";
+import IcUpPayment from "./icon/ic_up_payment.svg?react";
+import ChevronDown from "./icon/chevron-down.svg?react";
+import IcCheckPayment from "./icon/ic_check_payment.svg?react";
+import PaymentCheck from "./icon/payment_checkbox.svg?react";
+import ArrowUp from "./icon/arrow-up.svg?react";
+import IcSearchSearcharea from "./icon/ic_search_searcharea.svg?react";
+import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
+import IcDownSearch from "./icon/ic_down_search.svg?react";
+import IcPin from "./icon/ic_pin.svg?react";
+import IcCloseVerySmall from "./icon/ic_close_verysmall.svg?react";
+import IcSwapBlue from "./icon/ic_swap_blue.svg?react";
+import IcRightFlight from "./icon/ic_right_flight.svg?react";
+import IcLeftFlight from "./icon/ic_left_flight.svg?react";
+import IcConditionArrow from "./icon/ic_conditionarrow.svg?react";
+import IcRefundFlight from "./icon/ic_refund_flight.svg?react";
+import IcShortInfoFlight from "./icon/ic_shortinfo_flgiht.svg?react";
+import IcChangeFlight from "./icon/ic_change_flight.svg?react";
+import ChevronRight from "./icon/chevron-right.svg?react";
+import FlightBtnFilter from "./icon/flight_btn_filter.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -58,4 +79,26 @@ export {
   LogoJinair,
   IcRadioFull,
   IcRadioEmpty,
+  IcRightPayment,
+  Ellipse,
+  IcRightNameInfo,
+  IcUpPayment,
+  ChevronDown,
+  IcCheckPayment,
+  PaymentCheck,
+  ArrowUp,
+  IcSearchSearcharea,
+  IcCloseSmallRecent,
+  IcDownSearch,
+  IcPin,
+  IcCloseVerySmall,
+  IcSwapBlue,
+  IcRightFlight,
+  IcLeftFlight,
+  IcConditionArrow,
+  IcRefundFlight,
+  IcShortInfoFlight,
+  IcChangeFlight,
+  ChevronRight,
+  FlightBtnFilter,
 };

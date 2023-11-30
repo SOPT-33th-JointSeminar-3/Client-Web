@@ -1,3 +1,4 @@
+import Header from "../components/@common/Header";
 import { useLocation } from "react-router-dom";
 import { Banner } from "../components/mainPage/Banner";
 import { Booking } from "../components/mainPage/Booking";
@@ -11,6 +12,8 @@ const MainPage = () => {
 
   return (
     <>
+      <Header />
+      <Booking />
       <Booking state={state} />
       <Promotion />
       <Notice />
