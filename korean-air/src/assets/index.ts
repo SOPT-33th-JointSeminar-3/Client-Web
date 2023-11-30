@@ -33,6 +33,12 @@ import ChevronDown from "./icon/chevron-down.svg?react";
 import IcCheckPayment from "./icon/ic_check_payment.svg?react";
 import PaymentCheck from "./icon/payment_checkbox.svg?react";
 import ArrowUp from "./icon/arrow-up.svg?react";
+import IcSearchSearcharea from "./icon/ic_search_searcharea.svg?react";
+import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
+import IcDownSearch from "./icon/ic_down_search.svg?react";
+import IcPin from "./icon/ic_pin.svg?react";
+import IcCloseVerySmall from "./icon/ic_close_verysmall.svg?react";
+import IcSwapBlue from "./icon/ic_swap_blue.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -69,4 +75,10 @@ export {
   IcCheckPayment,
   PaymentCheck,
   ArrowUp,
+  IcSearchSearcharea,
+  IcCloseSmallRecent,
+  IcDownSearch,
+  IcPin,
+  IcCloseVerySmall,
+  IcSwapBlue,
 };
