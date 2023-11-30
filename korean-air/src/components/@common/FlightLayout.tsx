@@ -39,7 +39,7 @@ const Airport = styled.div`
   display: flex;
   width: 90%;
   height: 6.6rem;
-  position: absolute;
+  position: relative;
   justify-content: center;
   align-items: center;
   background: #fff;
