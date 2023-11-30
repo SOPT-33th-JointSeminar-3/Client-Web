@@ -7,13 +7,23 @@ import {
   IcCheckPayment,
   PaymentCheck,
 } from "../../assets";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const CardPersonal = () => {
-  const [gender, setGender] = useState("");
+  const [userData, setUserData] = useState({
+    lastName: "",
+    firstName: "",
+    gender: "",
+    birthday: "",
+  });
+
+  const handleUserData = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
   const handleGenderChange = (selectedGender: string) => {
-    setGender(selectedGender);
-    console.log(gender);
+    setUserData({ ...userData, gender: selectedGender });
   };
   return (
     <Layout>
@@ -38,7 +48,7 @@ const CardPersonal = () => {
                   <p>승객 성</p>
                   <Ellipse />
                 </div>
-                <input />
+                <input name="lastName" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -50,7 +60,7 @@ const CardPersonal = () => {
                   <p>승객 이름</p>
                   <Ellipse />
                 </div>
-                <input />
+                <input name="firstName" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -61,7 +71,7 @@ const CardPersonal = () => {
                 type="radio"
                 id="m"
                 name="gender"
-                checked={gender === "남자"}
+                checked={userData.gender === "남자"}
                 onChange={() => handleGenderChange("남자")}
               />
               <GenderLabel
@@ -69,13 +79,13 @@ const CardPersonal = () => {
                 onClick={() => handleGenderChange("남자")}
               >
                 남자
-                {gender === "남자" && <IcCheckPayment />}
+                {userData.gender === "남자" && <IcCheckPayment />}
               </GenderLabel>
               <GenderInsideLayout
                 type="radio"
                 id="w"
                 name="gender"
-                checked={gender === "여자"}
+                checked={userData.gender === "여자"}
                 onChange={() => handleGenderChange("여자")}
               />
               <GenderLabel
@@ -83,7 +93,7 @@ const CardPersonal = () => {
                 onClick={() => handleGenderChange("여자")}
               >
                 여자
-                {gender === "여자" && <IcCheckPayment />}
+                {userData.gender === "여자" && <IcCheckPayment />}
               </GenderLabel>
             </GenderDiv>
           </CommonLayout>
@@ -94,7 +104,7 @@ const CardPersonal = () => {
                   <p>생년월일(YYYY.MM.DD)</p>
                   <Ellipse />
                 </div>
-                <input />
+                <input name="birthday" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>
