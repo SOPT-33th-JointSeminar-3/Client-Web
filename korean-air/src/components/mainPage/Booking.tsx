@@ -1,9 +1,25 @@
 import styled from "styled-components";
-import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
+import {
+  IcCalendar,
+  IcClass,
+  IcPerson,
+  IcSwap,
+  IcHelp,
+  IcSwapBlue,
+} from "../../assets";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { arriveState, departureState } from "../../recoil/atom";
+
+interface Text {
+  $departure: string;
+  $arrive: string;
+}
 export const Booking = () => {
   const navigate = useNavigate();
+  const departure = useRecoilValue<string>(departureState);
+  const arrive = useRecoilValue<string>(arriveState);
   const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigate("/search", { state: e.currentTarget.id });
   };
@@ -25,18 +41,30 @@ export const Booking = () => {
               </Way>
             </WayBox>
             <CityBox>
-              <City>
-                <p onClick={handleClick} id="departure">
-                  출발
-                </p>
+              <DepartureCity
+                onClick={handleClick}
+                id="departure"
+                $departure={departure}
+                $arrive={""}
+              >
+                <p>{departure}</p>
                 <p>From</p>
-              </City>
-              <IcSwap />
+              </DepartureCity>
+              {departure === "출발" && arrive === "도착" ? (
+                <IcSwap />
+              ) : (
+                <IcSwapBlue />
+              )}
               <City>
-                <p onClick={handleClick} id="arrival">
-                  도착
-                </p>
-                <p>To</p>
+                <ArriveCity
+                  onClick={handleClick}
+                  id="arrival"
+                  $departure={""}
+                  $arrive={arrive}
+                >
+                  <p>{arrive}</p>
+                  <p>To</p>
+                </ArriveCity>
               </City>
             </CityBox>
           </SelectCityBox>
@@ -128,7 +156,6 @@ const CityBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 5.4rem;
-  color: ${({ theme }) => theme.colors.grey_3};
 `;
 const City = styled.div`
   display: flex;
@@ -178,4 +205,14 @@ const FlightBtn = styled(Button)`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.grey_5};
   color: ${({ theme }) => theme.colors.navy};
+`;
+const DepartureCity = styled(City)<Text>`
+  color: ${({ $departure, theme }) =>
+    $departure === "출발" ? theme.colors.grey_3 : theme.colors.navy};
+  margin-bottom: 0;
+`;
+const ArriveCity = styled(City)<Text>`
+  color: ${({ $arrive, theme }) =>
+    $arrive === "도착" ? theme.colors.grey_3 : theme.colors.navy};
+  margin-bottom: 0;
 `;

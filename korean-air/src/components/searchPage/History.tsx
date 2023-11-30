@@ -1,13 +1,29 @@
 import styled from "styled-components";
 import { IcCloseSmallRecent } from "../../assets";
+import { useSetRecoilState } from "recoil";
+import { arriveState, departureState } from "../../recoil/atom";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const History = () => {
+  const navigate = useNavigate();
+  const setArrive = useSetRecoilState<string>(arriveState);
+  const setDeparture = useSetRecoilState<string>(departureState);
+
+  const departure = useRef<HTMLParagraphElement>(null);
+  const arrive = useRef<HTMLParagraphElement>(null);
+  const handleClick = () => {
+    if (!arrive.current) return;
+    setArrive(arrive.current.textContent);
+    setDeparture(departure.current?.textContent);
+    navigate("/");
+  };
   return (
-    <HistoryCard>
+    <HistoryCard onClick={handleClick}>
       <Text>
-        ICN
-        <p>서울/인천</p> - CJU
-        <p>제주</p>
+        <p ref={departure}>ICN</p>
+        서울/인천 - <p ref={arrive}>CJU</p>
+        제주
       </Text>
       <IcCloseSmallRecent />
     </HistoryCard>
@@ -16,7 +32,7 @@ const History = () => {
 
 export default History;
 
-const HistoryCard = styled.section`
+const HistoryCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,10 +44,10 @@ const HistoryCard = styled.section`
 const Text = styled.div`
   display: flex;
   text-align: center;
-  color: ${({ theme }) => theme.colors.navy};
-  ${({ theme }) => theme.fonts.body_bold_14};
+  ${({ theme }) => theme.fonts.body_regular_14};
   & p {
     margin: 0 0.5rem;
-    ${({ theme }) => theme.fonts.body_regular_14};
+    color: ${({ theme }) => theme.colors.navy};
+    ${({ theme }) => theme.fonts.body_bold_14};
   }
 `;
