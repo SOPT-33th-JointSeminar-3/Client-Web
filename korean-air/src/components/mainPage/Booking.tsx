@@ -153,6 +153,8 @@ const Select = styled.div`
   &:nth-child(1) {
     border-top: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
   }
+
+  cursor: pointer;
 `;
 const Button = styled.button`
   padding: 1.2rem;
