@@ -13,7 +13,6 @@ const MainPage = () => {
   return (
     <>
       <Header />
-      <Booking />
       <Booking state={state} />
       <Promotion />
       <Notice />
