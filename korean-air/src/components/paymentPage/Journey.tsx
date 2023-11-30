@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { IcPaymentShotarrow, LogoJinair } from "../../assets";
+import { IcPaymentShotarrow, IcRightPayment, LogoJinair } from "../../assets";
 
 const Journey = () => {
   return (
@@ -14,10 +14,11 @@ const Journey = () => {
           <DepartureLayout>
             <EnglishTitle>GMP</EnglishTitle>
             <EnglishSubTitle>서울/김포</EnglishSubTitle>
-            <IcShotarrowIcon />
+            <IcPaymentShotarrow />
             <EnglishTitle>CJU</EnglishTitle>
             <EnglishSubTitle>제주</EnglishSubTitle>
           </DepartureLayout>
+          <IcRightPayment />
         </DetailInfoLayout>
         <FlightTime>06:05</FlightTime>
         <FlightTime>07:15</FlightTime>
@@ -27,6 +28,23 @@ const Journey = () => {
           <JinairTitle>진에어 운항</JinairTitle>
           <JinairTitle>일반석(S)</JinairTitle>
         </TicketLayout>
+      </DepartInfo>
+
+      <DepartInfo>
+        <Title>오는 편</Title>
+        <Date>2023년 12월 9일 (수)</Date>
+        <DetailInfoLayout>
+          <DepartureLayout>
+            <EnglishTitle>CJU</EnglishTitle>
+            <EnglishSubTitle>제주</EnglishSubTitle>
+            <IcPaymentShotarrow />
+            <EnglishTitle>GMP</EnglishTitle>
+            <EnglishSubTitle>서울/김포</EnglishSubTitle>
+          </DepartureLayout>
+          <IcRightPayment />
+        </DetailInfoLayout>
+        <FlightTime>06:05</FlightTime>
+        <FlightTime>07:15</FlightTime>
       </DepartInfo>
     </Layout>
   );
@@ -38,18 +56,17 @@ const Layout = styled.section`
   padding: 2rem;
   flex-shrink: 0;
 `;
-// body extrabold 20이 없어 ㅠㅠ TODO
+
 const JouneyTitle = styled.p`
-  ${theme.fonts.body_extrabold_16};
+  ${theme.fonts.body_extrabold_20};
   color: ${theme.colors.navy};
 `;
 
-//TODO var 물어보기 (theme)
 const DepartInfo = styled.div`
   height: 16.6rem;
   flex-shrink: 0;
   border-radius: 10px;
-  border: 0.1rem solid var(--grey_4, #c7c9d9);
+  border: 0.1rem solid ${theme.colors.grey_4};
   padding: 0.6rem;
   margin: 1rem;
 `;
@@ -69,8 +86,9 @@ const Date = styled.p`
 `;
 
 const DetailInfoLayout = styled.div`
+  width: 100%;
   display: inline-flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 `;
@@ -93,12 +111,6 @@ const EnglishTitle = styled.p`
 const EnglishSubTitle = styled.p`
   color: ${theme.colors.black};
   ${theme.fonts.body_regular_12};
-`;
-
-const IcShotarrowIcon = styled.div`
-  background: url(${IcPaymentShotarrow});
-  width: 2.9rem;
-  height: 0.9rem;
 `;
 
 const FlightTime = styled.p`

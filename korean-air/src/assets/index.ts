@@ -25,6 +25,14 @@ import IcPaymentShare from "./icon/ic_payment__share.svg?react";
 import IcPaymentSave from "./icon/ic_payment_save.svg?react";
 import IcPaymentShotarrow from "./icon/ic_payment_shotarrow.svg?react";
 import LogoJinair from "./icon/logo_jinair.svg?react";
+import IcRightPayment from "./icon/ic_right_payment.svg?react";
+import Ellipse from "./icon/Ellipse.svg?react";
+import IcRightNameInfo from "./icon/ic_right_nameinfo.svg?react";
+import IcUpPayment from "./icon/ic_up_payment.svg?react";
+import ChevronDown from "./icon/chevron-down.svg?react";
+import IcCheckPayment from "./icon/ic_check_payment.svg?react";
+import PaymentCheck from "./icon/payment_checkbox.svg?react";
+import ArrowUp from "./icon/arrow-up.svg?react";
 import IcSearchSearcharea from "./icon/ic_search_searcharea.svg?react";
 import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
 import IcDownSearch from "./icon/ic_down_search.svg?react";
@@ -67,6 +75,14 @@ export {
   IcPaymentSave,
   IcPaymentShotarrow,
   LogoJinair,
+  IcRightPayment,
+  Ellipse,
+  IcRightNameInfo,
+  IcUpPayment,
+  ChevronDown,
+  IcCheckPayment,
+  PaymentCheck,
+  ArrowUp,
   IcSearchSearcharea,
   IcCloseSmallRecent,
   IcDownSearch,

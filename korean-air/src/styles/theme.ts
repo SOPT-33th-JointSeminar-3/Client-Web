@@ -61,6 +61,14 @@ const fonts = {
     line-height: 140%;
     letter-spacing: 0.02rem;
   `,
+  body_medium_14: css`
+    font-family: "Pretendard";
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 148%;
+    letter-spacing: 0.056rem;
+  `,
   body_semibold_12: css`
     font-family: "Pretendard";
     font-size: 1.2rem;
@@ -133,6 +141,16 @@ const fonts = {
     line-height: 140%;
     letter-spacing: 0.02rem;
   `,
+
+  body_extrabold_20: css`
+    font-family: "Pretendard";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 148.02%;
+    letter-spacing: 0.08rem;
+  `,
+
   title_bold_18: css`
     font-family: "Pretendard";
     font-size: 1.8rem;
