@@ -9,7 +9,7 @@ import {
 } from "../../assets";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { arriveState, departureState } from "../../recoil/atom";
 
 interface Text {
@@ -18,10 +18,15 @@ interface Text {
 }
 export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
-  const departure = useRecoilValue<string>(departureState);
-  const arrive = useRecoilValue<string>(arriveState);
+  const [arrive, setArrive] = useRecoilState<string>(arriveState);
+  const [departure, setDeparture] = useRecoilState<string>(departureState);
   const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigate("/search", { state: e.currentTarget.id });
+  };
+  const handleSwapClick = () => {
+    const copyDeparture = departure;
+    setDeparture(arrive);
+    setArrive(copyDeparture);
   };
   return (
     <BookingBox>
@@ -53,7 +58,9 @@ export const Booking = ({ state }: { state: string[] }) => {
               {departure === "출발" && arrive === "도착" ? (
                 <IcSwap />
               ) : (
-                <IcSwapBlue />
+                <div onClick={handleSwapClick}>
+                  <IcSwapBlue />
+                </div>
               )}
               <City>
                 <ArriveCity
@@ -165,13 +172,14 @@ const ActiveWay = styled.div`
 `;
 const CityBox = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 5.4rem;
+  justify-content: space-between;
+  margin: 0 3rem;
 `;
 const City = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 10rem;
   gap: 0.3rem;
   margin-bottom: 2.8rem;
   ${({ theme }) => theme.fonts.body_semibold_12}
