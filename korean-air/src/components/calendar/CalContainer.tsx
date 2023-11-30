@@ -178,7 +178,7 @@ const SelectedDate = styled.div<{ $isClicked: boolean }>`
 const SelectedRange = styled.div<{ $isIncluded: boolean; $isSelected: string }>`
   position: absolute;
 
-  width: ${({ $isSelected }) => ($isSelected ? "2.5rem" : "5rem")};
+  width: ${({ $isSelected }) => ($isSelected ? "3rem" : "6rem")};
   height: 3rem;
   margin-bottom: 0.2rem;
   ${({ $isSelected }) =>
