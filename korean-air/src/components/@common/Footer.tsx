@@ -31,7 +31,7 @@ const Wrapper = styled.section`
   background-color: ${theme.colors.white};
 `;
 
-const FinalPayment = styled.p`
+const FinalPayment = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${theme.colors.black};

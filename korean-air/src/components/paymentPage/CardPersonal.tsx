@@ -51,13 +51,11 @@ const CardPersonal = () => {
           </GrayDiv>
           <CommonLayout>
             <GenderDiv>
+              <GenderInsideLayout>남자</GenderInsideLayout>
               <GenderInsideLayout>
-                <span>남자</span>
-              </GenderInsideLayout>
-              <GenderInsideLayoutBlue>
-                <span>여자</span>
+                여자
                 <IcCheckPayment />
-              </GenderInsideLayoutBlue>
+              </GenderInsideLayout>
             </GenderDiv>
           </CommonLayout>
           <GrayDiv>
@@ -182,25 +180,15 @@ const GrayDiv = styled.div`
 
 const GenderInsideLayout = styled.div`
   display: flex;
-  padding: 2rem;
-  align-items: center;
-  width: 45%;
-  height: 100%;
-  border: 0.1rem solid ${theme.colors.grey_2};
-`;
-
-const GenderInsideLayoutBlue = styled.div`
-  display: flex;
   justify-content: space-between;
   padding: 2rem;
   align-items: center;
   width: 45%;
   height: 100%;
   border: 0.1rem solid ${theme.colors.grey_2};
-  color: ${theme.colors.blue};
 `;
 
-const GrayTitle = styled.p`
+const GrayTitle = styled.div`
   display: flex;
   flex-direction: column;
   color: ${theme.colors.grey_3};

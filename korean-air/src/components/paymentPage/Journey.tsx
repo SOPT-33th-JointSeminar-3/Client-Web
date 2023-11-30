@@ -23,7 +23,7 @@ const Journey = () => {
         <FlightTime>07:15</FlightTime>
         <TicketLayout>
           <PlaneInfo>KE5153</PlaneInfo>
-          <JinairLogo />
+          <LogoJinair />
           <JinairTitle>진에어 운항</JinairTitle>
           <JinairTitle>일반석(S)</JinairTitle>
         </TicketLayout>
@@ -129,12 +129,6 @@ const TicketLayout = styled.div`
 const PlaneInfo = styled.div`
   color: ${theme.colors.navy};
   ${theme.fonts.body_bold_12};
-`;
-
-const JinairLogo = styled.div`
-  background: url(${LogoJinair});
-  width: 1.2rem;
-  height: 1rem;
 `;
 
 const JinairTitle = styled.div`
