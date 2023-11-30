@@ -22,7 +22,6 @@ export default Footer;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100%;
   height: 11.4rem;
   padding: 2rem;
   position: fixed;
@@ -30,6 +29,7 @@ const Wrapper = styled.section`
   justify-content: space-between;
   flex-shrink: 0;
   box-shadow: 0rem -2rem 2rem 0.3rem rgba(107, 117, 136, 0.1);
+  background-color: ${theme.colors.white};
 `;
 
 const FinalPayment = styled.p`

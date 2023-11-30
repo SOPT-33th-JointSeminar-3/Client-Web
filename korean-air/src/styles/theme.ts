@@ -144,7 +144,7 @@ const fonts = {
 
   body_extrabold_20: css`
     font-family: "Pretendard";
-    font-size: 2em;
+    font-size: 2rem;
     font-style: normal;
     font-weight: 800;
     line-height: 148.02%;
