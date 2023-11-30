@@ -30,6 +30,14 @@ import IcCloseSmallRecent from "./icon/ic_close_small_recnt.svg?react";
 import IcDownSearch from "./icon/ic_down_search.svg?react";
 import IcPin from "./icon/ic_pin.svg?react";
 import IcCloseVerySmall from "./icon/ic_close_verysmall.svg?react";
+import IcRightFlight from "./icon/ic_right_flight.svg?react";
+import IcLeftFlight from "./icon/ic_left_flight.svg?react";
+import IcConditionArrow from "./icon/ic_conditionarrow.svg?react";
+import IcRefundFlight from "./icon/ic_refund_flight.svg?react";
+import IcShortInfoFlight from "./icon/ic_shortinfo_flgiht.svg?react";
+import IcChangeFlight from "./icon/ic_change_flight.svg?react";
+import ChevronRight from "./icon/chevron-right.svg?react";
+import FlightBtnFilter from "./icon/flight_btn_filter.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -63,4 +71,12 @@ export {
   IcDownSearch,
   IcPin,
   IcCloseVerySmall,
+  IcRightFlight,
+  IcLeftFlight,
+  IcConditionArrow,
+  IcRefundFlight,
+  IcShortInfoFlight,
+  IcChangeFlight,
+  ChevronRight,
+  FlightBtnFilter,
 };
