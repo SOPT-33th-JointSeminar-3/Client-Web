@@ -3,6 +3,8 @@ import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
 import { useNavigate } from "react-router-dom";
 export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
+  const start = state[0].replace(/년|월/g, ".").replace(/일/g, "");
+  const end = state[1].replace(/년|월/g, ".").replace(/일/g, "");
   return (
     <BookingBox>
       <CardBox>
@@ -40,9 +42,7 @@ export const Booking = ({ state }: { state: string[] }) => {
               }}
             >
               <IcCalendar />
-              {state === null
-                ? "날짜를 선택하세요."
-                : `${state[0]} - ${state[1]}`}
+              {state === null ? "날짜를 선택하세요." : `${start} - ${end}`}
             </SelectRange>
             <Select>
               <IcPerson />
