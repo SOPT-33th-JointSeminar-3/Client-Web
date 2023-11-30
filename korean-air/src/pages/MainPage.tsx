@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { Banner } from "../components/mainPage/Banner";
 import { Booking } from "../components/mainPage/Booking";
 import { Footer } from "../components/mainPage/Footer";
@@ -6,9 +7,11 @@ import { Promotion } from "../components/mainPage/Promotion";
 import { Service } from "../components/mainPage/Service";
 
 const MainPage = () => {
+  const { state } = useLocation();
+
   return (
     <>
-      <Booking />
+      <Booking state={state} />
       <Promotion />
       <Notice />
       <Banner />

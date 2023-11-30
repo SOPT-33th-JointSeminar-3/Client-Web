@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IcCalendar, IcClass, IcPerson, IcSwap, IcHelp } from "../../assets";
 import { useNavigate } from "react-router-dom";
-export const Booking = () => {
+export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
   return (
     <BookingBox>
@@ -33,14 +33,17 @@ export const Booking = () => {
             </CityBox>
           </SelectCityBox>
           <SelectBox>
-            <Select
+            <SelectRange
+              $isSelected={state !== null}
               onClick={() => {
                 navigate("/calendar");
               }}
             >
               <IcCalendar />
-              날짜를 선택하세요.
-            </Select>
+              {state === null
+                ? "날짜를 선택하세요."
+                : `${state[0]} - ${state[1]}`}
+            </SelectRange>
             <Select>
               <IcPerson />
               탑승 인원을 선택하세요.
@@ -140,6 +143,25 @@ const City = styled.div`
 const SelectBox = styled.article`
   width: 100%;
 `;
+const SelectRange = styled.div<{ $isSelected: boolean }>`
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 0;
+  margin: 0 1.8rem;
+  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
+  color: ${({ theme, $isSelected }) =>
+    $isSelected ? theme.colors.navy : theme.colors.grey_3};
+  ${({ theme, $isSelected }) =>
+    $isSelected ? theme.fonts.body_bold_16 : theme.fonts.body_regular_16}
+  &:nth-child(1) {
+    border-top: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
+  }
+
+  cursor: pointer;
+`;
+
 const Select = styled.div`
   display: flex;
   align-self: flex-start;
@@ -153,8 +175,6 @@ const Select = styled.div`
   &:nth-child(1) {
     border-top: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
   }
-
-  cursor: pointer;
 `;
 const Button = styled.button`
   padding: 1.2rem;
