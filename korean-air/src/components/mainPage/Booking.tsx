@@ -8,9 +8,13 @@ import {
   IcSwapBlue,
 } from "../../assets";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 import { useRecoilValue } from "recoil";
-import { arriveState, departureState } from "../../recoil/atom";
+import {
+  arriveState,
+  departureState,
+  fromState,
+  toState,
+} from "../../recoil/atom";
 
 interface Text {
   $departure: string;
@@ -20,6 +24,10 @@ export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
   const departure = useRecoilValue<string>(departureState);
   const arrive = useRecoilValue<string>(arriveState);
+
+  const from = useRecoilValue<string>(fromState);
+  const to = useRecoilValue<string>(toState);
+
   const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigate("/search", { state: e.currentTarget.id });
   };
@@ -48,7 +56,7 @@ export const Booking = ({ state }: { state: string[] }) => {
                 $arrive={""}
               >
                 <p>{departure}</p>
-                <p>From</p>
+                <p>{from}</p>
               </DepartureCity>
               {departure === "출발" && arrive === "도착" ? (
                 <IcSwap />
@@ -63,7 +71,7 @@ export const Booking = ({ state }: { state: string[] }) => {
                   $arrive={arrive}
                 >
                   <p>{arrive}</p>
-                  <p>To</p>
+                  <p>{to}</p>
                 </ArriveCity>
               </City>
             </CityBox>
