@@ -72,26 +72,29 @@ const CalContainer = ({
                     (el) => el.month === month && el.index === idx,
                   )}
                 />
-                {isClicked.length === 2 && (
-                  <SelectedRange
-                    $isSelected={
-                      month === isClicked[0].month && idx === isClicked[0].index
-                        ? "dep"
-                        : month === isClicked[1].month &&
-                            idx === isClicked[1].index
-                          ? "arv"
-                          : ""
-                    }
-                    $isIncluded={
-                      (month > isClicked[0].month ||
-                        (month === isClicked[0].month &&
-                          idx > isClicked[0].index)) &&
-                      (month < isClicked[1].month ||
-                        (month === isClicked[1].month &&
-                          idx < isClicked[1].index))
-                    }
-                  />
-                )}
+                {isClicked.length === 2 &&
+                  idx - start >= 0 &&
+                  idx - start + 1 <= length && (
+                    <SelectedRange
+                      $isSelected={
+                        month === isClicked[0].month &&
+                        idx === isClicked[0].index
+                          ? "dep"
+                          : month === isClicked[1].month &&
+                              idx === isClicked[1].index
+                            ? "arv"
+                            : ""
+                      }
+                      $isIncluded={
+                        (month > isClicked[0].month ||
+                          (month === isClicked[0].month &&
+                            idx > isClicked[0].index)) &&
+                        (month < isClicked[1].month ||
+                          (month === isClicked[1].month &&
+                            idx < isClicked[1].index))
+                      }
+                    />
+                  )}
               </Date>
               {data.length === 1 ? (
                 <Price $isColored="">{val !== 0 && `${val}만`}</Price>
