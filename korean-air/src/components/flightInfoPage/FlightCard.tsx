@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import {
@@ -9,29 +9,48 @@ import {
   IcShortInfoFlight,
   LogoJinair,
 } from "../../assets";
+import { FlightInfoItem } from "../../types/types";
+import { selectedSeatProps } from "./FlightCardGroup";
 
 export interface FlightCardProp {
-  click: boolean;
-  setClick: React.Dispatch<React.SetStateAction<boolean>>;
-  handleBtnClick: () => void;
+  id: number;
+  flightData: FlightInfoItem;
+  selectedSeat: selectedSeatProps;
+  setSelectedSeat: React.Dispatch<React.SetStateAction<selectedSeatProps>>;
+  setSelectedPrice: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const FlightCard: React.FC<FlightCardProp> = ({ click, handleBtnClick }) => {
+const FlightCard: React.FC<FlightCardProp> = ({
+  id,
+  flightData,
+  selectedSeat,
+  setSelectedSeat,
+  setSelectedPrice,
+}) => {
+  const flightTime = flightData.durationTime.replace(":", "시간 "); //공백 일부러 준거임
+
+  function handleBtnClick(idx: number) {
+    setSelectedSeat({ flightId: id, seatId: idx });
+
+    const selectedPrice = flightData.seats[idx].price;
+    setSelectedPrice(selectedPrice);
+  }
+
   return (
     <>
       <Wrapper>
         <article>
           <div>
             <TimeLayout>
-              <FlightTime>06:05</FlightTime>
+              <FlightTime>{flightData.startTime}</FlightTime>
               <Area>SEL</Area>
             </TimeLayout>
             <ExpectedTimeLayout>
-              <Time>1시간 10분</Time>
+              <Time>{flightTime}분</Time>
               <IcConditionArrow />
             </ExpectedTimeLayout>
             <TimeLayout>
-              <FlightTime>07:15</FlightTime>
+              <FlightTime>{flightData.endTime}</FlightTime>
               <Area>CJU</Area>
             </TimeLayout>
             <ChevronRight />
@@ -42,42 +61,56 @@ const FlightCard: React.FC<FlightCardProp> = ({ click, handleBtnClick }) => {
             </JinairInfo>
           </section>
           <div>
-            <BtnGroup>
-              <BtnLayout
-                className={`${click ? "click" : ""}`}
-                onClick={handleBtnClick}
+            {flightData.seats.map((seatData, idx) => (
+              <BtnGroup
+                key={seatData.seatId}
+                onClick={() => handleBtnClick(idx)}
               >
-                <CommonTitle className={`${click ? "click" : ""}`}>
-                  특가운임
-                </CommonTitle>
-                <CommonPrice className={`${click ? "click" : ""}`}>
-                  48,300원
-                </CommonPrice>
-                <CommonSeat className={`${click ? "click" : ""}`}>
-                  7석
-                </CommonSeat>
-              </BtnLayout>
-
-              <BtnLayout>
-                <CommonTitle>할인운임</CommonTitle>
-                <CommonPrice>58,300원</CommonPrice>
-                <CommonSeat>7석</CommonSeat>
-              </BtnLayout>
-
-              <BtnLayout>
-                <CommonTitle>정상운임</CommonTitle>
-                <CommonPrice>78,300원</CommonPrice>
-                <CommonSeat>7석</CommonSeat>
-              </BtnLayout>
-
-              <NotSelectBtnLayout>
-                <NotSelectedTitle>프레스티지</NotSelectedTitle>
-                <NotSelectedSub>미운영</NotSelectedSub>
-              </NotSelectBtnLayout>
-            </BtnGroup>
+                <BtnLayout
+                  className={`${
+                    selectedSeat.flightId === id && selectedSeat.seatId === idx
+                      ? "click"
+                      : ""
+                  }`}
+                >
+                  <CommonTitle
+                    className={`${
+                      selectedSeat.flightId === id &&
+                      selectedSeat.seatId === idx
+                        ? "click"
+                        : ""
+                    }`}
+                  >
+                    {seatData.seatClass}
+                  </CommonTitle>
+                  <CommonPrice
+                    className={`${
+                      selectedSeat.flightId === id &&
+                      selectedSeat.seatId === idx
+                        ? "click"
+                        : ""
+                    }`}
+                  >
+                    {" "}
+                    {seatData.price.toLocaleString()}
+                  </CommonPrice>
+                  <CommonSeat
+                    className={`${
+                      selectedSeat.flightId === id &&
+                      selectedSeat.seatId === idx
+                        ? "click"
+                        : ""
+                    }`}
+                  >
+                    7석
+                  </CommonSeat>
+                </BtnLayout>
+              </BtnGroup>
+            ))}
           </div>
           <div>
-            <ClickSection className={`${!click ? "click" : ""}`}>
+            {/* 특가운임 || 할인운임 || 정산운임 클릭 시 출력되는 곳 */}
+            <ClickSection>
               <div>
                 <section>
                   <IcChangeFlight />
@@ -110,7 +143,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 29.1rem;
   margin-top: 2rem;
   border-radius: 10px;
   background: ${theme.colors.white};
@@ -123,7 +155,6 @@ const Wrapper = styled.section`
     width: 100%;
     flex-shrink: 0;
     justify-content: space-between;
-    /* background-color: pink; */
     border-radius: 1rem;
   }
 
@@ -136,8 +167,9 @@ const Wrapper = styled.section`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 7.4rem;
+    padding: 2rem;
     flex-shrink: 0;
+    overflow: scroll;
   }
 `;
 
@@ -266,7 +298,6 @@ const ClickSection = styled.div`
   align-items: center;
   width: 100%;
   height: 13.9rem;
-  margin-top: 4rem;
   flex-shrink: 0;
   border-radius: 1rem;
   background: ${theme.colors.skyBlue};
