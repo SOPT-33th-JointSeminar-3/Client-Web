@@ -6,9 +6,50 @@ import {
   Ellipse,
   IcCheckPayment,
   PaymentCheck,
+  PaymentCheckboxGrey,
 } from "../../assets";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+export interface CardPersonalProps {
+  userData: {
+    lastName: string;
+    firstName: string;
+    gender: string;
+    birth: string;
+  };
+  setUserData: Dispatch<
+    SetStateAction<{
+      lastName: string;
+      firstName: string;
+      gender: string;
+      birth: string;
+    }>
+  >;
+}
+interface FooterProps extends CardPersonalProps {
+  setConfirm: React.Dispatch<React.SetStateAction<boolean>>;
+  confirm: boolean;
+}
+const CardPersonal: React.FC<FooterProps> = ({
+  userData,
+  setUserData,
+  setConfirm,
+  confirm,
+}) => {
+  const handleUserData = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
 
-const CardPersonal = () => {
+  const handleGenderChange = (selectedGender: string) => {
+    setUserData({ ...userData, gender: selectedGender });
+  };
+
+  const [agree, setAgree] = useState(false);
+
+  const handleCheckClick = () => {
+    setAgree(!agree);
+    confirm && setConfirm(false);
+  };
   return (
     <Layout>
       <InsideLayout>
@@ -16,8 +57,11 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                승객 선택
-                <CommonBlack>정가윤</CommonBlack>
+                <div>
+                  <p>국적</p>
+                  <Ellipse />
+                </div>
+                <input />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -25,9 +69,11 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                국적
-                <Ellipse />
-                <CommonBlack>대한민국</CommonBlack>
+                <div>
+                  <p>승객 성</p>
+                  <Ellipse />
+                </div>
+                <input name="lastName" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -35,40 +81,57 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                승객 성
-                <Ellipse />
-                <CommonBlack>정</CommonBlack>
-              </GrayTitle>
-              <ChevronDown />
-            </div>
-          </GrayDiv>
-          <GrayDiv>
-            <div>
-              <GrayTitle>
-                승객 이름
-                <Ellipse />
-                <CommonBlack>가윤</CommonBlack>
+                <div>
+                  <p>승객 이름</p>
+                  <Ellipse />
+                </div>
+                <input name="firstName" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>
           </GrayDiv>
           <CommonLayout>
             <GenderDiv>
-              <GenderInsideLayout>
-                <span>남자</span>
-              </GenderInsideLayout>
-              <GenderInsideLayoutBlue>
-                <span>여자</span>
-                <IcCheckPayment />
-              </GenderInsideLayoutBlue>
+              <GenderInsideLayout
+                type="radio"
+                id="m"
+                name="gender"
+                checked={userData.gender === "남자"}
+                onChange={() => handleGenderChange("남자")}
+              />
+              <GenderLabel
+                htmlFor="m"
+                $isSelected={userData.gender === "남자" ? true : false}
+                onClick={() => handleGenderChange("남자")}
+              >
+                남자
+                {userData.gender === "남자" && <IcCheckPayment />}
+              </GenderLabel>
+              <GenderInsideLayout
+                type="radio"
+                id="w"
+                name="gender"
+                checked={userData.gender === "여자"}
+                onChange={() => handleGenderChange("여자")}
+              />
+              <GenderLabel
+                htmlFor="w"
+                $isSelected={userData.gender === "여자" ? true : false}
+                onClick={() => handleGenderChange("여자")}
+              >
+                여자
+                {userData.gender === "여자" && <IcCheckPayment />}
+              </GenderLabel>
             </GenderDiv>
           </CommonLayout>
           <GrayDiv>
             <div>
               <GrayTitle>
-                생년월일(YYYY.MM.DD)
-                <Ellipse />
-                <CommonBlack>2002.09.14.</CommonBlack>
+                <div>
+                  <p>생년월일(YYYY.MM.DD)</p>
+                  <Ellipse />
+                </div>
+                <input name="birth" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>
@@ -76,8 +139,10 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                적립 항공사
-                <Ellipse />
+                <div>
+                  <p>적립 항공사</p>
+                  <Ellipse />
+                </div>
                 <CommonBlack>대한한공</CommonBlack>
               </GrayTitle>
               <ChevronDown />
@@ -86,8 +151,10 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                가는 여정의 개인 할인
-                <Ellipse />
+                <div>
+                  <p>가는 여정의 개인 할인</p>
+                  <Ellipse />
+                </div>
                 <CommonBlack>선택</CommonBlack>
               </GrayTitle>
               <ChevronDown />
@@ -96,18 +163,27 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                오는 여정의 개인 할인
-                <Ellipse />
+                <div>
+                  <p>오는 여정의 개인 할인</p>
+                  <Ellipse />
+                </div>
                 <CommonBlack>선택</CommonBlack>
               </GrayTitle>
               <ChevronDown />
             </div>
           </GrayDiv>
           <AgreeLayout>
-            <PaymentCheck />
+            <div onClick={handleCheckClick}>
+              {agree ? <PaymentCheck /> : <PaymentCheckboxGrey />}
+            </div>
             <span>국적 정보를 회원정보에 업데이트 하는 것을 동의합니다.</span>
           </AgreeLayout>
-          <ConfirmBtn type="button">
+          <ConfirmBtn
+            type="button"
+            $agree={agree}
+            disabled={!agree}
+            onClick={() => setConfirm(true)}
+          >
             <ConfirmLetter>확인</ConfirmLetter>
           </ConfirmBtn>
           <ArrowUpContainer>
@@ -175,34 +251,47 @@ const GrayDiv = styled.div`
   }
 `;
 
-const GenderInsideLayout = styled.div`
-  display: flex;
-  padding: 2rem;
-  align-items: center;
-  width: 45%;
-  height: 100%;
-  border: 0.1rem solid ${theme.colors.grey_2};
+const GenderInsideLayout = styled.input`
+  display: none;
 `;
-
-const GenderInsideLayoutBlue = styled.div`
+const GenderLabel = styled.label<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: 2rem;
   align-items: center;
-  width: 45%;
+  width: 14.6rem;
   height: 100%;
-  border: 0.1rem solid ${theme.colors.grey_2};
-  color: ${theme.colors.blue};
+  color: ${({ $isSelected, theme }) =>
+    $isSelected ? theme.colors.blue : theme.colors.grey_2};
+  border: 0.1rem solid
+    ${({ $isSelected, theme }) =>
+      $isSelected ? theme.colors.blue : theme.colors.grey_2};
+  cursor: pointer;
 `;
 
-const GrayTitle = styled.p`
+const GrayTitle = styled.div`
+  display: flex;
+  flex-direction: column;
   color: ${theme.colors.grey_3};
   ${theme.fonts.body_medium_12};
+  margin-bottom: 2rem;
+  & input {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    ${theme.fonts.body_extrabold_16};
+  }
+  & div {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
 `;
 
 const CommonLayout = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 7.5rem;
   flex-shrink: 0;
   margin: 1rem;
@@ -213,6 +302,8 @@ const GenderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin: 2rem;
+  gap: 1rem;
   height: 4.4rem;
 `;
 
@@ -230,7 +321,7 @@ const AgreeLayout = styled.section`
   }
 `;
 
-const ConfirmBtn = styled.button`
+const ConfirmBtn = styled.button<{ $agree: boolean }>`
   display: flex;
   width: 10.8rem;
   height: 3.8rem;
@@ -242,8 +333,9 @@ const ConfirmBtn = styled.button`
   gap: 1rem;
   flex-shrink: 0;
   border-radius: 0.9rem;
-  border: 0.1rem solid ${theme.colors.navy};
-  background: ${theme.colors.navy};
+  border: none;
+  background: ${({ $agree, theme }) =>
+    $agree ? theme.colors.navy : theme.colors.grey_6};
 `;
 
 const ConfirmLetter = styled.p`

@@ -8,7 +8,7 @@ const Journey = () => {
       <JouneyTitle>여정 정보</JouneyTitle>
       <DepartInfo>
         <Title>가는 편</Title>
-        <Date>2023년 11월 29일 (수)</Date>
+        <Date>2023년 12월 14일</Date>
         <DetailInfoLayout>
           <DepartureLayout>
             <EnglishTitle>GMP</EnglishTitle>
@@ -23,7 +23,7 @@ const Journey = () => {
         <FlightTime>07:15</FlightTime>
         <TicketLayout>
           <PlaneInfo>KE5153</PlaneInfo>
-          <JinairLogo />
+          <LogoJinair />
           <JinairTitle>진에어 운항</JinairTitle>
           <JinairTitle>일반석(S)</JinairTitle>
         </TicketLayout>
@@ -31,7 +31,7 @@ const Journey = () => {
 
       <DepartInfo>
         <Title>오는 편</Title>
-        <Date>2023년 12월 9일 (수)</Date>
+        <Date>2023년 12월 18일</Date>
         <DetailInfoLayout>
           <DepartureLayout>
             <EnglishTitle>CJU</EnglishTitle>
@@ -129,12 +129,6 @@ const TicketLayout = styled.div`
 const PlaneInfo = styled.div`
   color: ${theme.colors.navy};
   ${theme.fonts.body_bold_12};
-`;
-
-const JinairLogo = styled.div`
-  background: url(${LogoJinair});
-  width: 1.2rem;
-  height: 1rem;
 `;
 
 const JinairTitle = styled.div`
