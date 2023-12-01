@@ -99,29 +99,25 @@ const FlightCard: React.FC<FlightCardProp> = ({
           </BtnLayout>
         ))}
       </BtnContainer>
-      <div>
-        {/* 특가운임 || 할인운임 || 정산운임 클릭 시 출력되는 곳 */}
-        <ClickSection>
-          <div>
-            <section>
-              <IcChangeFlight />
-              <CommonSeat>변경 불가</CommonSeat>
-            </section>
-            <section>
-              <IcRefundFlight />
-              <CommonSeat>환불 7,000원</CommonSeat>
-            </section>
-          </div>
-          <div>
-            <section>
-              <IcShortInfoFlight />
-              <CommonSeat>
-                좌석 승급 불가/ (결제 페이지에서 확인 가능)
-              </CommonSeat>
-            </section>
-          </div>
-        </ClickSection>
-      </div>
+      {/* 특가운임 || 할인운임 || 정산운임 클릭 시 출력되는 곳 */}
+      <ClickSection>
+        <div>
+          <TextContainer>
+            <IcChangeFlight />
+            <CommonSeat>변경 불가</CommonSeat>
+          </TextContainer>
+          <TextContainer>
+            <IcRefundFlight />
+            <CommonSeat>환불 7,000원</CommonSeat>
+          </TextContainer>
+        </div>
+        <div>
+          <TextContainer>
+            <IcShortInfoFlight />
+            <CommonSeat>좌석 승급 불가/ (결제 페이지에서 확인 가능)</CommonSeat>
+          </TextContainer>
+        </div>
+      </ClickSection>
     </Wrapper>
   );
 };
@@ -214,6 +210,8 @@ const BtnLayout = styled.section`
   align-items: center;
   gap: 0.4rem;
 
+  position: relative;
+
   width: 8.3rem;
   height: 8.3rem;
   flex-shrink: 0;
@@ -225,20 +223,6 @@ const BtnLayout = styled.section`
   &.click {
     background: ${theme.colors.navy};
   }
-`;
-
-const NotSelectBtnLayout = styled.section`
-  display: flex;
-  width: 8.3rem;
-  height: 8.3rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
-  border-radius: 10px;
-  border: 0.1rem solid ${theme.colors.grey_4};
-  background: ${theme.colors.blue_5};
 `;
 
 const CommonTitle = styled.p`
@@ -268,24 +252,13 @@ const CommonSeat = styled.p`
   }
 `;
 
-const NotSelectedTitle = styled.p`
-  color: ${theme.colors.grey_2};
-  ${theme.fonts.body_medium_12};
-`;
-
-const NotSelectedSub = styled.p`
-  color: ${theme.colors.grey_2};
-  ${theme.fonts.body_bold_12}
-`;
-
 const ClickSection = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 1rem;
   align-items: center;
   width: 100%;
-  height: 13.9rem;
-  flex-shrink: 0;
+  padding: 2rem 1.7rem;
   border-radius: 1rem;
   background: ${theme.colors.skyBlue};
 
@@ -293,9 +266,7 @@ const ClickSection = styled.div`
     display: flex;
     justify-content: space-between;
     width: 21.9rem;
-    height: 3rem;
     margin-right: 8rem;
-    flex-shrink: 0;
     gap: 0.4rem;
   }
 
@@ -307,4 +278,10 @@ const ClickSection = styled.div`
   &.click {
     display: none;
   }
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 `;
