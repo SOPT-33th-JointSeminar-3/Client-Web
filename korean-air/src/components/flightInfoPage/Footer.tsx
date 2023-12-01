@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProp> = ({ selectedPrice }) => {
   const navigate = useNavigate();
 
   function handleBtnClick() {
-    isSelected && navigate("/finish");
+    isSelected && navigate("/payment");
   }
   return (
     <Wrapper>
