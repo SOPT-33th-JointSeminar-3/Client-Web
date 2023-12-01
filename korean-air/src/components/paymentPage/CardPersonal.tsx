@@ -7,16 +7,28 @@ import {
   IcCheckPayment,
   PaymentCheck,
 } from "../../assets";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+export interface CardPersonalProps {
+  userData: {
+    lastName: string;
+    firstName: string;
+    gender: string;
+    birth: string;
+  };
+  setUserData: Dispatch<
+    SetStateAction<{
+      lastName: string;
+      firstName: string;
+      gender: string;
+      birth: string;
+    }>
+  >;
+}
 
-const CardPersonal = () => {
-  const [userData, setUserData] = useState({
-    lastName: "",
-    firstName: "",
-    gender: "",
-    birthday: "",
-  });
-
+const CardPersonal: React.FC<CardPersonalProps> = ({
+  userData,
+  setUserData,
+}) => {
   const handleUserData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -104,7 +116,7 @@ const CardPersonal = () => {
                   <p>생년월일(YYYY.MM.DD)</p>
                   <Ellipse />
                 </div>
-                <input name="birthday" onChange={handleUserData} />
+                <input name="birth" onChange={handleUserData} />
               </GrayTitle>
               <ChevronDown />
             </div>

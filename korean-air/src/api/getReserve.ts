@@ -1,5 +1,4 @@
 import axiosInstance from "./axiosInstance";
-
 export const getReserve = async (
   firstName: string,
   lastName: string,
@@ -8,10 +7,10 @@ export const getReserve = async (
 ) => {
   try {
     const response = await axiosInstance.post(`api/passenger`, {
-      firstName,
-      lastName,
-      gender,
-      birth,
+      firstname: firstName,
+      lastname: lastName,
+      gender: gender,
+      birth: birth,
     });
     console.log(response);
   } catch (error) {

@@ -1,7 +1,24 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { CardPersonalProps } from "../paymentPage/CardPersonal";
+import { getReserve } from "../../api/getReserve";
 
-const Footer = () => {
+const Footer: React.FC<CardPersonalProps> = ({ userData }) => {
+  const handleReservation = async () => {
+    try {
+      const postData = await getReserve(
+        userData.firstName,
+        userData.lastName,
+        userData.gender,
+        userData.birth,
+      );
+
+      console.log(postData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Wrapper>
       <FinalPayment>
@@ -10,7 +27,7 @@ const Footer = () => {
       </FinalPayment>
 
       <FinalPayBtn type="button">
-        <Reservation>예약하기</Reservation>
+        <Reservation onClick={handleReservation}>예약하기</Reservation>
       </FinalPayBtn>
     </Wrapper>
   );
