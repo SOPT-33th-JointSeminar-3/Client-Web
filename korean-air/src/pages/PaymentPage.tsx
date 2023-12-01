@@ -27,6 +27,7 @@ const PaymentPage = () => {
         userData={userData}
         setUserData={setUserData}
         setConfirm={setConfirm}
+        confirm={confirm}
       />
       <Footer userData={userData} setUserData={setUserData} confirm={confirm} />
     </Wrapper>

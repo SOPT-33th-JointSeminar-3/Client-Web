@@ -24,13 +24,16 @@ export interface CardPersonalProps {
       birth: string;
     }>
   >;
-  setConfirm: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const CardPersonal: React.FC<CardPersonalProps> = ({
+interface FooterProps extends CardPersonalProps {
+  setConfirm: React.Dispatch<React.SetStateAction<boolean>>;
+  confirm: boolean;
+}
+const CardPersonal: React.FC<FooterProps> = ({
   userData,
   setUserData,
   setConfirm,
+  confirm,
 }) => {
   const handleUserData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,6 +45,11 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
   };
 
   const [agree, setAgree] = useState(false);
+
+  const handleCheckClick = () => {
+    setAgree(!agree);
+    confirm && setConfirm(false);
+  };
   return (
     <Layout>
       <InsideLayout>
@@ -163,11 +171,7 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
             </div>
           </GrayDiv>
           <AgreeLayout>
-            <div
-              onClick={() => {
-                setAgree(!agree);
-              }}
-            >
+            <div onClick={handleCheckClick}>
               {agree ? <PaymentCheck /> : <PaymentCheckboxGrey />}
             </div>
             <span>국적 정보를 회원정보에 업데이트 하는 것을 동의합니다.</span>
@@ -329,8 +333,7 @@ const ConfirmBtn = styled.button<{ $agree: boolean }>`
   flex-shrink: 0;
   border-radius: 0.9rem;
   border: none;
-  background: ${({ $agree, theme }) =>
-    $agree ? theme.colors.navy : theme.colors.grey};
+  background: ${({ $agree, theme }) => $agree && theme.colors.navy};
 `;
 
 const ConfirmLetter = styled.p`
