@@ -24,6 +24,9 @@ const CalFooter = ({ selectedDate }: { selectedDate: string[] }) => {
             state: selectedDate,
           });
         }}
+        disabled={
+          selectedDate[0] === "가는 날" || selectedDate[1] === "오는 날"
+        }
       >
         선택
       </Button>
