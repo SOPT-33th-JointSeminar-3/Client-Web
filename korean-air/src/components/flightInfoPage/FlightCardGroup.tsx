@@ -53,7 +53,12 @@ const FlightCardGroup: React.FC<CardGroupProps> = ({
 export default FlightCardGroup;
 
 const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   width: 100%;
+  padding: 2rem;
   background-color: ${({ theme }) => theme.colors.blue_5};
 `;
 
