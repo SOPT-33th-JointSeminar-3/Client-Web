@@ -50,6 +50,8 @@ const Wrapper = styled.section`
   flex-direction: column;
   width: 100%;
   height: 7.4rem;
+  margin-top: 3.5rem;
+
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -58,6 +60,7 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -101,12 +104,15 @@ const NotSelectedPrice = styled.p`
 
 const FlightSeat = styled.section`
   display: flex;
-  width: 33.5rem;
-  height: 3.8rem;
   justify-content: center;
   align-items: flex-start;
   gap: 0.6rem;
   flex-shrink: 0;
+
+  width: 100%;
+  padding: 2rem;
+
+  background-color: ${({ theme }) => theme.colors.blue_5};
 `;
 
 const SelectedSeat = styled.div`
