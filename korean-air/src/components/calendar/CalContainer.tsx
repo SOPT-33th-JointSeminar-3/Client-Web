@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { calInfo } from "../../constants/constant";
-import { useState } from "react";
 import { clickedInfo } from "../../pages/CalendarPage";
 
 const CalContainer = ({
