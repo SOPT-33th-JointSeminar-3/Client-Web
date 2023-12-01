@@ -32,6 +32,7 @@ const PromotionCardBox = styled.div<{ $scroll: boolean }>`
   gap: 2.2rem;
   ${({ $scroll }) =>
     $scroll ? "transform: translateX(0);" : "transform: translateX(-29.7rem);"};
+  transition: transform 0.5s;
 `;
 
 const PagingBtn = styled.div`

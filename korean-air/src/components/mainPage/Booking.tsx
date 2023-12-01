@@ -24,7 +24,6 @@ interface Text {
 
 export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
-
   const from = useRecoilValue<string>(fromState);
   const to = useRecoilValue<string>(toState);
 
