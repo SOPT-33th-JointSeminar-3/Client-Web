@@ -10,7 +10,6 @@ export interface PostItem {
 export const Notice = () => {
   const [response, setResponse] = useState<PostItem[]>([]);
   getHomePosts(setResponse);
-  console.log(response);
   return (
     <NoticeBox>
       <Header>
