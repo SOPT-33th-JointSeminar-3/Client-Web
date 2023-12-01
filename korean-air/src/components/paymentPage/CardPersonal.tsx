@@ -24,11 +24,13 @@ export interface CardPersonalProps {
       birth: string;
     }>
   >;
+  setConfirm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CardPersonal: React.FC<CardPersonalProps> = ({
   userData,
   setUserData,
+  setConfirm,
 }) => {
   const handleUserData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -170,7 +172,12 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
             </div>
             <span>국적 정보를 회원정보에 업데이트 하는 것을 동의합니다.</span>
           </AgreeLayout>
-          <ConfirmBtn type="button" $agree={agree} disabled={!agree}>
+          <ConfirmBtn
+            type="button"
+            $agree={agree}
+            disabled={!agree}
+            onClick={() => setConfirm(true)}
+          >
             <ConfirmLetter>확인</ConfirmLetter>
           </ConfirmBtn>
           <ArrowUpContainer>

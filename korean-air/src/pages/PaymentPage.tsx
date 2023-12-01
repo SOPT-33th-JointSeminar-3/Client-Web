@@ -15,14 +15,20 @@ const PaymentPage = () => {
     birth: "",
   });
 
+  const [confirm, setConfirm] = useState(false);
+
   return (
     <Wrapper>
       <Header />
       <PaymentInfo />
       <Journey />
       <UserInfo />
-      <CardPersonal userData={userData} setUserData={setUserData} />
-      <Footer userData={userData} setUserData={setUserData} />
+      <CardPersonal
+        userData={userData}
+        setUserData={setUserData}
+        setConfirm={setConfirm}
+      />
+      <Footer userData={userData} setUserData={setUserData} confirm={confirm} />
     </Wrapper>
   );
 };

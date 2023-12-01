@@ -4,7 +4,11 @@ import { CardPersonalProps } from "../paymentPage/CardPersonal";
 import { getReserve } from "../../api/getReserve";
 import { useNavigate } from "react-router-dom";
 
-const Footer: React.FC<CardPersonalProps> = ({ userData }) => {
+interface FooterProps extends CardPersonalProps {
+  confirm: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ userData, confirm }) => {
   const navigate = useNavigate();
   const handleReservation = async () => {
     try {
@@ -28,7 +32,12 @@ const Footer: React.FC<CardPersonalProps> = ({ userData }) => {
         <PaymentDetail>58,300원</PaymentDetail>
       </FinalPayment>
 
-      <FinalPayBtn onClick={handleReservation} type="button">
+      <FinalPayBtn
+        onClick={handleReservation}
+        type="button"
+        $confirm={confirm}
+        disabled={!confirm}
+      >
         <Reservation>예약하기</Reservation>
       </FinalPayBtn>
     </Wrapper>
@@ -63,15 +72,16 @@ const PaymentDetail = styled.p`
   ${theme.fonts.body_extrabold_14}
 `;
 
-const FinalPayBtn = styled.button`
+const FinalPayBtn = styled.button<{ $confirm: boolean }>`
   display: flex;
   padding: 1.4rem 13.9rem;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   border-radius: 1rem;
-  border: 0.1rem solid ${theme.colors.navy};
-  background: ${theme.colors.navy};
+  border: none;
+  background: ${({ $confirm, theme }) =>
+    $confirm ? theme.colors.navy : theme.colors.grey};
 `;
 
 const Reservation = styled.p`
