@@ -6,7 +6,7 @@ import styled from "styled-components";
 import FlightCardGroup from "../components/flightInfoPage/FlightCardGroup";
 import Footer from "../components/flightInfoPage/Footer";
 import { getFlightInfo } from "../api/getFlightInfo";
-import { FlightInfoItem, SeatsType } from "../types/types";
+import { FlightInfoItem } from "../types/types";
 import Navbar from "../components/flightInfoPage/Navbar";
 
 const FlightInfoPage = () => {
@@ -25,9 +25,6 @@ const FlightInfoPage = () => {
 
     fetchData();
   }, []);
-
-  console.log("data", data);
-  console.log("selectedPrice", selectedPrice);
 
   return (
     <Wrapper>

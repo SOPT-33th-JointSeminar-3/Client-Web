@@ -89,25 +89,6 @@ const LowestContainer: React.FC<FlightCardProp> = ({ handleBtnClick }) => {
           </div>
         </article>
       </Wrapper>
-
-      {/* <ClickSection className="hidden">
-        <div>
-          <section>
-            <IcChangeFlight />
-            <CommonSeat>변경 불가</CommonSeat>
-          </section>
-          <section>
-            <IcRefundFlight />
-            <CommonSeat>환불 7,000원</CommonSeat>
-          </section>
-        </div>
-        <div>
-          <section>
-            <IcShortInfoFlight />
-            <CommonSeat>좌석 승급 불가/ (결제 페이지에서 확인 가능)</CommonSeat>
-          </section>
-        </div>
-      </ClickSection> */}
     </>
   );
 };

@@ -15,13 +15,6 @@ export interface selectedSeatProps {
   seatId: number;
 }
 
-// TODO 왜 여기서
-// interface CardGroupProps {
-//   data: FlightInfoData;
-// }
-// 이렇게 하면 배열이 아니라고 오류가 뜨지? 두 가지 다 배열 아닌가?
-// 챌린징 요소에 적어 놓음.
-
 const FlightCardGroup: React.FC<CardGroupProps> = ({
   data,
   setSelectedPrice,
