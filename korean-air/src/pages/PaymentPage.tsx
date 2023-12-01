@@ -41,4 +41,6 @@ export default PaymentPage;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
+
+  padding-bottom: 11.4rem;
 `;
