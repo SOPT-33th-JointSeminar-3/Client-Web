@@ -5,7 +5,6 @@ import UserInfo from "../components/paymentPage/UserInfo";
 import CardPersonal from "../components/paymentPage/CardPersonal";
 import Footer from "../components/@common/Footer";
 import styled from "styled-components";
-import { getReserve } from "../api/getReserve";
 import Navbar from "../components/paymentPage/Navbar";
 import { useState } from "react";
 
