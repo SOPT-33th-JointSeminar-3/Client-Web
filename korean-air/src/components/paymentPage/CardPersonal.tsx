@@ -40,10 +40,6 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
   };
 
   const [agree, setAgree] = useState(false);
-
-  const handleAgreeChange = () => {
-    setAgree(!agree);
-  };
   return (
     <Layout>
       <InsideLayout>
@@ -165,12 +161,16 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
             </div>
           </GrayDiv>
           <AgreeLayout>
-            <div onClick={handleAgreeChange}>
+            <div
+              onClick={() => {
+                setAgree(!agree);
+              }}
+            >
               {agree ? <PaymentCheck /> : <PaymentCheckboxGrey />}
             </div>
             <span>국적 정보를 회원정보에 업데이트 하는 것을 동의합니다.</span>
           </AgreeLayout>
-          <ConfirmBtn type="button">
+          <ConfirmBtn type="button" $agree={agree} disabled={!agree}>
             <ConfirmLetter>확인</ConfirmLetter>
           </ConfirmBtn>
           <ArrowUpContainer>
@@ -309,7 +309,7 @@ const AgreeLayout = styled.section`
   }
 `;
 
-const ConfirmBtn = styled.button`
+const ConfirmBtn = styled.button<{ $agree: boolean }>`
   display: flex;
   width: 10.8rem;
   height: 3.8rem;
@@ -321,8 +321,9 @@ const ConfirmBtn = styled.button`
   gap: 1rem;
   flex-shrink: 0;
   border-radius: 0.9rem;
-  border: 0.1rem solid ${theme.colors.navy};
-  background: ${theme.colors.navy};
+  border: none;
+  background: ${({ $agree, theme }) =>
+    $agree ? theme.colors.navy : theme.colors.grey};
 `;
 
 const ConfirmLetter = styled.p`
