@@ -6,12 +6,16 @@ const CalContainer = ({
   info,
   selectedDate,
   setSelectedDate,
+  isClicked,
+  setClicked,
 }: {
   info: calInfo;
   selectedDate: string[];
   setSelectedDate: React.Dispatch<React.SetStateAction<string[]>>;
+  isClicked: number[];
+  setClicked: React.Dispatch<React.SetStateAction<number[]>>;
 }) => {
-  const [isClicked, setClicked] = useState<number[]>([]);
+  //const [isClicked, setClicked] = useState<number[]>([]);
   const LIST = new Array(42).fill(0);
   const { year, month, start, length, holiday, data } = info;
 

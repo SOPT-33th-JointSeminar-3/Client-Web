@@ -10,6 +10,7 @@ const CalendarPage = () => {
     "가는 날",
     "오는 날",
   ]);
+  const [isClicked, setClicked] = useState<number[]>([]);
 
   return (
     <>
@@ -22,6 +23,8 @@ const CalendarPage = () => {
               info={cal}
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
+              isClicked={isClicked}
+              setClicked={setClicked}
             />
           );
         })}
