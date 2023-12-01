@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { calInfo } from "../../constants/constant";
 import { useState } from "react";
+import { clickedInfo } from "../../pages/CalendarPage";
 
 const CalContainer = ({
   info,
@@ -12,8 +13,8 @@ const CalContainer = ({
   info: calInfo;
   selectedDate: string[];
   setSelectedDate: React.Dispatch<React.SetStateAction<string[]>>;
-  isClicked: number[];
-  setClicked: React.Dispatch<React.SetStateAction<number[]>>;
+  isClicked: clickedInfo[];
+  setClicked: React.Dispatch<React.SetStateAction<clickedInfo[]>>;
 }) => {
   //const [isClicked, setClicked] = useState<number[]>([]);
   const LIST = new Array(42).fill(0);
@@ -22,8 +23,10 @@ const CalContainer = ({
   function handleDate(idx: number) {
     // 1. isClicked 배열 업데이트
     const tempArr = isClicked.length === 2 ? [] : [...isClicked];
-    tempArr.push(idx);
+    tempArr.push({ month: month, index: idx });
     setClicked(tempArr);
+    console.log(tempArr);
+    console.log(isClicked.includes({ month: month, index: idx }));
 
     // 2. selectedDate 업데이트
     // 만약 둘다 값 지정 안되어있으면 -> [0] 입력
@@ -56,23 +59,37 @@ const CalContainer = ({
             <Item key={idx}>
               <Date
                 $isHoliday={holiday.includes(idx - start + 1)}
-                $isClicked={isClicked.includes(idx)}
+                $isClicked={isClicked.some(
+                  (el) => el.month === month && el.index === idx,
+                )}
                 onClick={() => handleDate(idx)}
               >
                 {idx - start < 0 || idx - start + 1 > length
                   ? ""
                   : idx - start + 1}
-                <SelectedDate $isClicked={isClicked.includes(idx)} />
+                <SelectedDate
+                  $isClicked={isClicked.some(
+                    (el) => el.month === month && el.index === idx,
+                  )}
+                />
                 {isClicked.length === 2 && (
                   <SelectedRange
                     $isSelected={
-                      idx === isClicked[0]
+                      month === isClicked[0].month && idx === isClicked[0].index
                         ? "dep"
-                        : idx === isClicked[1]
+                        : month === isClicked[1].month &&
+                            idx === isClicked[1].index
                           ? "arv"
                           : ""
                     }
-                    $isIncluded={idx > isClicked[0] && idx < isClicked[1]}
+                    $isIncluded={
+                      (month > isClicked[0].month ||
+                        (month === isClicked[0].month &&
+                          idx > isClicked[0].index)) &&
+                      (month < isClicked[1].month ||
+                        (month === isClicked[1].month &&
+                          idx < isClicked[1].index))
+                    }
                   />
                 )}
               </Date>
