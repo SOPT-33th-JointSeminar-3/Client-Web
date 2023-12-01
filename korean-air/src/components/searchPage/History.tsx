@@ -18,8 +18,8 @@ const History = () => {
   const setTo = useSetRecoilState<string>(toState);
 
   const handleClick = () => {
-    setArrive("ICN");
-    setDeparture("CJU");
+    setArrive("CJU");
+    setDeparture("ICN");
     setFrom("서울/인천");
     setTo("제주");
     navigate("/");

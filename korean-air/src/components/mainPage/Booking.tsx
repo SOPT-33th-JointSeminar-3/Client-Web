@@ -8,7 +8,7 @@ import {
   IcSwapBlue,
 } from "../../assets";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import {
   arriveState,
   departureState,
@@ -24,8 +24,8 @@ interface Text {
 
 export const Booking = ({ state }: { state: string[] }) => {
   const navigate = useNavigate();
-  const from = useRecoilValue<string>(fromState);
-  const to = useRecoilValue<string>(toState);
+  const [from, setFrom] = useRecoilState<string>(fromState);
+  const [to, setTo] = useRecoilState<string>(toState);
 
   const [person, setPerson] = useState(false);
   const [grade, setGrade] = useState(false);
@@ -46,6 +46,10 @@ export const Booking = ({ state }: { state: string[] }) => {
     const copyDeparture = departure;
     setDeparture(arrive);
     setArrive(copyDeparture);
+
+    const copyFrom = from;
+    setFrom(to);
+    setTo(copyFrom);
   };
   return (
     <BookingBox>
