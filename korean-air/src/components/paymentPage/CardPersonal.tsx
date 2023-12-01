@@ -6,8 +6,9 @@ import {
   Ellipse,
   IcCheckPayment,
   PaymentCheck,
+  PaymentCheckboxGrey,
 } from "../../assets";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 export interface CardPersonalProps {
   userData: {
     lastName: string;
@@ -36,6 +37,12 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
 
   const handleGenderChange = (selectedGender: string) => {
     setUserData({ ...userData, gender: selectedGender });
+  };
+
+  const [agree, setAgree] = useState(false);
+
+  const handleAgreeChange = () => {
+    setAgree(!agree);
   };
   return (
     <Layout>
@@ -158,7 +165,9 @@ const CardPersonal: React.FC<CardPersonalProps> = ({
             </div>
           </GrayDiv>
           <AgreeLayout>
-            <PaymentCheck />
+            <div onClick={handleAgreeChange}>
+              {agree ? <PaymentCheck /> : <PaymentCheckboxGrey />}
+            </div>
             <span>국적 정보를 회원정보에 업데이트 하는 것을 동의합니다.</span>
           </AgreeLayout>
           <ConfirmBtn type="button">
