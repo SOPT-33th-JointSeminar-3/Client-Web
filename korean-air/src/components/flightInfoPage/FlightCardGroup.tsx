@@ -25,7 +25,7 @@ const FlightCardGroup: React.FC<CardGroupProps> = ({
   });
 
   return (
-    <>
+    <Wrapper>
       {data.map((flightData, idx) => {
         if (idx === 0) {
           return;
@@ -46,25 +46,30 @@ const FlightCardGroup: React.FC<CardGroupProps> = ({
       <FilterIcon>
         <FlightBtnFilter />
       </FilterIcon>
-    </>
+    </Wrapper>
   );
 };
 
 export default FlightCardGroup;
 
+const Wrapper = styled.section`
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.blue_5};
+`;
+
 const FilterIcon = styled.div`
   display: flex;
-  position: fixed;
-  width: 4.6rem;
-  height: 4.6rem;
-  margin-left: 33.3rem;
-  margin-top: 20rem;
-  z-index: 1;
   justify-content: center;
   align-items: center;
-  float: right;
-  flex-shrink: 0;
-  border-radius: 5.5rem;
+
+  position: fixed;
+  bottom: 13rem;
+  right: 1.6rem;
+
+  width: 4.6rem;
+  height: 4.6rem;
+  z-index: 3;
+  border-radius: 2.3rem;
   background: ${theme.colors.skyBlue};
   box-shadow: 0rem 0rem 1rem 0rem rgba(107, 117, 136, 0.2);
 `;
