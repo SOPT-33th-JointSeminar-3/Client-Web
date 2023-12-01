@@ -100,7 +100,9 @@ const FlightCard: React.FC<FlightCardProp> = ({
         ))}
       </BtnContainer>
       {/* 특가운임 || 할인운임 || 정산운임 클릭 시 출력되는 곳 */}
-      <ClickSection>
+      <ClickSection
+        $isSelected={selectedSeat.flightId === id && selectedSeat.seatId !== -1}
+      >
         <div>
           <TextContainer>
             <IcChangeFlight />
@@ -252,8 +254,8 @@ const CommonSeat = styled.p`
   }
 `;
 
-const ClickSection = styled.div`
-  display: flex;
+const ClickSection = styled.div<{ $isSelected: boolean }>`
+  display: ${({ $isSelected }) => ($isSelected ? "flex" : "none")};
   flex-direction: column;
   gap: 1rem;
   align-items: center;
