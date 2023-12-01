@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import {
@@ -10,13 +10,31 @@ import {
   LogoJinair,
 } from "../../assets";
 import { FlightInfoItem } from "../../types/types";
+import { selectedSeatProps } from "./FlightCardGroup";
 
 export interface FlightCardProp {
+  id: number;
   flightData: FlightInfoItem;
+  selectedSeat: selectedSeatProps;
+  setSelectedSeat: React.Dispatch<React.SetStateAction<selectedSeatProps>>;
+  setSelectedPrice: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const FlightCard: React.FC<FlightCardProp> = ({ flightData }) => {
+const FlightCard: React.FC<FlightCardProp> = ({
+  id,
+  flightData,
+  selectedSeat,
+  setSelectedSeat,
+  setSelectedPrice,
+}) => {
   const flightTime = flightData.durationTime.replace(":", "시간 "); //공백 일부러 준거임
+
+  function handleBtnClick(idx: number) {
+    setSelectedSeat({ flightId: id, seatId: idx });
+
+    const selectedPrice = flightData.seats[idx].price;
+    setSelectedPrice(selectedPrice);
+  }
 
   return (
     <>
@@ -43,12 +61,49 @@ const FlightCard: React.FC<FlightCardProp> = ({ flightData }) => {
             </JinairInfo>
           </section>
           <div>
-            {flightData.seats.map((seatData) => (
-              <BtnGroup key={seatData.flightId}>
-                <BtnLayout>
-                  <CommonTitle>{seatData.seatClass}</CommonTitle>
-                  <CommonPrice>{seatData.price.toLocaleString()}</CommonPrice>
-                  <CommonSeat>7석</CommonSeat>
+            {flightData.seats.map((seatData, idx) => (
+              <BtnGroup
+                key={seatData.seatId}
+                onClick={() => handleBtnClick(idx)}
+              >
+                <BtnLayout
+                  className={`${
+                    selectedSeat.flightId === id && selectedSeat.seatId === idx
+                      ? "click"
+                      : ""
+                  }`}
+                >
+                  <CommonTitle
+                    className={`${
+                      selectedSeat.flightId === id &&
+                      selectedSeat.seatId === idx
+                        ? "click"
+                        : ""
+                    }`}
+                  >
+                    {seatData.seatClass}
+                  </CommonTitle>
+                  <CommonPrice
+                    className={`${
+                      selectedSeat.flightId === id &&
+                      selectedSeat.seatId === idx
+                        ? "click"
+                        : ""
+                    }`}
+                  >
+                    {" "}
+                    {seatData.price.toLocaleString()}
+                  </CommonPrice>
+                  <CommonSeat
+                    className={`${
+                      selectedSeat.flightId === id &&
+                      selectedSeat.seatId === idx
+                        ? "click"
+                        : ""
+                    }`}
+                  >
+                    7석
+                  </CommonSeat>
                 </BtnLayout>
               </BtnGroup>
             ))}

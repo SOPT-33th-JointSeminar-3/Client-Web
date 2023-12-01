@@ -3,9 +3,16 @@ import FlightCard from "./FlightCard";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import { FlightInfoItem } from "../../types/types";
+import { FlightBtnFilter } from "../../assets";
 
-interface CardGroupProps {
+export interface CardGroupProps {
   data: FlightInfoItem[];
+  setSelectedPrice: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export interface selectedSeatProps {
+  flightId: number;
+  seatId: number;
 }
 
 // TODO 왜 여기서
@@ -15,58 +22,38 @@ interface CardGroupProps {
 // 이렇게 하면 배열이 아니라고 오류가 뜨지? 두 가지 다 배열 아닌가?
 // 챌린징 요소에 적어 놓음.
 
-const FlightCardGroup: React.FC<CardGroupProps> = ({ data }) => {
+const FlightCardGroup: React.FC<CardGroupProps> = ({
+  data,
+  setSelectedPrice,
+}) => {
+  const [selectedSeat, setSelectedSeat] = useState<selectedSeatProps>({
+    flightId: -1,
+    seatId: -1,
+  });
+
   return (
     <>
       {data.map((flightData, idx) => {
         if (idx === 0) {
           return;
         } else {
-          return <FlightCard key={flightData.id} flightData={flightData} />;
+          return (
+            <FlightCard
+              key={flightData.id}
+              id={idx}
+              flightData={flightData}
+              selectedSeat={selectedSeat}
+              setSelectedSeat={setSelectedSeat}
+              setSelectedPrice={setSelectedPrice}
+            />
+          );
         }
       })}
+
+      <FilterIcon>
+        <FlightBtnFilter />
+      </FilterIcon>
     </>
-    // <>
-    //   <FlightCard
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <FlightCard
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <FlightCard
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <LowestContainer
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <FlightCard
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <LowestContainer
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <FlightCard
-    //     click={click}
-    //     setClick={setClick}
-    //     handleBtnClick={handleBtnClick}
-    //   />
-    //   <FilterIcon>
-    //     <FlightBtnFilter />
-    //   </FilterIcon>
-    //   ;
-    // </>
   );
 };
 
