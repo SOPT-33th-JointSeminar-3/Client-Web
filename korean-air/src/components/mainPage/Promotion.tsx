@@ -32,6 +32,7 @@ const PromotionCardBox = styled.div<{ $scroll: boolean }>`
   gap: 2.2rem;
   ${({ $scroll }) =>
     $scroll ? "transform: translateX(0);" : "transform: translateX(-29.7rem);"};
+  transition: transform 0.5s;
 `;
 
 const PagingBtn = styled.div`
@@ -46,6 +47,7 @@ const LeftBtn = styled(PagingBtn)`
   z-index: 1;
   display: flex;
   justify-content: flex-start;
+  cursor: pointer;
 `;
 
 const RightBtn = styled(PagingBtn)`
@@ -53,4 +55,5 @@ const RightBtn = styled(PagingBtn)`
   z-index: 1;
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 `;
