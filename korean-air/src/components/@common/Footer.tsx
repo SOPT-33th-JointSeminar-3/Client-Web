@@ -80,7 +80,8 @@ const FinalPayBtn = styled.button<{ $confirm: boolean }>`
   gap: 1rem;
   border-radius: 1rem;
   border: none;
-  background: ${({ $confirm, theme }) => $confirm && theme.colors.navy};
+  background: ${({ $confirm, theme }) =>
+    $confirm ? theme.colors.navy : theme.colors.grey_6};
 `;
 
 const Reservation = styled.p`

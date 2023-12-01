@@ -334,7 +334,8 @@ const ConfirmBtn = styled.button<{ $agree: boolean }>`
   flex-shrink: 0;
   border-radius: 0.9rem;
   border: none;
-  background: ${({ $agree, theme }) => $agree && theme.colors.navy};
+  background: ${({ $agree, theme }) =>
+    $agree ? theme.colors.navy : theme.colors.grey_6};
 `;
 
 const ConfirmLetter = styled.p`
