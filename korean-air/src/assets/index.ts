@@ -49,6 +49,7 @@ import IcShortInfoFlight from "./icon/ic_shortinfo_flgiht.svg?react";
 import IcChangeFlight from "./icon/ic_change_flight.svg?react";
 import ChevronRight from "./icon/chevron-right.svg?react";
 import FlightBtnFilter from "./icon/flight_btn_filter.svg?react";
+import PaymentCheckboxGrey from "./icon/payment_checkbox_grey.svg?react";
 export {
   IcCalendar,
   IcHelp,
@@ -101,4 +102,5 @@ export {
   IcChangeFlight,
   ChevronRight,
   FlightBtnFilter,
+  PaymentCheckboxGrey,
 };

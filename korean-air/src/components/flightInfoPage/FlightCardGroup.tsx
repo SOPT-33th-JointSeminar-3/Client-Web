@@ -1,79 +1,82 @@
 import { useState } from "react";
 import FlightCard from "./FlightCard";
-import LowestContainer from "./LowestContainer";
-import { FlightBtnFilter } from "../../assets";
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { FlightInfoItem } from "../../types/types";
+import { FlightBtnFilter } from "../../assets";
 
-const FlightCardGroup = () => {
-  const [click, setClick] = useState<boolean>(false);
+export interface CardGroupProps {
+  data: FlightInfoItem[];
+  setSelectedPrice: React.Dispatch<React.SetStateAction<number>>;
+}
 
-  function handleBtnClick() {
-    console.log("클릭!!");
-    setClick(!click);
-    console.log(!click);
-  }
+export interface selectedSeatProps {
+  flightId: number;
+  seatId: number;
+}
+
+const FlightCardGroup: React.FC<CardGroupProps> = ({
+  data,
+  setSelectedPrice,
+}) => {
+  const [selectedSeat, setSelectedSeat] = useState<selectedSeatProps>({
+    flightId: -1,
+    seatId: -1,
+  });
 
   return (
-    <>
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <LowestContainer
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <LowestContainer
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
-      <FlightCard
-        click={click}
-        setClick={setClick}
-        handleBtnClick={handleBtnClick}
-      />
+    <Wrapper>
+      {data.map((flightData, idx) => {
+        if (idx === 0) {
+          return;
+        } else {
+          return (
+            <FlightCard
+              key={flightData.id}
+              id={idx}
+              flightData={flightData}
+              selectedSeat={selectedSeat}
+              setSelectedSeat={setSelectedSeat}
+              setSelectedPrice={setSelectedPrice}
+            />
+          );
+        }
+      })}
+
       <FilterIcon>
         <FlightBtnFilter />
       </FilterIcon>
-      ;
-    </>
+    </Wrapper>
   );
 };
 
 export default FlightCardGroup;
 
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 11.4rem;
+
+  background-color: ${({ theme }) => theme.colors.blue_5};
+`;
+
 const FilterIcon = styled.div`
   display: flex;
-  position: fixed;
-  width: 4.6rem;
-  height: 4.6rem;
-  margin-left: 33.3rem;
-  margin-top: 20rem;
-  z-index: 1;
   justify-content: center;
   align-items: center;
-  float: right;
-  flex-shrink: 0;
-  border-radius: 5.5rem;
+
+  position: fixed;
+  bottom: 13rem;
+  right: 1.6rem;
+
+  width: 4.6rem;
+  height: 4.6rem;
+  z-index: 3;
+  border-radius: 2.3rem;
   background: ${theme.colors.skyBlue};
   box-shadow: 0rem 0rem 1rem 0rem rgba(107, 117, 136, 0.2);
 `;

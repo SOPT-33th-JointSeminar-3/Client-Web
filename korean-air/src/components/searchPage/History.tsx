@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { IcCloseSmallRecent } from "../../assets";
 import { useSetRecoilState } from "recoil";
-import { arriveState, departureState } from "../../recoil/atom";
+import {
+  arriveState,
+  departureState,
+  fromState,
+  toState,
+} from "../../recoil/atom";
 import { useNavigate } from "react-router-dom";
 
 const History = () => {
@@ -9,9 +14,14 @@ const History = () => {
   const setArrive = useSetRecoilState<string>(arriveState);
   const setDeparture = useSetRecoilState<string>(departureState);
 
+  const setFrom = useSetRecoilState<string>(fromState);
+  const setTo = useSetRecoilState<string>(toState);
+
   const handleClick = () => {
-    setArrive("ICN");
-    setDeparture("CJU");
+    setArrive("CJU");
+    setDeparture("ICN");
+    setFrom("서울/인천");
+    setTo("제주");
     navigate("/");
   };
   return (
@@ -36,6 +46,7 @@ const HistoryCard = styled.div`
   padding: 0.3rem 0 0.3rem 1.2rem;
   border-radius: 1rem;
   border: 0.1rem solid ${({ theme }) => theme.colors.grey_5};
+  cursor: pointer;
 `;
 const Text = styled.div`
   display: flex;

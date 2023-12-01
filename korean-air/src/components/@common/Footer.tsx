@@ -1,7 +1,30 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { CardPersonalProps } from "../paymentPage/CardPersonal";
+import { getReserve } from "../../api/getReserve";
+import { useNavigate } from "react-router-dom";
 
-const Footer = () => {
+interface FooterProps extends CardPersonalProps {
+  confirm: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ userData, confirm }) => {
+  const navigate = useNavigate();
+  const handleReservation = async () => {
+    try {
+      const postData = await getReserve(
+        userData.firstName,
+        userData.lastName,
+        userData.gender,
+        userData.birth,
+      );
+      console.log(postData);
+    } catch (error) {
+      console.log(error);
+    }
+    navigate("/finish");
+  };
+
   return (
     <Wrapper>
       <FinalPayment>
@@ -9,7 +32,12 @@ const Footer = () => {
         <PaymentDetail>58,300원</PaymentDetail>
       </FinalPayment>
 
-      <FinalPayBtn type="button">
+      <FinalPayBtn
+        onClick={handleReservation}
+        type="button"
+        $confirm={confirm}
+        disabled={!confirm}
+      >
         <Reservation>예약하기</Reservation>
       </FinalPayBtn>
     </Wrapper>
@@ -22,6 +50,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   height: 11.4rem;
+  width: 100%;
   padding: 2rem;
   position: fixed;
   bottom: 0;
@@ -31,7 +60,7 @@ const Wrapper = styled.section`
   background-color: ${theme.colors.white};
 `;
 
-const FinalPayment = styled.p`
+const FinalPayment = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${theme.colors.black};
@@ -44,15 +73,16 @@ const PaymentDetail = styled.p`
   ${theme.fonts.body_extrabold_14}
 `;
 
-const FinalPayBtn = styled.button`
+const FinalPayBtn = styled.button<{ $confirm: boolean }>`
   display: flex;
   padding: 1.4rem 13.9rem;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   border-radius: 1rem;
-  border: 0.1rem solid ${theme.colors.navy};
-  background: ${theme.colors.navy};
+  border: none;
+  background: ${({ $confirm, theme }) =>
+    $confirm ? theme.colors.navy : theme.colors.grey_6};
 `;
 
 const Reservation = styled.p`

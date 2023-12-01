@@ -1,15 +1,30 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
+import { useNavigate } from "react-router-dom";
 
-const Footer = () => {
+export interface FooterProp {
+  selectedPrice: number;
+}
+
+const Footer: React.FC<FooterProp> = ({ selectedPrice }) => {
+  const isSelected = selectedPrice > 0;
+  const navigate = useNavigate();
+
+  function handleBtnClick() {
+    isSelected && navigate("/payment");
+  }
   return (
     <Wrapper>
       <FinalPayment>
         총액
-        <PaymentDetail>0원</PaymentDetail>
+        <PaymentDetail>{selectedPrice.toLocaleString()}원</PaymentDetail>
       </FinalPayment>
 
-      <FinalPayBtn type="button">
+      <FinalPayBtn
+        type="button"
+        onClick={handleBtnClick}
+        disabled={!isSelected}
+      >
         <Reservation>다음 여정</Reservation>
       </FinalPayBtn>
     </Wrapper>
@@ -21,7 +36,7 @@ export default Footer;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  /* width: 70%; */
+  width: 100%;
   height: 11.4rem;
 
   padding: 2rem;
@@ -34,7 +49,7 @@ const Wrapper = styled.section`
   background-color: ${theme.colors.white};
 `;
 
-const FinalPayment = styled.p`
+const FinalPayment = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${theme.colors.black};
@@ -56,6 +71,14 @@ const FinalPayBtn = styled.button`
   border-radius: 1rem;
   border: 0.1rem solid ${theme.colors.navy};
   background: ${theme.colors.navy};
+  cursor: pointer;
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      background-color: ${theme.colors.gray};
+      border: none;
+    `};
 `;
 
 const Reservation = styled.p`
