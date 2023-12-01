@@ -50,6 +50,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   height: 11.4rem;
+  width: 100%;
   padding: 2rem;
   position: fixed;
   bottom: 0;
