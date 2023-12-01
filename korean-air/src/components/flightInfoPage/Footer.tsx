@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProp> = ({ selectedPrice }) => {
   const navigate = useNavigate();
 
   function handleBtnClick() {
-    isSelected && navigate("/finish");
+    isSelected && navigate("/payment");
   }
   return (
     <Wrapper>
@@ -36,6 +36,7 @@ export default Footer;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 11.4rem;
 
   padding: 2rem;
@@ -48,7 +49,7 @@ const Wrapper = styled.section`
   background-color: ${theme.colors.white};
 `;
 
-const FinalPayment = styled.p`
+const FinalPayment = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${theme.colors.black};
@@ -75,7 +76,8 @@ const FinalPayBtn = styled.button`
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${theme.colors.grey_2};
+      background-color: ${theme.colors.gray};
+      border: none;
     `};
 `;
 
