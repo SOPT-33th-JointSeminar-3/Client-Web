@@ -22,7 +22,10 @@ const Navbar = () => {
 export default Navbar;
 
 const Wrapper = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  gap: 0.6rem;
+
   width: 100%;
   height: 2rem;
 
@@ -31,10 +34,7 @@ const Wrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 5rem;
-    height: 2rem;
     border-bottom: solid 0.2rem ${theme.colors.navy};
-    margin-right: 1rem;
   }
 `;
 
@@ -53,10 +53,7 @@ const CurrentLookDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 26.4rem;
-  height: 2rem;
   border-bottom: solid 0.2rem ${theme.colors.navy};
-  margin-right: 1rem;
 `;
 
 const UnProgressNav = styled.div`
@@ -64,7 +61,5 @@ const UnProgressNav = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 2rem;
   border-bottom: solid 0.2rem ${theme.colors.grey_4};
 `;
