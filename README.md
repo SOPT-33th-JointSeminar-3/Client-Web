@@ -226,4 +226,7 @@
 
 ## 🎀 시연 영상
 
-[서비스명](영상링크)
+
+https://github.com/SOPT-33th-JointSeminar-3/Client-Web/assets/81505421/459741c9-d492-49d1-9062-748b1d5c81af
+
+
