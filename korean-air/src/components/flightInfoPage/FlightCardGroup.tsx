@@ -59,6 +59,8 @@ const Wrapper = styled.section`
 
   width: 100%;
   padding: 2rem;
+  margin-bottom: 11.4rem;
+
   background-color: ${({ theme }) => theme.colors.blue_5};
 `;
 

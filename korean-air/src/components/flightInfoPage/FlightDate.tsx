@@ -49,8 +49,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 7.4rem;
-  margin-top: 3.5rem;
 
   justify-content: center;
   align-items: center;
@@ -110,7 +108,7 @@ const FlightSeat = styled.section`
   flex-shrink: 0;
 
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
 
   background-color: ${({ theme }) => theme.colors.blue_5};
 `;
