@@ -76,7 +76,8 @@ const FinalPayBtn = styled.button`
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${theme.colors.grey_2};
+      background-color: ${theme.colors.gray};
+      border: none;
     `};
 `;
 
