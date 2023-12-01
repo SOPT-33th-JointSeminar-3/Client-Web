@@ -25,8 +25,6 @@ const CalContainer = ({
     const tempArr = isClicked.length === 2 ? [] : [...isClicked];
     tempArr.push({ month: month, index: idx });
     setClicked(tempArr);
-    console.log(tempArr);
-    console.log(isClicked.includes({ month: month, index: idx }));
 
     // 2. selectedDate 업데이트
     // 만약 둘다 값 지정 안되어있으면 -> [0] 입력
@@ -86,12 +84,16 @@ const CalContainer = ({
                             : ""
                       }
                       $isIncluded={
-                        (month > isClicked[0].month ||
-                          (month === isClicked[0].month &&
-                            idx > isClicked[0].index)) &&
-                        (month < isClicked[1].month ||
-                          (month === isClicked[1].month &&
-                            idx < isClicked[1].index))
+                        isClicked[0].month === 12 && isClicked[1].month !== 12
+                          ? (month === 12 && idx > isClicked[0].index) ||
+                            (month === isClicked[1].month &&
+                              idx < isClicked[1].index)
+                          : (month > isClicked[0].month ||
+                              (month === isClicked[0].month &&
+                                idx > isClicked[0].index)) &&
+                            (month < isClicked[1].month ||
+                              (month === isClicked[1].month &&
+                                idx < isClicked[1].index))
                       }
                     />
                   )}
