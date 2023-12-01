@@ -139,7 +139,7 @@ const CardPersonal: React.FC<FooterProps> = ({
             <div>
               <GrayTitle>
                 <div>
-                  <p>생년월일(YYYY.MM.DD)</p>
+                  <p>생년월일(YYYY-MM-DD)</p>
                   <Ellipse />
                 </div>
                 <input name="birth" onChange={handleUserData} />

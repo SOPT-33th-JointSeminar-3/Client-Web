@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { IcCheckFinish, IcCloseSmall } from "../assets";
+import { useNavigate } from "react-router-dom";
 
 const FinishPage = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
-      <header>
+      <header
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <IcCloseSmall />
       </header>
       <Content>
