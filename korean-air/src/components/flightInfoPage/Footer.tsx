@@ -36,6 +36,7 @@ export default Footer;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 11.4rem;
 
   padding: 2rem;
