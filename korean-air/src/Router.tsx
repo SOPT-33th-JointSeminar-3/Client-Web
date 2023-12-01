@@ -5,10 +5,12 @@ import PaymentPage from "./pages/PaymentPage";
 import CalendarPage from "./pages/CalendarPage";
 import SearchPage from "./pages/SearchPage";
 import FlightInfoPage from "./pages/FlightInfoPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/finish" element={<FinishPage />} />
