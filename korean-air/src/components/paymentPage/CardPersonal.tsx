@@ -5,6 +5,7 @@ import {
   ChevronDown,
   Ellipse,
   IcCheckPayment,
+  IcUpPayment,
   PaymentCheck,
   PaymentCheckboxGrey,
 } from "../../assets";
@@ -53,6 +54,10 @@ const CardPersonal: React.FC<FooterProps> = ({
   return (
     <Layout>
       <InsideLayout>
+        <Header>
+          <span>성인1</span>
+          <IcUpPayment />
+        </Header>
         <div>
           <GrayDiv>
             <div>
@@ -91,6 +96,12 @@ const CardPersonal: React.FC<FooterProps> = ({
             </div>
           </GrayDiv>
           <CommonLayout>
+            <GrayTitle>
+              <div>
+                <p>성별</p>
+                <Ellipse />
+              </div>
+            </GrayTitle>
             <GenderDiv>
               <GenderInsideLayout
                 type="radio"
@@ -128,7 +139,7 @@ const CardPersonal: React.FC<FooterProps> = ({
             <div>
               <GrayTitle>
                 <div>
-                  <p>생년월일(YYYY.MM.DD)</p>
+                  <p>생년월일(YYYY-MM-DD)</p>
                   <Ellipse />
                 </div>
                 <input name="birth" onChange={handleUserData} />
@@ -178,14 +189,16 @@ const CardPersonal: React.FC<FooterProps> = ({
             </div>
             <span>국적 정보를 회원정보에 업데이트 하는 것을 동의합니다.</span>
           </AgreeLayout>
-          <ConfirmBtn
-            type="button"
-            $agree={agree}
-            disabled={!agree}
-            onClick={() => setConfirm(true)}
-          >
-            <ConfirmLetter>확인</ConfirmLetter>
-          </ConfirmBtn>
+          <BtnContainer>
+            <ConfirmBtn
+              type="button"
+              $agree={agree}
+              disabled={!agree}
+              onClick={() => setConfirm(true)}
+            >
+              <ConfirmLetter>확인</ConfirmLetter>
+            </ConfirmBtn>
+          </BtnContainer>
           <ArrowUpContainer>
             <ArrowUp />
           </ArrowUpContainer>
@@ -216,12 +229,24 @@ const InsideLayout = styled.div`
   background-color: ${theme.colors.white};
   border-radius: 1rem;
 
-  & > div {
+  & > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     border: 0.1rem solid ${theme.colors.grey_4};
-    border-radius: 1rem;
+    border-radius: 0rem 0rem 1rem 1rem;
   }
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1.9rem;
+  background-color: ${({ theme }) => theme.colors.navy};
+  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.fonts.body_extrabold_14};
+
+  border-radius: 1rem 1rem 0 0;
 `;
 
 const CommonBlack = styled.p`
@@ -237,16 +262,14 @@ const GrayDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
   padding: 2rem;
-  gap: 0.4rem;
 
   & > div {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    height: 3.4rem;
+    padding-bottom: 0.5rem;
     border-bottom: 0.1rem solid ${theme.colors.black};
   }
 `;
@@ -259,7 +282,7 @@ const GenderLabel = styled.label<{ $isSelected: boolean }>`
   justify-content: space-between;
   padding: 2rem;
   align-items: center;
-  width: 14.6rem;
+  width: 100%;
   height: 100%;
   color: ${({ $isSelected, theme }) =>
     $isSelected ? theme.colors.blue : theme.colors.grey_2};
@@ -274,7 +297,7 @@ const GrayTitle = styled.div`
   flex-direction: column;
   color: ${theme.colors.grey_3};
   ${theme.fonts.body_medium_12};
-  margin-bottom: 2rem;
+  gap: 0.6rem;
   & input {
     border: none;
     outline: none;
@@ -290,11 +313,9 @@ const GrayTitle = styled.div`
 
 const CommonLayout = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-  height: 7.5rem;
-  flex-shrink: 0;
-  margin: 1rem;
+  align-items: start;
   padding: 2rem;
 `;
 
@@ -302,7 +323,7 @@ const GenderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 2rem;
+  margin-top: 2rem;
   gap: 1rem;
   height: 4.4rem;
 `;
@@ -321,6 +342,11 @@ const AgreeLayout = styled.section`
   }
 `;
 
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  width: 100%;
+`;
 const ConfirmBtn = styled.button<{ $agree: boolean }>`
   display: flex;
   width: 10.8rem;
@@ -328,7 +354,7 @@ const ConfirmBtn = styled.button<{ $agree: boolean }>`
   padding: 1rem;
   justify-content: center;
   align-items: center;
-  margin-left: 20rem;
+  margin: 2.5rem 2rem;
   margin-top: 2.5rem;
   gap: 1rem;
   flex-shrink: 0;
@@ -347,11 +373,13 @@ const ArrowUpContainer = styled.div`
   display: flex;
   width: 4.6rem;
   height: 4.6rem;
-  position: relative;
+  position: fixed;
+  bottom: 14.3rem;
+  right: 2rem;
+
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  background-color: pink;
   float: right;
   border-radius: 5.5rem;
   border: 0.1rem solid ${theme.colors.grey_5};
