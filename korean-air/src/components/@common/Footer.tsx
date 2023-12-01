@@ -2,8 +2,10 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 import { CardPersonalProps } from "../paymentPage/CardPersonal";
 import { getReserve } from "../../api/getReserve";
+import { useNavigate } from "react-router-dom";
 
 const Footer: React.FC<CardPersonalProps> = ({ userData }) => {
+  const navigate = useNavigate();
   const handleReservation = async () => {
     try {
       const postData = await getReserve(
@@ -12,11 +14,11 @@ const Footer: React.FC<CardPersonalProps> = ({ userData }) => {
         userData.gender,
         userData.birth,
       );
-
       console.log(postData);
     } catch (error) {
       console.log(error);
     }
+    navigate("/finish");
   };
 
   return (
@@ -26,8 +28,8 @@ const Footer: React.FC<CardPersonalProps> = ({ userData }) => {
         <PaymentDetail>58,300원</PaymentDetail>
       </FinalPayment>
 
-      <FinalPayBtn type="button">
-        <Reservation onClick={handleReservation}>예약하기</Reservation>
+      <FinalPayBtn onClick={handleReservation} type="button">
+        <Reservation>예약하기</Reservation>
       </FinalPayBtn>
     </Wrapper>
   );
