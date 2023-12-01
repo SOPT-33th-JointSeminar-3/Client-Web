@@ -101,6 +101,7 @@ const CardPersonal: React.FC<FooterProps> = ({
               />
               <GenderLabel
                 htmlFor="m"
+                $isSelected={userData.gender === "남자" ? true : false}
                 onClick={() => handleGenderChange("남자")}
               >
                 남자
@@ -115,6 +116,7 @@ const CardPersonal: React.FC<FooterProps> = ({
               />
               <GenderLabel
                 htmlFor="w"
+                $isSelected={userData.gender === "여자" ? true : false}
                 onClick={() => handleGenderChange("여자")}
               >
                 여자
@@ -252,20 +254,19 @@ const GrayDiv = styled.div`
 const GenderInsideLayout = styled.input`
   display: none;
 `;
-const GenderLabel = styled.label`
+const GenderLabel = styled.label<{ $isSelected: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: 2rem;
   align-items: center;
   width: 14.6rem;
   height: 100%;
-  border: 0.1rem solid ${theme.colors.grey_2};
+  color: ${({ $isSelected, theme }) =>
+    $isSelected ? theme.colors.blue : theme.colors.grey_2};
+  border: 0.1rem solid
+    ${({ $isSelected, theme }) =>
+      $isSelected ? theme.colors.blue : theme.colors.grey_2};
   cursor: pointer;
-
-  &:hover {
-    border: 0.1rem solid ${theme.colors.blue};
-    color: ${({ theme }) => theme.colors.blue};
-  }
 `;
 
 const GrayTitle = styled.div`
