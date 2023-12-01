@@ -7,6 +7,7 @@ import CardPersonal from "../components/paymentPage/CardPersonal";
 import Footer from "../components/@common/Footer";
 import styled from "styled-components";
 import { getReserve } from "../api/getReserve";
+import Navbar from "../components/paymentPage/Navbar";
 
 const PaymentPage = () => {
   const [firstName] = useState("정");
@@ -29,6 +30,7 @@ const PaymentPage = () => {
   return (
     <Wrapper>
       <Header />
+      <Navbar />
       <PaymentInfo />
       <Journey />
       <UserInfo />

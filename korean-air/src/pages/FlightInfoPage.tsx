@@ -6,10 +6,12 @@ import styled from "styled-components";
 import FlightCardGroup from "../components/flightInfoPage/FlightCardGroup";
 import Footer from "../components/flightInfoPage/Footer";
 import { getFlightInfo } from "../api/getFlightInfo";
-import { FlightInfoItem } from "../types/types";
+import { FlightInfoItem, SeatsType } from "../types/types";
+import Navbar from "../components/flightInfoPage/Navbar";
 
 const FlightInfoPage = () => {
   const [data, setData] = useState<FlightInfoItem[]>([]); //Todo 챌린징 요소에 적어 놓았음
+  const [selectedPrice, setSelectedPrice] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,14 +27,16 @@ const FlightInfoPage = () => {
   }, []);
 
   console.log("data", data);
+  console.log("selectedPrice", selectedPrice);
 
   return (
     <Wrapper>
       <Header />
+      <Navbar />
       <FlightLayout />
       <FlightDate />
-      <FlightCardGroup data={data} />
-      <Footer />
+      <FlightCardGroup data={data} setSelectedPrice={setSelectedPrice} />
+      <Footer selectedPrice={selectedPrice} />
     </Wrapper>
   );
 };
