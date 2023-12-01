@@ -5,11 +5,16 @@ import styled from "styled-components";
 import { CALENDAR_INFO } from "../constants/constant";
 import { useState } from "react";
 
+export interface clickedInfo {
+  month: number;
+  index: number;
+}
 const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState<string[]>([
     "가는 날",
     "오는 날",
   ]);
+  const [isClicked, setClicked] = useState<clickedInfo[]>([]);
 
   return (
     <>
@@ -22,6 +27,8 @@ const CalendarPage = () => {
               info={cal}
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
+              isClicked={isClicked}
+              setClicked={setClicked}
             />
           );
         })}

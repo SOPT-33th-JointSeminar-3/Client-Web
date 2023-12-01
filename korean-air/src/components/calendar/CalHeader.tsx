@@ -1,10 +1,19 @@
 import styled from "styled-components";
 import { IcCloseSmall, IcRadioEmpty, IcRadioFull } from "../../assets";
+import { useNavigate } from "react-router-dom";
 
 const CalHeader = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
-      <IcCloseSmall />
+      <i
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <IcCloseSmall />
+      </i>
       <Title>날짜 선택</Title>
       <Buttons>
         <Button>
@@ -31,7 +40,7 @@ const Wrapper = styled.header`
   padding: 1.8rem 1.6rem 2.4rem 1.6rem;
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.grey_4};
 
-  & > svg {
+  & > i > svg {
     position: absolute;
     top: 1rem;
     right: 1.6rem;

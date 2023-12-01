@@ -1,24 +1,29 @@
 import styled, { css } from "styled-components";
 import { calInfo } from "../../constants/constant";
 import { useState } from "react";
+import { clickedInfo } from "../../pages/CalendarPage";
 
 const CalContainer = ({
   info,
   selectedDate,
   setSelectedDate,
+  isClicked,
+  setClicked,
 }: {
   info: calInfo;
   selectedDate: string[];
   setSelectedDate: React.Dispatch<React.SetStateAction<string[]>>;
+  isClicked: clickedInfo[];
+  setClicked: React.Dispatch<React.SetStateAction<clickedInfo[]>>;
 }) => {
-  const [isClicked, setClicked] = useState<number[]>([]);
+  //const [isClicked, setClicked] = useState<number[]>([]);
   const LIST = new Array(42).fill(0);
   const { year, month, start, length, holiday, data } = info;
 
   function handleDate(idx: number) {
     // 1. isClicked 배열 업데이트
     const tempArr = isClicked.length === 2 ? [] : [...isClicked];
-    tempArr.push(idx);
+    tempArr.push({ month: month, index: idx });
     setClicked(tempArr);
 
     // 2. selectedDate 업데이트
@@ -52,25 +57,46 @@ const CalContainer = ({
             <Item key={idx}>
               <Date
                 $isHoliday={holiday.includes(idx - start + 1)}
-                $isClicked={isClicked.includes(idx)}
+                $isClicked={isClicked.some(
+                  (el) => el.month === month && el.index === idx,
+                )}
                 onClick={() => handleDate(idx)}
               >
                 {idx - start < 0 || idx - start + 1 > length
                   ? ""
                   : idx - start + 1}
-                <SelectedDate $isClicked={isClicked.includes(idx)} />
-                {isClicked.length === 2 && (
-                  <SelectedRange
-                    $isSelected={
-                      idx === isClicked[0]
-                        ? "dep"
-                        : idx === isClicked[1]
-                          ? "arv"
-                          : ""
-                    }
-                    $isIncluded={idx > isClicked[0] && idx < isClicked[1]}
-                  />
-                )}
+                <SelectedDate
+                  $isClicked={isClicked.some(
+                    (el) => el.month === month && el.index === idx,
+                  )}
+                />
+                {isClicked.length === 2 &&
+                  idx - start >= 0 &&
+                  idx - start + 1 <= length && (
+                    <SelectedRange
+                      $isSelected={
+                        month === isClicked[0].month &&
+                        idx === isClicked[0].index
+                          ? "dep"
+                          : month === isClicked[1].month &&
+                              idx === isClicked[1].index
+                            ? "arv"
+                            : ""
+                      }
+                      $isIncluded={
+                        isClicked[0].month === 12 && isClicked[1].month !== 12
+                          ? (month === 12 && idx > isClicked[0].index) ||
+                            (month === isClicked[1].month &&
+                              idx < isClicked[1].index)
+                          : (month > isClicked[0].month ||
+                              (month === isClicked[0].month &&
+                                idx > isClicked[0].index)) &&
+                            (month < isClicked[1].month ||
+                              (month === isClicked[1].month &&
+                                idx < isClicked[1].index))
+                      }
+                    />
+                  )}
               </Date>
               {data.length === 1 ? (
                 <Price $isColored="">{val !== 0 && `${val}만`}</Price>
