@@ -43,5 +43,7 @@ export default FlightInfoPage;
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  /* padding: 1rem; */
+  width: 100%;
+  max-width: 43rem;
+  position: relative;
 `;

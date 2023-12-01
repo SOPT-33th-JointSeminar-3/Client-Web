@@ -1,9 +1,7 @@
 import { useState } from "react";
 import FlightCard from "./FlightCard";
 import styled from "styled-components";
-import theme from "../../styles/theme";
 import { FlightInfoItem } from "../../types/types";
-import { FlightBtnFilter } from "../../assets";
 
 export interface CardGroupProps {
   data: FlightInfoItem[];
@@ -42,10 +40,6 @@ const FlightCardGroup: React.FC<CardGroupProps> = ({
           );
         }
       })}
-
-      <FilterIcon>
-        <FlightBtnFilter />
-      </FilterIcon>
     </Wrapper>
   );
 };
@@ -57,26 +51,11 @@ const Wrapper = styled.section`
   flex-direction: column;
   gap: 2rem;
 
+  position: relative;
   width: 100%;
+  max-width: 43rem;
   padding: 2rem;
   margin-bottom: 11.4rem;
 
   background-color: ${({ theme }) => theme.colors.blue_5};
-`;
-
-const FilterIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: fixed;
-  bottom: 13rem;
-  right: 1.6rem;
-
-  width: 4.6rem;
-  height: 4.6rem;
-  z-index: 3;
-  border-radius: 2.3rem;
-  background: ${theme.colors.skyBlue};
-  box-shadow: 0rem 0rem 1rem 0rem rgba(107, 117, 136, 0.2);
 `;

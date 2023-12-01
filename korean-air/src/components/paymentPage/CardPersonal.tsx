@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import {
-  ArrowUp,
   ChevronDown,
   Ellipse,
   IcCheckPayment,
@@ -199,9 +198,6 @@ const CardPersonal: React.FC<FooterProps> = ({
               <ConfirmLetter>확인</ConfirmLetter>
             </ConfirmBtn>
           </BtnContainer>
-          <ArrowUpContainer>
-            <ArrowUp />
-          </ArrowUpContainer>
         </div>
         <PhoneLayout>
           <PhoneInfo>연락처 정보</PhoneInfo>
@@ -367,24 +363,6 @@ const ConfirmBtn = styled.button<{ $agree: boolean }>`
 const ConfirmLetter = styled.p`
   color: ${theme.colors.white};
   ${theme.fonts.body_medium_14};
-`;
-
-const ArrowUpContainer = styled.div`
-  display: flex;
-  width: 4.6rem;
-  height: 4.6rem;
-  position: fixed;
-  bottom: 14.3rem;
-  right: 2rem;
-
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  float: right;
-  border-radius: 5.5rem;
-  border: 0.1rem solid ${theme.colors.grey_5};
-  background: ${theme.colors.white};
-  box-shadow: 0rem 0rem 1rem 0rem rgba(107, 117, 136, 0.2);
 `;
 
 const PhoneLayout = styled.div`

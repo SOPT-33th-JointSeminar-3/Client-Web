@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 import { useNavigate } from "react-router-dom";
+import { FlightBtnFilter } from "../../assets";
 
 export interface FooterProp {
   selectedPrice: number;
@@ -27,6 +28,9 @@ const Footer: React.FC<FooterProp> = ({ selectedPrice }) => {
       >
         <Reservation>다음 여정</Reservation>
       </FinalPayBtn>
+      <FilterIcon>
+        <FlightBtnFilter />
+      </FilterIcon>
     </Wrapper>
   );
 };
@@ -37,6 +41,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 43rem;
   height: 11.4rem;
 
   padding: 2rem;
@@ -84,4 +89,21 @@ const FinalPayBtn = styled.button`
 const Reservation = styled.p`
   color: ${theme.colors.white};
   ${theme.fonts.body_bold_14}
+`;
+
+const FilterIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: 13rem;
+  right: 1.6rem;
+
+  width: 4.6rem;
+  height: 4.6rem;
+  z-index: 3;
+  border-radius: 2.3rem;
+  background: ${theme.colors.skyBlue};
+  box-shadow: 0rem 0rem 1rem 0rem rgba(107, 117, 136, 0.2);
 `;
