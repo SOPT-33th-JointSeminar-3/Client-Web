@@ -8,7 +8,7 @@ const Journey = () => {
       <JouneyTitle>여정 정보</JouneyTitle>
       <DepartInfo>
         <Title>가는 편</Title>
-        <Date>2023년 11월 29일 (수)</Date>
+        <Date>2023년 12월 14일</Date>
         <DetailInfoLayout>
           <DepartureLayout>
             <EnglishTitle>GMP</EnglishTitle>
@@ -31,7 +31,7 @@ const Journey = () => {
 
       <DepartInfo>
         <Title>오는 편</Title>
-        <Date>2023년 12월 9일 (수)</Date>
+        <Date>2023년 12월 18일</Date>
         <DetailInfoLayout>
           <DepartureLayout>
             <EnglishTitle>CJU</EnglishTitle>

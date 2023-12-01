@@ -16,15 +16,6 @@ const CardPersonal = () => {
           <GrayDiv>
             <div>
               <GrayTitle>
-                승객 선택
-                <CommonBlack>정가윤</CommonBlack>
-              </GrayTitle>
-              <ChevronDown />
-            </div>
-          </GrayDiv>
-          <GrayDiv>
-            <div>
-              <GrayTitle>
                 국적
                 <Ellipse />
                 <CommonBlack>대한민국</CommonBlack>
