@@ -11,7 +11,7 @@ import {
 } from "../../assets";
 import { FlightCardProp } from "./FlightCard";
 
-const LowestContainer: React.FC<FlightCardProp> = ({ handleBtnClick }) => {
+const LowestContainer: React.FC<FlightCardProp> = () => {
   return (
     <>
       <Wrapper>
@@ -41,7 +41,7 @@ const LowestContainer: React.FC<FlightCardProp> = ({ handleBtnClick }) => {
           </section>
           <div>
             <BtnGroup>
-              <BtnLayout onClick={handleBtnClick}>
+              <BtnLayout>
                 <CommonTitle>특가운임</CommonTitle>
                 <CommonPrice>48,300원</CommonPrice>
                 <CommonSeat>7석</CommonSeat>
@@ -89,25 +89,6 @@ const LowestContainer: React.FC<FlightCardProp> = ({ handleBtnClick }) => {
           </div>
         </article>
       </Wrapper>
-
-      {/* <ClickSection className="hidden">
-        <div>
-          <section>
-            <IcChangeFlight />
-            <CommonSeat>변경 불가</CommonSeat>
-          </section>
-          <section>
-            <IcRefundFlight />
-            <CommonSeat>환불 7,000원</CommonSeat>
-          </section>
-        </div>
-        <div>
-          <section>
-            <IcShortInfoFlight />
-            <CommonSeat>좌석 승급 불가/ (결제 페이지에서 확인 가능)</CommonSeat>
-          </section>
-        </div>
-      </ClickSection> */}
     </>
   );
 };
@@ -132,7 +113,6 @@ const Wrapper = styled.section`
     width: 100%;
     flex-shrink: 0;
     justify-content: space-between;
-    /* background-color: pink; */
     border-radius: 1rem;
   }
 
@@ -214,7 +194,6 @@ const TimeLayout = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-
   flex-shrink: 0;
 `;
 

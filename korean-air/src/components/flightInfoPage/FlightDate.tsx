@@ -64,7 +64,6 @@ const Wrapper = styled.section`
 const DirectionLayout = styled.article`
   display: flex;
   padding: 1rem;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   gap: 1rem;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import {
@@ -31,9 +31,10 @@ const FlightCard: React.FC<FlightCardProp> = ({
 
   function handleBtnClick(idx: number) {
     setSelectedSeat({ flightId: id, seatId: idx });
-
+    console.log(selectedSeat);
     const selectedPrice = flightData.seats[idx].price;
     setSelectedPrice(selectedPrice);
+    console.log(selectedSeat);
   }
 
   return (
@@ -220,20 +221,6 @@ const BtnLayout = styled.section`
   }
 `;
 
-const NotSelectBtnLayout = styled.section`
-  display: flex;
-  width: 8.3rem;
-  height: 8.3rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
-  border-radius: 10px;
-  border: 0.1rem solid ${theme.colors.grey_4};
-  background: ${theme.colors.blue_5};
-`;
-
 const TimeLayout = styled.div`
   display: flex;
   width: 5.6rem;
@@ -279,16 +266,6 @@ const BtnGroup = styled.div`
   gap: 0.5rem;
   margin-top: 2rem;
   z-index: 1;
-`;
-
-const NotSelectedTitle = styled.p`
-  color: ${theme.colors.grey_2};
-  ${theme.fonts.body_medium_12};
-`;
-
-const NotSelectedSub = styled.p`
-  color: ${theme.colors.grey_2};
-  ${theme.fonts.body_bold_12}
 `;
 
 const ClickSection = styled.div`
